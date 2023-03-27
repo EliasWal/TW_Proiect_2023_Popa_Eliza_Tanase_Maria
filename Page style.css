@@ -1,0 +1,35 @@
+.topbar {
+    background-color:mediumpurple;
+    color:antiquewhite;
+    font-size: large;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    display: flex;
+    justify-content: space-evenly;
+}
+
+.logo {
+    text-align: center;
+    display: flex;
+    align-items: center;
+    font-style: italic;
+}
+
+.logo img {
+    width: 50px;
+}
+
+.taskbar img {
+    width: 50px;
+}
+
+.taskbar {
+    list-style-type: none;
+    display: flex; 
+    flex-direction: row;
+    align-items: center;
+}
+
+.taskbar a {
+    text-decoration: none;
+    color:antiquewhite;
+}
