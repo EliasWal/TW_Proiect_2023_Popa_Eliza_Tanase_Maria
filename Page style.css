@@ -4,7 +4,7 @@
     font-size: large;
     font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
     display: flex;
-    justify-content: space-evenly;
+    justify-content: space-around;
 }
 
 .logo {
@@ -19,7 +19,7 @@
 }
 
 .taskbar img {
-    width: 50px;
+    width: 25px;
 }
 
 .taskbar {
@@ -27,9 +27,21 @@
     display: flex; 
     flex-direction: row;
     align-items: center;
+    justify-content: space-around;
 }
 
 .taskbar a {
     text-decoration: none;
     color:antiquewhite;
+}
+
+.login {
+    align-self: center;
+    font-size: large;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    background-color:indigo;
+    color:antiquewhite;
+    border-radius:12px;
+    position: relative;
+    height: 50px;
 }
