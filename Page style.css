@@ -4,7 +4,8 @@
     font-size: large;
     font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
     display: flex;
-    justify-content: space-around;
+    justify-content: space-between;
+	padding: 1.5em;
 }
 
 .logo {
@@ -15,18 +16,17 @@
 }
 
 .logo img {
-    width: 50px;
+    width: 3.2em;
 }
 
 .taskbar img {
-    width: 25px;
+    width: 2em;
 }
 
 .taskbar {
     list-style-type: none;
     display: flex; 
     flex-direction: row;
-    align-items: center;
     justify-content: space-around;
 }
 
@@ -43,5 +43,16 @@
     color:antiquewhite;
     border-radius:12px;
     position: relative;
-    height: 50px;
+    height: 3.1em;
+	 width: 4.5em;
+}
+.home img {
+	width: 2.0em;
+	position: relative;
+ 	top:0.9em;
+}
+
+.about {
+	position: relative;
+	top:0.9em;
 }
