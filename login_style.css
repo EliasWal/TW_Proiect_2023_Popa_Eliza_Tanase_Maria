@@ -1,3 +1,9 @@
+body {
+    background-image: url("photos/background_login.jpeg");
+        background-repeat: no-repeat;
+        background-attachment: fixed;
+        background-size: cover;
+}
 .topbar {
     background-color:mediumpurple;
     color:antiquewhite;
@@ -75,41 +81,62 @@
 
 
 .login-container {
-    max-width: 600px;
-    margin: 0 auto;
+    max-width: 500px;
+    margin:auto;
     display: flex;
     flex-direction: column;
-    justify-content: center;
     align-items: center;
+    justify-content: center;
+    margin-top: 5%;
+    padding-bottom: 30px;
+    background-color: lavender;
+    border-radius: 5%;
+    
 }
 
 .login-container h2{
     font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
     color:blueviolet;
-    font-size: 3em;
+    font-size: 3em;   
 }
 
 #login-form {
     display: flex;
     flex-direction: column;
-    justify-content: center;
-    align-items: center;
 }
 
 label {
     font-size: 1.5em;
     line-height: 1.5em;
     margin-bottom: 0.5em;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    color:blueviolet;
 }
 
 input[type="text"],
 input[type="password"] {
-    font-size: 1.7em;
+    font-size: 1.5em;
     line-height: 1em;
     padding: 1em;
     margin-bottom: 1em;
     border-radius: 0.5em;
     border: 1px solid #ccc;
-    width: 100%;
+    width: 80%;
     max-width: 400px;
+}
+
+input[type="submit"] {
+    margin:auto;
+    font-size: 1.2em;
+    background-color: mediumpurple;
+    width:150px;
+    height:50px;
+    line-height: 1.5em;
+    border-radius: 0.5em;
+    border: none;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin-top:1.5em;
+    color:antiquewhite;
 }
