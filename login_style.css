@@ -73,13 +73,43 @@
     color:antiquewhite;
 }
 
-.logingrid {
-	color:mediumpurple;
-      font-size: 3em;
-      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-	display: flex;
-	justify-content:center;
-	
-  	
+
+.login-container {
+    max-width: 600px;
+    margin: 0 auto;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
 }
 
+.login-container h2{
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    color:blueviolet;
+    font-size: 3em;
+}
+
+#login-form {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
+label {
+    font-size: 1.5em;
+    line-height: 1.5em;
+    margin-bottom: 0.5em;
+}
+
+input[type="text"],
+input[type="password"] {
+    font-size: 1.7em;
+    line-height: 1em;
+    padding: 1em;
+    margin-bottom: 1em;
+    border-radius: 0.5em;
+    border: 1px solid #ccc;
+    width: 100%;
+    max-width: 400px;
+}
