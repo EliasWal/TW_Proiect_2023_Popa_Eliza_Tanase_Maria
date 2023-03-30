@@ -12,7 +12,11 @@ body {
     display: grid;
     grid-template-columns:  50% repeat(3,1fr);
 	grid-auto-rows: minmax(3em, auto);
+    padding:10px;
     /*border: 1px solid black;*/
+    position: sticky;
+    top: 0;
+
 }
 
 .logo {
@@ -80,8 +84,8 @@ body {
 }
 
 
-.login-container {
-    max-width: 500px;
+.signup-container {
+    max-width: 800px;
     margin:auto;
     display: flex;
     flex-direction: column;
@@ -90,22 +94,22 @@ body {
     margin-top: 5%;
     padding-bottom: 30px;
     background-color: lavender;
-    border-radius: 3em;
+    border-radius: 4em;
     
 }
 
-.login-container h2{
+.signup-container h2{
     font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
     color:blueviolet;
     font-size: 3em;   
 }
 
-#login-form {
+#signup-form {
     display: flex;
     flex-direction: column;
 }
 
-#login-form label {
+#signup-form label {
     font-size: 1.5em;
     line-height: 1.5em;
     margin-bottom: 0.5em;
@@ -114,7 +118,8 @@ body {
 }
 
 input[type="text"],
-input[type="password"] {
+input[type="password"],
+input[type="email"]{
     font-size: 1.5em;
     line-height: 1em;
     padding: 1em;
@@ -122,6 +127,17 @@ input[type="password"] {
     border-radius: 0.5em;
     border: 1px solid #ccc;
     width: 80%;
+    max-width: 400px;
+}
+
+#genderSelect {
+    font-size: 1.5em;
+    line-height: 1em;
+    padding: 1em;
+    margin-bottom: 1em;
+    border-radius: 0.5em;
+    border: 1px solid #ccc;
+    width: 95%;
     max-width: 400px;
 }
 
