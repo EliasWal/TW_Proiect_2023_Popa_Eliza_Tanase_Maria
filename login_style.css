@@ -1,0 +1,142 @@
+body {
+    background-image: url("photos/background_login.jpeg");
+        background-repeat: no-repeat;
+        background-attachment: fixed;
+        background-size: cover;
+}
+.topbar {
+    background-color:mediumpurple;
+    color:antiquewhite;
+    font-size: large;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    display: grid;
+    grid-template-columns:  50% repeat(3,1fr);
+	grid-auto-rows: minmax(3em, auto);
+    /*border: 1px solid black;*/
+}
+
+.logo {
+    display: flex;
+    align-items: center;
+    font-style: italic;
+    /*border: 1px solid black;*/
+}
+
+.logo img {
+    width: 3.2em;
+}
+
+.logsig{
+	/*border: 1px solid black;*/
+	display:flex;
+	align-items:center;
+	justify-content:center;
+	justify-content: space-around;
+}
+
+.login {
+    align-self: center;
+    font-size: large;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    color:antiquewhite;
+    background-color:mediumorchid;
+    border-radius:1.0em;
+    height: 2.5em;
+	 width: 5.5em;
+
+}
+
+.sign {
+    align-self: center;
+    font-size: large;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    background-color:plum;
+    color:antiquewhite;
+    border-radius:1.0em;
+	height: 2.5em;
+	width: 5.5em;
+
+}
+
+.home img {
+	width: 35px;
+
+}
+
+.home_button {
+    /*border: 1px solid black;*/
+    display: flex;
+    align-items: center;
+    justify-content: end;
+}
+
+.about {
+	display: flex;
+	align-items:center;
+	justify-content:center;
+    /*border: 1px solid black;*/
+    text-decoration: none;
+    color:antiquewhite;
+}
+
+
+.login-container {
+    max-width: 500px;
+    margin:auto;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    margin-top: 5%;
+    padding-bottom: 30px;
+    background-color: lavender;
+    border-radius: 3em;
+    
+}
+
+.login-container h2{
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    color:blueviolet;
+    font-size: 3em;   
+}
+
+#login-form {
+    display: flex;
+    flex-direction: column;
+}
+
+#login-form label {
+    font-size: 1.5em;
+    line-height: 1.5em;
+    margin-bottom: 0.5em;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    color:blueviolet;
+}
+
+input[type="text"],
+input[type="password"] {
+    font-size: 1.5em;
+    line-height: 1em;
+    padding: 1em;
+    margin-bottom: 1em;
+    border-radius: 0.5em;
+    border: 1px solid #ccc;
+    width: 80%;
+    max-width: 400px;
+}
+
+input[type="submit"] {
+    margin:auto;
+    font-size: 1.2em;
+    background-color: mediumpurple;
+    width:150px;
+    height:50px;
+    line-height: 1.5em;
+    border-radius: 0.5em;
+    border: none;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin-top:1.5em;
+    color:antiquewhite;
+}

@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="en-US">
+<head>
+    <meta charset="utf-8"/> 
+    <title> Baby manager </title>
+    <link href="SignUp.css" rel="stylesheet" />
+    <link rel="icon" type="image/png" href="https://cdn-icons-png.flaticon.com/512/2102/2102805.png"/>
+</head>
+<body>
+        <header>
+            <div class="topbar">
+                <a class="logo">
+                    <img src="https://cdn-icons-png.flaticon.com/512/6381/6381743.png" alt="Baby manager">
+                    Baby Manager
+                </a>
+                <div class="home_button">
+                    <a href="welcome.html" class="home">
+                    <img src="https://cdn-icons-png.flaticon.com/512/2626/2626923.png" alt="Home button"> 
+                    </a>
+                </div>
+                 <a href="Welcome.html" class="about"> About us </a>
+                 </a>
+    
+				<div class="logsig">
+                    <a href="SignUp.html">
+                	    <button  class="sign"> Sign up </button>
+                    </a>
+                    <a href="Login.html">
+                	    <button href="" class="login"> Log in </button>
+                    </a>
+                </div>
+
+            </div>
+        </header>
+        
+        <div class="signup-container">
+            <h2>Create a new account</h2>
+            <form id="signup-form" method="post" action="welcome.html">
+                <label id="name1">Name</label>
+                <input type="text" id="name1" name="name1" placeholder="First name">
+                <input type="text" id="name2" name="name2" placeholder="Second name">
+                
+                <label id="email">Email</label>
+                <input type="email" id="email-adress" name="email" placeholder="ex: name@example.com">
+                
+                <label id="username">Username</label>
+                <input type="text" id="username" name="username" placeholder="Enter your username">
+                
+                <label id="password">Password</label>
+                <input type="password" id="password" name="password" placeholder="Enter your password">
+                
+                <label id="repeatpassword">Repeat Password</label>
+                <input type="password" id="repeatpassword" name="repeatpassword" placeholder="Enter your password">
+                
+                <label id="gender">Gender</label>
+                <select id="genderSelect">
+                    <option value="female">Female</option>
+                    <option value="male">Male</option>
+                    <option value="non-binary">Non-binary</option>
+                    <option value="nospecify">Don't specify</option>
+                </select>
+
+                <label id="pronouns">Pronouns</label>
+                <input type="text" id="pronouns" name="pronouns" placeholder="Enter your pronouns">
+
+                <input type="submit" value="Create account">
+            </form>
+        </div>
+
+       
+</body>
+</html>
