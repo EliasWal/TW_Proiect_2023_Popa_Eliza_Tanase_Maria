@@ -1,117 +1,51 @@
-.topbar {
-    background-color:mediumpurple;
-    color:antiquewhite;
-    font-size: large;
-    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-    display: grid;
-    grid-template-columns:  50% repeat(3,1fr);
-	grid-auto-rows: minmax(3em, auto);
-    /*border: 1px solid black;*/
-}
+<!DOCTYPE html>
+<html lang="en-US">
+<head>
+    <meta charset="utf-8"/> 
+    <title> Baby manager </title>
+    <link href="login_style.css" rel="stylesheet" />
+    <link rel="icon" type="image/png" href="https://cdn-icons-png.flaticon.com/512/2102/2102805.png"/>
+</head>
+<body>
+        <header>
+            <div class="topbar">
+                <a class="logo">
+                    <img src="https://cdn-icons-png.flaticon.com/512/6381/6381743.png" alt="Baby manager">
+                    Baby Manager
+                </a>
+                <div class="home_button">
+                    <a href="welcome.html" class="home">
+                    <img src="https://cdn-icons-png.flaticon.com/512/2626/2626923.png" alt="Home button"> 
+                    </a>
+                </div>
+                 <a href="index.html" class="about"> About us </a>
+                 </a>
+    
+				<div class="logsig">
+                    <a href="Welcome.html">
+                	    <button  class="sign"> Sign in </button>
+                    </a>
+                    <a href="">
+                	    <button href="" class="login"> Log in </button>
+                    </a>
+                </div>
 
-.logo {
-    display: flex;
-    align-items: center;
-    font-style: italic;
-    /*border: 1px solid black;*/
-}
+            </div>
+        </header>
+        <div class="login-container">
+            <h2>Log in</h2>
+            <form id="login-form" method="post">
+                <label id="username">Username</label>
+                <input type="text" id="username" name="username" placeholder="Enter your username">
 
-.logo img {
-    width: 3.2em;
-}
+                <label id="password">Password</label>
+                <input type="password" id="password" name="password" placeholder="Enter your password">
+                <a href="">
+                    <input type="button" onclick="Credentials">Log in</input>
+                </a>
+            </form>
+        </div>
 
-.logsig{
-	/*border: 1px solid black;*/
-	display:flex;
-	align-items:center;
-	justify-content:center;
-	justify-content: space-around;
-}
-
-.login {
-    align-self: center;
-    font-size: large;
-    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-    color:antiquewhite;
-    background-color:mediumorchid;
-    border-radius:1.0em;
-    height: 2.5em;
-	 width: 5.5em;
-
-}
-
-.sign {
-    align-self: center;
-    font-size: large;
-    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-    background-color:plum;
-    color:antiquewhite;
-    border-radius:1.0em;
-	height: 2.5em;
-	width: 5.5em;
-
-}
-
-.home img {
-	width: 35px;
-
-}
-
-.home_button {
-    /*border: 1px solid black;*/
-    display: flex;
-    align-items: center;
-    justify-content: end;
-}
-
-.about {
-	display: flex;
-	align-items:center;
-	justify-content:center;
-    /*border: 1px solid black;*/
-    text-decoration: none;
-    color:antiquewhite;
-}
-
-
-.login-container {
-    max-width: 600px;
-    margin: 0 auto;
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    align-items: center;
-}
-
-.login-container h2{
-    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-    color:blueviolet;
-    font-size: 3em;
-}
-
-#login-form {
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    align-items: center;
-}
-
-label {
-    font-size: 1.5em;
-    line-height: 1.5em;
-    margin-bottom: 0.5em;
-}
-
-input[type="text"],
-input[type="password"] {
-    font-size: 1.7em;
-    line-height: 1em;
-    padding: 1em;
-    margin-bottom: 1em;
-    border-radius: 0.5em;
-    border: 1px solid #ccc;
-    width: 100%;
-    max-width: 400px;
-}
-
-
+       
+</body>
+</html>
