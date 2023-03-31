@@ -1,3 +1,10 @@
+body {
+    background-image: url("https://images.pexels.com/photos/7130537/pexels-photo-7130537.jpeg");
+    background-repeat: no-repeat;
+    background-attachment: fixed;
+    background-size: cover;
+}
+
 .topbar {
     background-color:mediumpurple;
     color:antiquewhite;
@@ -36,7 +43,7 @@
     background-color:mediumorchid;
     border-radius:1.0em;
     height: 2.5em;
-	 width: 5.5em;
+	width: 5.5em;
 
 }
 
@@ -54,7 +61,6 @@
 
 .home img {
 	width: 35px;
-
 }
 
 .home_button {
@@ -73,3 +79,39 @@
     color:antiquewhite;
 }
 
+.transbox {
+    background: rgba(230,230,250, .2); /* lavender */
+    margin: 5%;
+}
+
+.intro { 
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+}
+
+.introinfo h2 {
+    font-size: medium;
+}
+
+.introinfo {
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    color:blueviolet;
+    font-size: 1em;
+    margin: 5%;
+    display: flex;
+    flex-direction: column;
+    align-items:center;
+    justify-content: end;
+}
+
+.introinfo p {
+    font-size: medium;
+    margin:0;
+    padding:0;
+}
+
+.page img {
+    border-bottom-left-radius: 10%;
+    border-bottom-right-radius: 10%;
+    width: 90%;
+}
