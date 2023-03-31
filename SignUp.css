@@ -14,9 +14,6 @@ body {
 	grid-auto-rows: minmax(3em, auto);
     padding:10px;
     /*border: 1px solid black;*/
-    position: sticky;
-    top: 0;
-
 }
 
 .logo {
@@ -91,7 +88,7 @@ body {
     flex-direction: column;
     align-items: center;
     justify-content: center;
-    margin-top: 5%;
+    margin-top: 1em;
     padding-bottom: 30px;
     background-color: lavender;
     border-radius: 4em;
@@ -100,13 +97,14 @@ body {
 
 .signup-container h2{
     font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-    color:blueviolet;
-    font-size: 3em;   
+    color:mediumpurple;
+    font-size: 2.5em;   
 }
 
 #signup-form {
-    display: flex;
-    flex-direction: column;
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    padding-left: 1em;
 }
 
 #signup-form label {
@@ -130,6 +128,10 @@ input[type="email"]{
     max-width: 400px;
 }
 
+.col1 #name2{
+    margin-top: 36px;
+}
+
 #genderSelect {
     font-size: 1.5em;
     line-height: 1em;
@@ -142,7 +144,6 @@ input[type="email"]{
 }
 
 input[type="submit"] {
-    margin:auto;
     font-size: 1.2em;
     background-color: mediumpurple;
     width:150px;
@@ -151,8 +152,7 @@ input[type="submit"] {
     border-radius: 0.5em;
     border: none;
     display: flex;
-    align-items: center;
-    justify-content: center;
     margin-top:1.5em;
     color:antiquewhite;
+    margin-left: 75%;
 }

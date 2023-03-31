@@ -36,33 +36,35 @@
         <div class="signup-container">
             <h2>Create a new account</h2>
             <form id="signup-form" method="post" action="welcome.html">
-                <label id="name1">Name</label>
-                <input type="text" id="name1" name="name1" placeholder="First name">
-                <input type="text" id="name2" name="name2" placeholder="Second name">
-                
-                <label id="email">Email</label>
-                <input type="email" id="email-adress" name="email" placeholder="ex: name@example.com">
-                
-                <label id="username">Username</label>
-                <input type="text" id="username" name="username" placeholder="Enter your username">
-                
-                <label id="password">Password</label>
-                <input type="password" id="password" name="password" placeholder="Enter your password">
-                
-                <label id="repeatpassword">Repeat Password</label>
-                <input type="password" id="repeatpassword" name="repeatpassword" placeholder="Enter your password">
-                
-                <label id="gender">Gender</label>
-                <select id="genderSelect">
-                    <option value="female">Female</option>
-                    <option value="male">Male</option>
-                    <option value="non-binary">Non-binary</option>
-                    <option value="nospecify">Don't specify</option>
-                </select>
+                <div class="col1">
+                    <label id="name1">Name</label>
+                    <input type="text" id="name1" name="name1" placeholder="First name">
+                    <input type="text" id="name2" name="name2" placeholder="Second name">
+                    
+                    <label id="email">Email</label>
+                    <input type="email" id="email-adress" name="email" placeholder="ex: name@example.com">
+                    
+                    <label id="username">Username</label>
+                    <input type="text" id="username" name="username" placeholder="Enter your username">
+                </div>
+                <div class="col2">    
+                    <label id="password">Password</label>
+                    <input type="password" id="password" name="password" placeholder="Enter your password">
+                    
+                    <label id="repeatpassword">Repeat Password</label>
+                    <input type="password" id="repeatpassword" name="repeatpassword" placeholder="Enter your password">
+                    
+                    <label id="gender">Gender</label>
+                    <select id="genderSelect">
+                        <option value="female">Female</option>
+                        <option value="male">Male</option>
+                        <option value="non-binary">Non-binary</option>
+                        <option value="nospecify">Don't specify</option>
+                    </select>
 
-                <label id="pronouns">Pronouns</label>
-                <input type="text" id="pronouns" name="pronouns" placeholder="Enter your pronouns">
-
+                    <label id="pronouns">Pronouns</label>
+                    <input type="text" id="pronouns" name="pronouns" placeholder="ex: she/her">
+                </div>
                 <input type="submit" value="Create account">
             </form>
         </div>
