@@ -1,0 +1,161 @@
+body {
+    background-image: url("https://images.pexels.com/photos/7130537/pexels-photo-7130537.jpeg");
+    background-repeat: no-repeat;
+    background-attachment: fixed;
+    background-size: cover;
+}
+
+.topbar {
+    background-color:mediumpurple;
+    color:antiquewhite;
+    font-size: large;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    display: grid;
+    grid-template-columns: 25% 2.5fr repeat(2, 1fr);
+	grid-auto-rows: minmax(3em, auto);
+    /*border: 1px solid black;*/
+}
+
+.logo {
+    display: flex;
+    align-items: center;
+    font-style: italic;
+   /*border: 1px solid black;*/
+}
+
+.logo img {
+    width: 3.2em;
+}
+
+.taskbar {
+    display:grid;
+    grid-template-columns: repeat(5,1fr);
+    grid-auto-rows: minmax(3em, auto);
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    /*font-weight: bold;*/
+    
+}
+
+.memories {
+    text-decoration: none;
+    color:antiquewhite;
+}
+
+.calendars {
+    text-decoration: none;
+    color:antiquewhite;
+    padding: 7px 13px;
+    border-style: inset;
+    background-color:blueviolet;
+}
+
+.friends {
+    text-decoration: none;
+    color:antiquewhite;
+}
+
+.medical {
+    text-decoration: none;
+    color:antiquewhite;
+}
+
+.setlog{
+	/*border: 1px solid black;*/
+	display:flex;
+	align-items:center;
+	justify-content:center;
+	justify-content:space-evenly;
+}
+
+.logout {
+    align-self: center;
+    font-size: large;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    color:antiquewhite;
+    background-color:mediumorchid;
+    border-radius:1.0em;
+    height: 2.5em;
+	width: 5.5em;
+
+}
+
+.setlog img {
+    width: 40px;
+}
+
+.home img {
+	width: 35px;
+
+}
+
+.home_button {
+    /*border: 1px solid black;*/
+    display: flex;
+    align-items: center;
+    justify-content: end;
+}
+
+.about {
+	display: flex;
+	align-items:center;
+	justify-content:center;
+    /*border: 1px solid black;*/
+    text-decoration: none;
+    color:antiquewhite;
+}
+
+.page {
+    display: flex;
+    flex-direction: row;
+    justify-content: baseline;
+    margin-top: .5em;
+}
+
+.leftbar{
+    font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
+    background-color:plum;
+    display: flex;
+    flex-direction: column;
+    width: 10%;
+    height: auto;
+    /*position: fixed;*/
+    padding: 1em;
+    margin-top: .5em;  
+    font-size: larger;
+    border-radius: 1em;
+}
+
+.leftbar h2 {
+    background: rgba(230,230,250, .2); 
+    border-radius: .2em;
+}
+
+.choose-child {
+    display: flex;
+    flex-direction: column;
+    background: rgba(230,230,250, .2); 
+    border-radius: .5em;
+}
+
+.child {
+    text-decoration: none;   
+    color: black;
+}
+
+.right {
+    padding: 3em;
+    align-items: center;
+    font-family: 'Segoe UI', cursive;
+    font-size: x-large;
+    background: rgba(230,230,250, .2); /* lavender */
+    margin-top: .5em;
+    margin-left: .5em; 
+    height: 50%;
+    border-radius: 3em;
+}
+
+.right img {
+    width: 1.2em;
+}
