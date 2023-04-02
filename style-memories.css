@@ -215,11 +215,12 @@ body {
     background-color:plum;
     display: flex;
     flex-direction: column;
-    width: 10%;
-    height: auto;
+    width: 15vw;
+    height: 100vh;
     /*position: fixed;*/
-    padding: 1em;
+    padding: 1.5em;
     margin-top: .5em;  
+    margin-left: .5em;
     font-size: larger;
     border-radius: 1em;
     border-style: inset;
@@ -229,6 +230,7 @@ body {
 .leftbar h2 {
     background: rgba(230,230,250, .2); 
     border-radius: .2em;
+    margin-bottom: 2em;
 }
 
 .choose-child li:hover {
@@ -260,8 +262,16 @@ body {
     background: rgba(230,230,250, .2); /* lavender */
     margin-top: .5em;
     margin-left: .5em; 
-    height: 50%;
+    height: 100vh;
     border-radius: 3em;
+}
+
+.right h3 {
+    line-height: 5em;
+}
+
+.right p {
+    margin-bottom: 1em;
 }
 
 .right img {
