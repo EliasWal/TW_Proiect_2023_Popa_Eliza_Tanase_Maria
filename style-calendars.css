@@ -4,71 +4,85 @@ body {
     background-attachment: fixed;
     background-size: cover;
 }
-
-.topbar {
-    background-color:mediumpurple;
-    color:antiquewhite;
-    font-size: large;
-    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-    display: grid;
-    grid-template-columns: 25% 2.5fr repeat(2, 1fr);
-	grid-auto-rows: minmax(3em, auto);
-    /*border: 1px solid black;*/
+*{
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
 }
-
-.logo {
+body {
+    font-family: "Poppins", sans-serif;
+    --color1: #FFF ;
+    --color2: mediumpurple;
+}
+.nav-bar {
+    width: 100%;
     display: flex;
-    align-items: center;
-    font-style: italic;
-   /*border: 1px solid black;*/
-}
-
-.logo img {
-    width: 3.2em;
-}
-
-.taskbar {
-    display:grid;
-    grid-template-columns: repeat(5,1fr);
-    grid-auto-rows: minmax(3em, auto);
-    display: flex;
-    align-items: center;
     justify-content: space-between;
-    /*font-weight: bold;*/
-    
+    align-items: center;
+    list-style: none;
+    position: relative;
+    background-color: var(--color2);
+    padding: 12px 20px;
 }
-
-.memories {
+.logo{
+    display: flex;
+    color: antiquewhite;
+    flex-direction: row;
+}
+.logo img {
+    width: 50px;
+}
+.logo-name{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+.settings img{
+    width:40px;
+    margin-right: 1em;
+}
+.home img{width: 40px;}
+.menu {
+    display: flex;
+    align-items: center;
+}
+.menu li {padding-left: 30px;}
+.menu li a {
+    display: inline-block;
     text-decoration: none;
-    color:antiquewhite;
+    color: var(--color1);
+    text-align: center;
+    transition: 0.15s ease-in-out;
+    position: relative;
+    text-transform: uppercase;
 }
-
-.calendars {
-    text-decoration: none;
-    color:antiquewhite;
-    padding: 7px 13px;
-    border-style: inset;
-    background-color:blueviolet;
+.menu li a::after {
+    content: "";
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    width: 0;
+    height: 1px;
+    background-color: var(--color1);
+    transition: 0.15s ease-in-out;
 }
-
-.friends {
-    text-decoration: none;
-    color:antiquewhite;
+.menu li a:hover:after {width: 100%;}
+.open-menu , .close-menu {
+    position: absolute;
+    color: var(--color1);
+    cursor: pointer;
+    font-size: 1.5rem;
+    display: none;
 }
-
-.medical {
-    text-decoration: none;
-    color:antiquewhite;
+.open-menu {
+    top: 50%;
+    right: 20px;
+    transform: translateY(-50%);
 }
-
-.setlog{
-	/*border: 1px solid black;*/
-	display:flex;
-	align-items:center;
-	justify-content:center;
-	justify-content:space-evenly;
+.close-menu {
+    top: 20px;
+    right: 20px;
 }
-
 .logout {
     align-self: center;
     font-size: large;
@@ -81,30 +95,45 @@ body {
 
 }
 
-.setlog img {
-    width: 40px;
+#check {display: none;}
+
+@media(max-width: 1050px){
+    .logo-name{display:none;}
 }
 
-.home img {
-	width: 35px;
 
+@media(max-width: 915px){
+    .menu {
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+        width: 50%;
+        height: 100vh;
+        position: fixed;
+        top: 0;
+        right: -100%;
+        z-index: 100;
+        background-color: var(--color2);
+        transition: all 0.2s ease-in-out;
+    }
+    .menu .settings{
+        margin-bottom: 20px;
+    }
+    .menu .logout{
+        margin-left: auto;
+        margin-right: auto;
+        border-radius:1.0em;
+        height: 3em;
+    	width: 6em;
+    }
+    .menu li {margin-top: 10px;}
+    .menu li a {padding: 10px;}
+    .open-menu , .close-menu {
+        display: block;}
+    #check:checked ~ .menu {right: 0;}
+    .logo-name{display: flex; justify-content: center;}
 }
 
-.home_button {
-    /*border: 1px solid black;*/
-    display: flex;
-    align-items: center;
-    justify-content: end;
-}
-
-.about {
-	display: flex;
-	align-items:center;
-	justify-content:center;
-    /*border: 1px solid black;*/
-    text-decoration: none;
-    color:antiquewhite;
-}
 
 .page {
     display: flex;

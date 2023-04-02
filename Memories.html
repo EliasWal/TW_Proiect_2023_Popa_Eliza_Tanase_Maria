@@ -2,37 +2,38 @@
 <html lang="en-US">
 <head>
     <meta charset="utf-8"/> 
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title> Baby manager </title>
     <link href="style-memories.css" rel="stylesheet" />
     <link rel="icon" type="image/png" href="https://cdn-icons-png.flaticon.com/512/2102/2102805.png"/>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta2/css/all.min.css" integrity="sha512-YWzhKL2whUzgiheMoBFwW8CKV4qpHQAEuvilg9FAn5VJUDwKZZxkJNuGM4XkWuk94WCrrwslk8yWNGmY1EduTA==" crossorigin="anonymous" referrerpolicy="no-referrer" /></head>
 </head>
 <body>
         <header>
-            <div class="topbar">
-                <a class="logo">
-                    <img src="https://cdn-icons-png.flaticon.com/512/6381/6381743.png" alt="Baby manager">
-                    Baby Manager
-                </a>
-                <div class="taskbar">
-                    <a href="Memories.html" class="memories"> Memories </a>
-                    <a href="Calendars.html" class="calendars"> Calendars </a>
-                    <a href="" class="friends"> Friends </a>
-                    <a href="" class="medical"> Medical </a>
-                    <a href="Welcome-logged-in.html" class="home">
-                        <img src="https://cdn-icons-png.flaticon.com/512/2626/2626923.png" alt="Home button"> 
-                    </a>
-                </div>
-                <a href="Welcome-logged-in.html" class="about"> About us </a>
-				<div class="setlog">
-                    <a href="settings.html">
-                	    <img src="https://cdn-icons-png.flaticon.com/512/738/738853.png" alt="Settings">
-                    </a>
-                    <a href="Welcome.html">
-                	    <button href="" class="logout"> Log out </button>
-                    </a>
-                </div>
-            </div>
-        </header>
+    <nav>
+        <ul class='nav-bar'>
+            <div class='logo'>
+                    <img src='C:\Users\Elias\Desktop\Facultate\An II Sem 2\TW\TW_Proiect_2023_Popa_Eliza_Tanase_Maria-main\Photos\Baby manager.png'/> 
+                    <span class='logo-name'>BABY MANAGER</span>
+              </div>
+            <input type='checkbox' id='check' />
+            <span class="menu">
+                <li><a href="Memories.html">Memories</a></li>
+                <li><a href="Calendars.html">Calendars</a></li>
+                <li><a href="">Friends</a></li>
+                <li><a href="">Medical</a></li>
+                <li><a href="">Home</a></li>
+                <li><a href="Welcome-logged-in.html">About us</a></li>
+                <li class='settings'><a href='settings.html'><img src='Photos\settings.png'/></a></li>
+                <a href="Welcome.html">
+                <button class="logout"> Log out </button></a>
+                <label for="check" class="close-menu"><i class="fas fa-times"></i></label>
+            </span>
+            <label for="check" class="open-menu"><i class="fas fa-bars"></i></label>
+        </ul>
+    </nav>
+    </header>
         <div class="page">
             <div class="leftbar">
                 <h2>Children</h2>
