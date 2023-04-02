@@ -96,17 +96,40 @@
     color:antiquewhite;
 }
 
+
+
 .leftbar{
     font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
     background-color: lavender;
     display: flex;
     flex-direction: column;
-    width: 10%;
+    width: 8em;
     height: 100vh;
-    position: fixed;
     padding: 1em;
     margin-top: .5em;  
     font-size: larger;
     border-radius: 1em;
 }
+.set-menu{
+    text-decoration: none;
+    list-style-type: none;
+    display: flex;
+    flex-direction: column;
+    position: relative;
+    left: -40px;
 
+}
+
+.set-menu li {
+    margin-bottom: 2em;
+    text-decoration: none;
+}
+
+.set-menu li:hover {
+    color: blueviolet;
+    background-color: aliceblue;
+    border-radius: .7em;
+    font-weight: 900;
+    padding-left: .6em;
+
+}
