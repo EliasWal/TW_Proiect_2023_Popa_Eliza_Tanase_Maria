@@ -124,6 +124,8 @@ body {
     margin-top: .5em;  
     font-size: larger;
     border-radius: 1em;
+    border-style: inset;
+    border-color:hotpink;
 }
 
 .leftbar h2 {
@@ -136,6 +138,15 @@ body {
     flex-direction: column;
     background: rgba(230,230,250, .2); 
     border-radius: .5em;
+}
+
+.choose-child li:hover {
+    color: hotpink;
+    background-color: rgba(240,248,255, .5);
+    border-radius: .7em;
+    font-weight: 900;
+    padding-left: .6em;
+
 }
 
 .right {
