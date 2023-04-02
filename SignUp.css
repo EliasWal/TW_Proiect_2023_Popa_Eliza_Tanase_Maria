@@ -233,3 +233,10 @@ input[type="submit"] {
     color:antiquewhite;
     margin-left: 75%;
 }
+
+@media(max-width: 915px){
+    #signup-form {
+        display: flex;
+        flex-direction: column;
+    }
+}
