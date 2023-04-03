@@ -177,7 +177,7 @@ body {
     flex-direction: row;
 }
 
-.signup-container {
+.pass-container {
     margin-left: 20px;
     display: flex;
     flex-direction: column;
@@ -190,52 +190,31 @@ body {
     width: 100%;
 }
 
-.signup-container h2{
+.pass-container h2{
     font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
     color:mediumpurple;
     font-size: 2em;   
     margin-bottom: 2em;
-    margin-left: 1em;
 }
 
-#signup-form {
-    display: flex;
-    flex-direction: row;
-}
-
-#col1, #col2 {
+#pass-form {
     display: flex;
     flex-direction: column;
 }
 
-#signup-form label {
+
+#pass-form label {
     font-size: 1.5em;
     line-height: 2em;
     margin-bottom: 0.5em;
     font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
     color:blueviolet;
 }
-#signup-form li{
+#pass-form li{
     display: flex;
     flex-direction: column;
-    margin-left: 10%;
-    width: 80%;
 }
-input[type="text"],
-input[type="password"],
-input[type="email"],
-input[type="tel"]{
-    font-size: 1.2em;
-    line-height: 1em;
-    padding: 1em;
-    margin-bottom: 1em;
-    border-radius: 0.5em;
-    border: 1px solid #ccc;
-    width: 100%;
-    max-width: 400px;
-}
-
-#genderSelect {
+input[type="password"]{
     font-size: 1.2em;
     line-height: 1em;
     padding: 1em;
@@ -259,24 +238,16 @@ input[type="submit"] {
     justify-content: center;
     margin-top:1.5em;
     color:antiquewhite;
-    margin-left: -25%;
 }
 
-.col1{
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    justify-content: center;
-    margin-bottom: 90px;
-}
 
 @media(max-width: 1040){
-    #signup-form li{
+    #pass-form li{
         width: 5em;
     }
 }
 
-@media(max-width: 700px){
+@media(max-width: 500px){
     .container {
         display: flex;
         flex-direction: column;
@@ -302,18 +273,18 @@ input[type="submit"] {
         font-size: small;
         margin-top: 1em;
     }
-    .signup-container{
+    .pass-container{
         margin-left: 0;
     }
-    #signup-form{
+    #pass-form{
         display: flex;
         flex-direction: column;
     }
-    .signup-container input[type="submit"]{
+    .pass-container input[type="submit"]{
         display: flex;
         align-items: center;
         justify-content: center;
-        margin-left: 30%;
+        margin-left: 25%;
     }
     input[type="submit"]{
         width:7em;
