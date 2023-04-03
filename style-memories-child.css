@@ -202,25 +202,13 @@ body {
     color: black;
 }
 
-.date {
+h4 {
     font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
     font-size:large;
     color: palevioletred;
-    position: relative;
-    max-width: 100px;
-    margin-left: 50px auto;
-    text-align: center;
-}
-
-.date:before {
-    content: " ";
-    display: block;
-    width: 130px;
-    height: 2px;
-    left: 0;
-    top: 50%;
-    position: absolute;
-    background: palevioletred;
+    border-top-right-radius: .5em;
+    border-top-left-radius: .5em;
+    background: white;
 }
 
 .postline {
@@ -232,7 +220,7 @@ body {
     display: grid;
     grid-template-columns: repeat(2, 1fr);
     width: 70vw;
-    height: 50vh;
+    height: auto;
     column-gap: 5%;
     background-image:url("https://img.freepik.com/premium-vector/abstract-pink-background-with-hearts_19875-217.jpg");
     background-size:cover;
