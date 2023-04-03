@@ -164,8 +164,12 @@ body {
     grid-template-columns: repeat(2, 1fr);
 }
 
+.introinfo h1 {
+    margin-bottom: 2em;
+}
+
 .introinfo h2 {
-    font-size: medium;
+    margin-top: 2em;
 }
 
 .introinfo {
