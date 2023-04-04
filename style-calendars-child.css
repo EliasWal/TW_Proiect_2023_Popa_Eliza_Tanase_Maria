@@ -189,6 +189,7 @@ body {
     background: rgba(230,230,250, .2); /* lavender */
     padding: 1em;
     margin-top: .5em; 
+    margin-right: 0;
     display: flex;
     flex-flow: column;
     align-items: baseline;

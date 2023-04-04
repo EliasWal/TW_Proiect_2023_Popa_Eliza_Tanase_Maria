@@ -196,6 +196,7 @@ body {
     background: rgba(230,230,250, .2); /* lavender */
     margin-top: .5em;
     margin-left: .5em; 
+    margin-right: 0;
     height: 100vh;
     border-radius: 3em;
 }
