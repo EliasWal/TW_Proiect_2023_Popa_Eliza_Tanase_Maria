@@ -179,13 +179,12 @@ body {
 
 .kids-container {
     margin-left: 20px;
+    margin-right: 20px;
     display: flex;
     flex-direction: column;
-    justify-content: flex-start;
     margin-top: .5em;
     background-color: lavender;
     border-radius: 2em;
-    margin-right: 20px;
     padding: 2em;
     width: 100%;
 }
@@ -198,13 +197,13 @@ body {
     margin-left: 1em;
 }
 
-#kids-form kid1 {
+#kids-form  {
     display: flex;
     flex-direction: row;
 }
 #kids-form label {
     font-size: 1.5em;
-    line-height: 2em;
+    line-height: 1em;
     margin-bottom: 0.5em;
     font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
     color:blueviolet;
@@ -212,32 +211,34 @@ body {
 #kids-form li{
     display: flex;
     flex-direction: column;
-    margin-left: 10%;
-    width: 80%;
+    margin-right: 2em;
 }
 input[type="text"],
-input[type="password"],
-input[type="date"]{
+input[type="password"]{
     font-size: 1.2em;
     line-height: 1em;
     padding: 1em;
-    margin-bottom: 1em;
     border-radius: 0.5em;
     border: 1px solid #ccc;
-    width: 100%;
-    max-width: 400px;
 }
-.child2 { display: none;}
+
+
+input[type="date"]{
+    font-size: 1.2em;
+    line-height: 1.7em;
+    padding: 1em;
+    border-radius: 0.5em;
+    border: 1px solid #ccc;
+}
+
 
 #genderSelect {
     font-size: 1.2em;
-    line-height: 1em;
-    padding: 1em;
-    margin-bottom: 1em;
+    line-height: .5em;
+    padding: .7em;
     border-radius: 0.5em;
     border: 1px solid #ccc;
-    width: 100%;
-    max-width: 400px;
+    height:3em;
 }
 
 input[type="submit"] {
@@ -253,7 +254,6 @@ input[type="submit"] {
     justify-content: center;
     margin-top:1.5em;
     color:antiquewhite;
-    margin-left: -25%;
 }
 
 
