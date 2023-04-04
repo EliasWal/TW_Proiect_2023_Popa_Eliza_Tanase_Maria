@@ -257,3 +257,21 @@ body {
         margin-left: .2em; 
     }
 }
+
+@media(max-width:800px) {
+    .calendar-buttons button {
+        font-size:medium;
+    }
+}
+
+@media(max-width:620px) {
+    .calendar-buttons button {
+        font-size:small;
+    }
+}
+
+@media(max-width:480px) {
+    .calendar-buttons button {
+        font-size:x-small;
+    }
+}
