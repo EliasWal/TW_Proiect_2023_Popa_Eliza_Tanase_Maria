@@ -127,3 +127,30 @@ body {
     #check:checked ~ .menu {right: 0;}
     .logo-name{display: flex; justify-content: center;}
 }
+
+
+.hello img{
+    width: 100%;
+    position: absolute;
+    z-index: 0;
+}
+
+.hello .greeting{
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    font-weight: 500;
+    color: plum;
+    font-size: 3em;
+    padding: 1em;
+    position:absolute;
+    z-index:1;
+}
+
+.info{
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    font-weight: 200;
+    color: plum;
+    font-size: 2em;
+    padding: 1em;
+
+}
+
