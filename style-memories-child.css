@@ -190,7 +190,7 @@ body {
     padding: 1em;
     margin-top: .5em;
     margin-left: .5em; 
-    height: 100vh;
+    height: 100%;
     width: 100vw;
     border-radius: 3em;
     display: flex;
@@ -351,8 +351,9 @@ h5 {
 
     .post {
         grid-template-columns: none;
-        grid-template-rows: repeat(2, 1fr);
         column-gap: 0;
+        display: flex;
+        flex-direction: column;
     }
 
     .post img {
@@ -366,7 +367,9 @@ h5 {
     
     .postline {
         grid-template-columns: none;
-        grid-template-rows: repeat(2, 1fr);
+        display: flex;
+        flex-direction: column;
+        align-self: center;
     }
 
     .post-buttons {
@@ -375,5 +378,9 @@ h5 {
 
     .right {
         padding: 0;
+    }
+
+    .post {
+        row-gap: 0;
     }
 }
