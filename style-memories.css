@@ -215,10 +215,10 @@ body {
     background-color:plum;
     display: flex;
     flex-direction: column;
-    width: 15vw;
+    width: 10em;
     height: 100vh;
     /*position: fixed;*/
-    padding: 1.5em;
+    padding: 1em;
     margin-top: .5em;  
     margin-left: .5em;
     font-size: larger;
@@ -245,8 +245,10 @@ body {
 .choose-child {
     display: flex;
     flex-direction: column;
+    align-items: center;
     background: rgba(230,230,250, .2); 
     border-radius: .5em;
+    position: relative;
 }
 
 .child {
@@ -276,4 +278,46 @@ body {
 
 .right img {
     width: 1.2em;
+}
+
+@media(max-width:600px) {
+    .page {
+        flex-direction: column;
+    }
+
+    .leftbar {
+        width: 100vw;
+        height: 5em;
+        text-align: center;
+        justify-content: center;
+        margin-top: 0;
+        margin-left: 0;
+        border-radius: 0;
+        padding: 0;
+    }
+
+    .leftbar h2 {
+        margin-bottom: 0;
+        background: none;
+    }
+
+    .choose-child {
+        flex-direction: row;
+        justify-content: space-evenly;
+        align-items: center;
+        font-size: small;
+        background: none;
+    }
+
+    .right {
+        background: rgba(230,230,250, .2);
+        margin-top: .2em;
+        margin-left: .2em; 
+    }
+}
+
+@media(max-width:380px) {
+    .right {
+        font-size: large;
+    }
 }
