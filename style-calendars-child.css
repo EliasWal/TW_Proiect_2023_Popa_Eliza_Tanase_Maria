@@ -190,6 +190,7 @@ body {
     padding: 1em;
     margin-top: .5em; 
     margin-right: 0;
+    width: 100vw;
     display: flex;
     flex-flow: column;
     align-items: baseline;
