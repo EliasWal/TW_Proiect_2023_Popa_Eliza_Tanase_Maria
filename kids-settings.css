@@ -69,7 +69,7 @@ body {
 
 #kids-form  {
     display: flex;
-    flex-direction: row;
+    flex-direction: column;
 }
 #kids-form label {
     font-size: 1.5em;
@@ -82,6 +82,7 @@ body {
     display: flex;
     flex-direction: column;
     margin-right: 2em;
+    margin-top: 2em;
 }
 input[type="text"],
 input[type="password"]{
@@ -111,11 +112,70 @@ input[type="date"]{
     height:3em;
 }
 
+#sel-kid {
+    display: flex;
+    flex-direction: column;
+    margin-bottom: 1em;
+  }
+
+#sel-kid select {
+    font-size: 1.2em;
+    padding: 0.5em;border-radius: 0.5em;
+    border: 1px solid #ccc;
+    cursor: pointer;
+    width: 100px;
+}
+.kids{
+    display: flex;
+    flex-direction: row;
+}
+
+.add-kid{
+    font-size: 1.2em;
+    background-color: mediumpurple;
+    width:5em;
+    height:2.5em;
+    line-height: 1.5em;
+    border-radius: 0.5em;
+    border: none;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color:antiquewhite;
+    margin-left: 2em;
+}
+
+.add-kid:hover{
+    background-color: plum;
+}
+
+.kids-container .buttons-kid1{
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+}
+
 input[type="submit"] {
     font-size: 1.2em;
     background-color: mediumpurple;
-    width:9.25em;
-    height:3.125em;
+    width:5em;
+    height:2.5em;
+    line-height: 1.5em;
+    border-radius: 0.5em;
+    border: none;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin-top: 1.5em;
+    color:antiquewhite;
+    margin-right: 2em;
+}
+input[type="reset"] {
+    font-size: 1.2em;
+    background-color: mediumpurple;
+    width:5em;
+    height:2.5em;
     line-height: 1.5em;
     border-radius: 0.5em;
     border: none;
@@ -125,18 +185,34 @@ input[type="submit"] {
     margin-top:1.5em;
     color:antiquewhite;
 }
-
-
-@media(max-width: 1040){
-    #signup-form li{
-        width: 5em;
-    }
+input[type="reset"]:hover{
+    background-color: palevioletred;
+}
+input[type="submit"]:hover{
+    background-color: plum;
 }
 
-@media(max-width: 700px){
+
+@media (min-width:1500px){
+    #kids-form  {
+        display: flex;
+        flex-direction: row;
+    }
+
+}
+
+
+@media(max-width: 550px){
     .container {
         display: flex;
         flex-direction: column;
+    }
+    .kids-container .buttons-kid1{
+        display: flex;
+        flex-direction: row;
+        justify-content: center;
+        align-items: center;
+        margin-left: -45%;
     }
     .leftbar h2{
         font-size: large;
@@ -159,14 +235,14 @@ input[type="submit"] {
         font-size: small;
         margin-top: 1em;
     }
-    .signup-container{
+    .kids-container{
         margin-left: 0;
     }
-    #signup-form{
+    #kids-form{
         display: flex;
         flex-direction: column;
     }
-    .signup-container input[type="submit"]{
+    .kids-container input[type="submit"]{
         display: flex;
         align-items: center;
         justify-content: center;

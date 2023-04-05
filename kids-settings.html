@@ -54,7 +54,17 @@
             <div class="kids-container">
                 <h2>Manage kids</h2>
                 <div class="child1">
-                    <li id="name-c1">Eric</li>
+                    <div class="kids">
+                        <label id="sel-kid">
+                                <select id="select-kid">
+                                    <option value="Eric" selected>Eric</option>
+                                    <option value="Lucy">Lucy</option>
+                                </select>
+                        </label>
+                        <button class="add-kid">
+                            Add kid
+                        </button>
+                    </div>
                     <form id="kids-form" method="post" action="kids-settings.html">
                             <li id="name1">
                                 <label >First name</label>
@@ -70,16 +80,19 @@
                                 <label >Bithday</label>
                                 <input type="date"  value="2021-06-15" id="birthdate">
                             </li>
-                            
-                            <label id="gender">Gender</label>
-                                <select id="genderSelect">
-                                    <option value="female">Female</option>
-                                    <option value="male" selected>Male</option>
-                                    <option value="non-binary">Non-binary</option>
-                                    <option value="nospecify">Don't specify</option>
-                                </select>
+                            <li id="gender">
+                                <label id="gender">Gender</label>
+                                    <select id="genderSelect">
+                                        <option value="female">Female</option>
+                                        <option value="male" selected>Male</option>
+                                        <option value="non-binary">Non-binary</option>
+                                        <option value="nospecify">Don't specify</option>
+                                    </select>
                             </li>
-                        <input type="submit" value="Edit">
+                        <div class="buttons-kid1">
+                            <input type="submit" value="Edit">
+                            <input type="reset" value="Delete">
+                        </div>
                     </form>
                 </div>
             </div>

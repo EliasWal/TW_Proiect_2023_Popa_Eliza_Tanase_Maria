@@ -22,7 +22,9 @@ body {
 .login-container h2{
     font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
     color:mediumpurple;
-    font-size: 3em;   
+    font-size: 3em;  
+    padding: 1em;
+    margin-bottom: .5em;
 }
 
 #login-form {
@@ -46,7 +48,7 @@ input[type="password"] {
     margin-bottom: 1em;
     border-radius: 0.5em;
     border: 1px solid #ccc;
-    width: 80%;
+    width: 100%;
     max-width: 400px;
 }
 
@@ -64,4 +66,30 @@ input[type="submit"] {
     justify-content: center;
     margin-top:1.5em;
     color:antiquewhite;
+}
+
+@media (max-width: 490px) {
+    input[type="text"],
+    input[type="password"]{
+        max-width: 80%;
+        margin: auto;
+    }
+    .login-container h2{
+        font-size: 2em;
+    }
+    .login-container{
+        width: 90%;
+    }
+    #login-form label{
+        font-size: 1em;
+        margin:auto;
+        padding-top: 1em;
+    }
+    input[type="submit"]{
+        width: 80px;
+        height: 40px;
+        font-size: .8em;
+        margin-top: 3em;
+    }
+
 }
