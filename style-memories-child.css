@@ -359,12 +359,8 @@ h5 {
     .post img {
         width: 60vw;
     }
-}
 
-
-@media(max-width:460px)
-{
-    
+        
     .postline {
         grid-template-columns: none;
         display: flex;
@@ -379,8 +375,16 @@ h5 {
     .right {
         padding: 0;
     }
+}
 
-    .post {
-        row-gap: 0;
+@media(max-width:490px)  {
+    .post-buttons button {
+        font-size: medium;
+    }
+}
+
+@media(max-width:390px)  {
+    .post-buttons button {
+        font-size: small;
     }
 }
