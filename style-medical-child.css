@@ -1,0 +1,97 @@
+body {
+    background-image: url("https://images.pexels.com/photos/7130537/pexels-photo-7130537.jpeg");
+    background-repeat: no-repeat;
+    background-attachment: fixed;
+    background-size: cover;
+}
+
+
+.page {
+    display: flex;
+    flex-direction: row;
+    justify-content: baseline;
+    margin-top: .5em;
+}
+
+.leftbar{
+    font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
+    background-color:plum;
+    display: flex;
+    flex-direction: column;
+    width: 10em;
+    height: 100vh;
+    /*position: fixed;*/
+    padding: 1em;
+    margin-top: .5em;  
+    margin-left: .5em;
+    font-size: larger;
+    border-radius: 1em;
+    border-style: inset;
+    border-color:hotpink;
+}
+
+.leftbar h2 {
+    background: rgba(230,230,250, .2); 
+    border-radius: .2em;
+    margin-bottom: 2em;
+}
+
+.choose-child li:hover {
+    color: hotpink;
+    background-color: rgba(240,248,255, .5);
+    border-radius: .7em;
+    font-weight: 900;
+    padding-left: .6em;
+
+}
+
+.choose-child {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    background: rgba(230,230,250, .2); 
+    border-radius: .5em;
+    position: relative;
+}
+
+.child {
+    text-decoration: none;   
+    color: black;
+}
+
+.right {
+    padding: 3em;
+    font-family: 'Segoe UI', cursive;
+    font-size: large;
+    background: rgba(230,230,250, .2); /* lavender */
+    margin-top: .5em;
+    margin-left: .5em; 
+    width:100vw;
+    height: 100vh;
+    border-radius: 3em;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+}
+
+.column {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.table-header {
+    font-size: x-large;
+    color: rgb(86, 63, 108);
+    font-weight: bold;
+    margin-bottom: .5em;
+}
+
+.table-value {
+    margin-bottom: 1em;
+    margin-top: 1em;
+    display: grid;
+    grid-template-columns: minmax(auto, 3em);
+    grid-template-rows: minmax(auto, 3em);
+}
+
