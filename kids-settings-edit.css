@@ -93,33 +93,6 @@ input[type="password"]{
     border: 1px solid #ccc;
 }
 
-#kids-form1  {
-    display: flex;
-    flex-direction: column;
-}
-#kids-form1 label {
-    font-size: 1.5em;
-    line-height: 1em;
-    margin-bottom: 0.5em;
-    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-    color:blueviolet;
-}
-#kids-form1 li{
-    display: flex;
-    flex-direction: column;
-    margin-right: 2em;
-    margin-top: 2em;
-}
-input[type="text"],
-input[type="password"]{
-    font-size: 1.2em;
-    line-height: 1em;
-    padding: 1em;
-    border-radius: 0.5em;
-    border: 1px solid #ccc;
-}
-
-
 
 input[type="date"]{
     font-size: 1.2em;
@@ -220,32 +193,9 @@ input[type="submit"]:hover{
     background-color: plum;
 }
 
-#delete {
-    font-size: 1.2em;
-    background-color: mediumpurple;
-    width:5em;
-    height:2.5em;
-    line-height: 1.5em;
-    border-radius: 0.5em;
-    border: none;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    margin-top: 1.5em;
-    color:antiquewhite;
-    margin-right: 2em;
-}
-
-#delete:hover{
-    background-color: palevioletred;
-}
 
 @media (min-width:1500px){
     #kids-form  {
-        display: flex;
-        flex-direction: row;
-    }
-    #kids-form1 {
         display: flex;
         flex-direction: row;
     }
@@ -290,10 +240,6 @@ input[type="submit"]:hover{
         margin-left: 0;
     }
     #kids-form{
-        display: flex;
-        flex-direction: column;
-    }
-    #kids-form1{
         display: flex;
         flex-direction: column;
     }
