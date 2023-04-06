@@ -73,7 +73,7 @@ h1 {
     padding: 1em;
 }
 
-.medical-buttons button {
+.medical-buttons button, .table-value button {
     font-size: medium;
     font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
     background:white;
@@ -83,7 +83,7 @@ h1 {
     align-items: center;
 }
 
-.medical-buttons img {
+.medical-buttons img, .table-value button img {
     width: 1.2em;
 }
 
@@ -104,17 +104,21 @@ h1 {
 .table {
     display:flex;
     flex-direction: row;
-    justify-content: space-between;
+    justify-content: space-evenly;
     border-radius: .5em;
     border-style: solid;
     padding: 1em;
 
 }
 
-.column {
+.column, .column-optional, .column-more, .column-optional2 {
     display: flex;
     flex-direction: column;
     align-items: center;
+}
+
+.column-more {
+    display: none;
 }
 
 .table-header {
@@ -124,13 +128,17 @@ h1 {
     margin-bottom: .5em;
 }
 
-.table-value {
+.table-value, .edit {
     margin-bottom: 1em;
     align-self: center;
     display: grid;
     position: relative;
     grid-template-columns: minmax(auto, 5em);
     grid-template-rows: minmax(auto, 3em);
+}
+
+.edit {
+    visibility: hidden;
 }
 
 @media(max-width:1090px) {
@@ -175,7 +183,33 @@ h1 {
 }
 
 @media(max-width:770px) {
+    .column-optional {
+        display: none;
+    }
+
     .table-value {
-        grid-template-columns: minmax(auto, 3em);
+        grid-template-columns: minmax(auto, 5em);
+    }
+
+    .column-more {
+        display:initial;
+    }
+}
+
+@media(max-width:490px) {
+    .column-optional2 {
+        display: none;
+    }
+
+    .right {
+        font-size: smaller;
+    }
+
+    .table-header {
+        font-size: medium;
+    }
+
+    .medical-buttons button {
+        font-size: smaller;
     }
 }

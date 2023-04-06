@@ -66,6 +66,16 @@ body {
     justify-content: baseline;
 }
 
+h1 {
+    font-size: xx-large;
+    color: palevioletred;
+    flex-direction: row;
+    font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
+    margin-bottom: 1em;
+    align-self:center;
+    -webkit-text-stroke: .3px blueviolet;
+}
+
 .child {
     text-decoration: none;   
     color: black;
