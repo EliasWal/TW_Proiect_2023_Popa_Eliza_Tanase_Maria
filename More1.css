@@ -59,21 +59,42 @@ body {
     color: black;
 }
 
-h1 {
-    font-size: xx-large;
-    color: palevioletred;
-    flex-direction: row;
+.right {
     font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
-    margin-bottom: 1em;
-    align-self:center;
-    -webkit-text-stroke: .3px blueviolet;
+    padding: 3em;
+    align-items: center;
+    background: rgba(230,230,250, .2); /* lavender */
+    margin-top: .5em;
+    margin-left: .5em; 
+    margin-right: 0;
+    width:100vw;
+    height: 100vh;
+    border-radius: 3em;
 }
 
-.medical-buttons {
-    padding: 1em;
+.table {
+    font-size: x-large;
+    display: flex;
+    flex-direction: column;
 }
 
-.medical-buttons button, .edit-buttons button {
+.row {
+    display: flex;
+    flex-direction: row;
+}
+
+.table-value {
+    margin-bottom: .5em;
+    margin-left: 2em;
+}
+
+.table-header {
+    margin-bottom: .5em;
+    color: rgb(86, 63, 108);
+    font-weight: bold;
+}
+
+.right button {
     font-size: medium;
     font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
     background:white;
@@ -81,68 +102,21 @@ h1 {
     height: 2.5em;
     width: 6em;
     align-items: center;
+    margin-bottom: 1em;
 }
 
-.medical-buttons img, .edit-buttons button img {
+.buttons button {
+    display: flex;
+    flex-direction: row;
+    text-decoration: none;
+}
+
+.right button img {
     width: 1.2em;
 }
 
-.right {
-    padding: 3em;
-    font-family: 'Segoe UI', cursive;
-    font-size: large;
-    background: rgba(230,230,250, .2); /* lavender */
-    margin-top: .5em;
-    margin-left: .5em; 
-    width:100vw;
-    height: 100vh;
-    border-radius: 3em;
-    display: flex;
-    flex-direction: column;
-}
+@media(max-width:860px) {
 
-.table {
-    display:flex;
-    flex-direction: row;
-    justify-content: space-evenly;
-    border-radius: .5em;
-    border-style: solid;
-    padding: 1em;
-
-}
-
-.column, .column-optional, .column-more, .column-optional2 {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-}
-
-.column-more {
-    display: none;
-}
-
-.table-header {
-    font-size: x-large;
-    color: rgb(86, 63, 108);
-    font-weight: bold;
-    margin-bottom: .5em;
-}
-
-.table-value, .edit {
-    margin-bottom: 1em;
-    align-self: center;
-    display: grid;
-    position: relative;
-    grid-template-columns: minmax(auto, 5em);
-    grid-template-rows: minmax(auto, 3em);
-}
-
-.edit {
-    visibility: hidden;
-    margin-bottom: 0;
-}
-
-@media(max-width:1200px) {
     .page {
         flex-direction: column;
     }
@@ -171,47 +145,21 @@ h1 {
         background: none;
     }
 
+    .right {
+        background: rgba(230,230,250, .2);
+        margin-top: .2em;
+        margin-left: .2em; 
+    }
 }
 
-@media(max-width:1010px) {
-    .right {
-        font-size: medium;
-    }
-
-    .table-header {
+@media(max-width:550px) {
+    .row {
         font-size: large;
     }
 }
 
-@media(max-width:860px) {
-    .column-optional {
-        display: none;
-    }
-
-    .table-value {
-        grid-template-columns: minmax(auto, 5em);
-    }
-
-    .column-more {
-        display:initial;
-    }
-
-}
-
-@media(max-width:490px) {
-    .column-optional2 {
-        display: none;
-    }
-
-    .right {
-        font-size: smaller;
-    }
-
-    .table-header {
+@media(max-width:410px) {
+    .row {
         font-size: medium;
-    }
-
-    .medical-buttons button {
-        font-size: smaller;
     }
 }
