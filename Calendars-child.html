@@ -39,10 +39,12 @@
             <div class="leftbar">
                 <h2>Children</h2>
                 <ul class="choose-child">
-                    <li> <a href="Calendars-child.html" class="child">Child 1 </a> </li>
-                    <li> <a href="Calendars-child.html" class="child">Child 2 </a> </li>
+                    <li> <a href="Calendars-child.html" class="child1">Jane </a> </li>
+                    <li> <a href="Calendars-child.html" class="child2">Eric </a> </li>
                 </ul>
             </div>
+        
+            <!--
             <div class="right">
                 <h1> Jane's calendar </h1>
                 <div class="calendar-buttons">
@@ -58,6 +60,48 @@
                     </a>
                 </div>
                 <a class="calendar"> <img src="https://spreadsheetpage.com/images/baby-feeding-insert-checkbox.png" alt="Calendar"> </a>
+            </div>-->
+            <div class="container">
+                <h1>Jane's timetable</h1>
+                <div class="entry1">
+
+
+                </div>
+                <form id="table-calender" method="post"  action="">
+                    <li>
+                        <label for="time">Time</label>
+                        <input type="time" value="10:00" id="time1" name="time1" readonly>
+                        <input type="time" value="12:00" id="time2" name="time2" readonly>
+                        <input type="time" value="14:00" id="time3" name="time3" readonly>
+                        <input type="time" value="16:00" id="time4" name="time4" readonly>
+                        <input type="time" value="18:00" id="time5" name="time5" readonly>
+                    </li>
+                    <li>
+                        <label for="Sleep">Sleep</label>
+                        <input type="checkbox" id="sleep1" name="sleep1" >
+                        <input type="checkbox" id="sleep2" name="sleep2" checked>
+                        <input type="checkbox" id="sleep3" name="sleep3" >
+                        <input type="checkbox" id="sleep4" name="sleep4" >
+                        <input type="checkbox" id="sleep5" name="sleep5" checked>
+                    </li>
+                    <li>
+                        <label for="Feed">Feed</label>
+                        <input type="checkbox" id="feed1" name="feed1" checked>
+                        <input type="checkbox" id="feed2" name="feed2" >
+                        <input type="checkbox" id="feed3" name="feed3" >
+                        <input type="checkbox" id="feed4" name="feed4" checked>
+                        <input type="checkbox" id="feed5" name="feed5" >
+                    </li>
+                    <li>
+                        <label for="notes">Notes</label>
+                        <input type="text" id="note1" name="note1" checked>
+                        <input type="text" id="note2" name="note2" checked>
+                        <input type="text" id="note3" name="note3" checked>
+                        <input type="text" id="note4" name="note4" checked>
+                        <input type="text" id="note5" name="note5" checked>
+                    </li>
+                </form>
+
             </div>
         </div>
 </body>

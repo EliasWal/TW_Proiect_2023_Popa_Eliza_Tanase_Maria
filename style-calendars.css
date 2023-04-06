@@ -14,7 +14,7 @@ body {
 
 .leftbar{
     font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
-    background-color:plum;
+    background-color: rgba(230,230,250, .6);
     display: flex;
     flex-direction: column;
     width: 10em;
@@ -25,48 +25,53 @@ body {
     margin-left: .5em;
     font-size: larger;
     border-radius: 1em;
-    border-style: inset;
-    border-color:hotpink;
 }
 
 .leftbar h2 {
-    background: rgba(230,230,250, .2); 
-    border-radius: .2em;
+    color: darkorchid;
     margin-bottom: 2em;
 }
 
 .choose-child li:hover {
     color: hotpink;
-    background-color: rgba(240,248,255, .5);
     border-radius: .7em;
     font-weight: 900;
-    padding-left: .6em;
-
+    margin-left: 1em;
 }
 
 .choose-child {
     display: flex;
     flex-direction: column;
-    align-items: center;
-    background: rgba(230,230,250, .2); 
     border-radius: .5em;
-    position: relative;
+    text-decoration: none;
+    list-style-type: none;
+    font-size: x-large;
+    color: purple;
+    height: 5em;
+    justify-content: space-around ;
+    font-weight: 500;
+    
+}
+.choose-child .child1, .child2{
+    text-decoration: none;   
+    color: darkorchid;
+    background-color: rgb(255, 255, 255);
+    border-radius: .7em;
+    padding: .5em;
+    margin-bottom: 2em;
 }
 
-.child {
-    text-decoration: none;   
-    color: black;
-}
+
 
 .right {
     padding: 3em;
     align-items: center;
     font-family: 'Segoe UI', cursive;
     font-size: x-large;
-    background: rgba(230,230,250, .2); /* lavender */
+    background: rgba(230,230,250, .5); /* lavender */
     margin-top: .5em;
     margin-left: .5em; 
-    margin-right: 0;
+    margin-right: .5em;
     width:100vw;
     height: 100vh;
     border-radius: 3em;
