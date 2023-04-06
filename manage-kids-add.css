@@ -143,7 +143,6 @@ input[type="date"]{
     justify-content: center;
     color:antiquewhite;
     margin-left: 2em;
-    text-decoration:none;
 }
 
 .add-kid:hover{
@@ -168,7 +167,7 @@ input[type="submit"] {
     display: flex;
     align-items: center;
     justify-content: center;
-    margin-top: 1.5em;
+    margin-top: 2em;
     color:antiquewhite;
     margin-right: 2em;
 }
