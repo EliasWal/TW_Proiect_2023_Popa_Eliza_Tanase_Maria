@@ -59,6 +59,34 @@ body {
     color: black;
 }
 
+h1 {
+    font-size: xx-large;
+    color: palevioletred;
+    flex-direction: row;
+    font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
+    margin-bottom: 1em;
+    align-self:center;
+    -webkit-text-stroke: .3px blueviolet;
+}
+
+.medical-buttons {
+    padding: 1em;
+}
+
+.medical-buttons button {
+    font-size: medium;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    background:white;
+    border-radius: 1em;
+    height: 2.5em;
+    width: 6em;
+    align-items: center;
+}
+
+.medical-buttons img {
+    width: 1.2em;
+}
+
 .right {
     padding: 3em;
     font-family: 'Segoe UI', cursive;
@@ -70,8 +98,17 @@ body {
     height: 100vh;
     border-radius: 3em;
     display: flex;
+    flex-direction: column;
+}
+
+.table {
+    display:flex;
     flex-direction: row;
     justify-content: space-between;
+    border-radius: .5em;
+    border-style: solid;
+    padding: 1em;
+
 }
 
 .column {
@@ -89,9 +126,56 @@ body {
 
 .table-value {
     margin-bottom: 1em;
-    margin-top: 1em;
+    align-self: center;
     display: grid;
-    grid-template-columns: minmax(auto, 3em);
+    position: relative;
+    grid-template-columns: minmax(auto, 5em);
     grid-template-rows: minmax(auto, 3em);
 }
 
+@media(max-width:1090px) {
+    .page {
+        flex-direction: column;
+    }
+
+    .leftbar {
+        width: 100vw;
+        height: 5em;
+        text-align: center;
+        justify-content: center;
+        margin-top: 0;
+        margin-left: 0;
+        border-radius: 0;
+        padding: 0;
+    }
+
+    .leftbar h2 {
+        margin-bottom: 0;
+        background: none;
+    }
+
+    .choose-child {
+        flex-direction: row;
+        justify-content: space-evenly;
+        align-items: center;
+        font-size: small;
+        background: none;
+    }
+
+}
+
+@media(max-width:890px) {
+    .right {
+        font-size: medium;
+    }
+
+    .table-header {
+        font-size: large;
+    }
+}
+
+@media(max-width:770px) {
+    .table-value {
+        grid-template-columns: minmax(auto, 3em);
+    }
+}
