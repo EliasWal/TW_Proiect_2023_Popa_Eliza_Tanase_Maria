@@ -51,48 +51,48 @@
                         <a href="ch-pass.html">Change password</a></li>
                 </ul>
             </div>
-            <div class="signup-container">
+            <div class="general-container">
                 <h2>General settings</h2>
-                <form id="signup-form" method="post" action="Welcome-logged-in.html">
+                <form id="general-form" method="post" action="Welcome-logged-in.html">
                     <div id="col1">
                         <li id="name1">
                             <label >First name</label>
-                            <input type="text" value="Damian" id="name1" name="name1" placeholder="First name">
+                            <input type="text" value="Damian" id="name1" name="name1" placeholder="First name" readonly>
                         <li id="name2">
                             <label >Second name</label>
-                            <input type="text" value="Andreea" id="name2" name="name2" placeholder="Second name">
+                            <input type="text" value="Andreea" id="name2" name="name2" placeholder="Second name" readonly>
                         </li>
                         </li>
                         <li id="phone">
                             <label >Phone number</label>
-                            <input type="tel"  value="0748154447" id="phone" name="phone" placeholder="ex: 07xxxxxxxx">
+                            <input type="tel"  value="0748154447" id="phone" name="phone" placeholder="ex: 07xxxxxxxx" readonly>
                         </li>
                         <li id="email">
                             <label>Email</label>
-                            <input type="email"  value="d.andreea@gmail.com" id="email-adress" name="email" placeholder="ex: name@example.com">
+                            <input type="email"  value="d.andreea@gmail.com" id="email-adress" name="email" placeholder="ex: name@example.com" readonly>
                         </li>
                     </div>
                     <div id="col2">
                         <li id="username">
                             <label>Username</label>
-                            <input type="text" value="Andreea" id="username" name="username" placeholder="Enter your username">
+                            <input type="text" value="Andreea" id="username" name="username" placeholder="Enter your username" readonly>
                         </li>
                         <li id="address">
                             <label >Address</label>
-                            <input type="text" value="Iasi, Jud Iasi" id="address" name="address" placeholder="Enter your address">
+                            <input type="text" value="Iasi, Jud Iasi" id="address" name="address" placeholder="Enter your address" readonly>
                         </li>
                         <li id="gender">
                             <label id="gender">Gender</label>
                             <select id="genderSelect">
                                 <option value="female">Female</option>
-                                <option value="male">Male</option>
-                                <option value="non-binary">Non-binary</option>
-                                <option value="nospecify">Don't specify</option>
+                                <option value="male" disabled>Male</option>
+                                <option value="non-binary" disabled>Non-binary</option>
+                                <option value="nospecify" disabled>Don't specify</option>
                             </select>
                         </li>
                         <li id="pronouns">
                             <label >Pronouns</label>
-                            <input type="text" value="She/Her" id="pronouns" name="pronouns" placeholder="ex: she/her">
+                            <input type="text" value="She/Her" id="pronouns" name="pronouns" placeholder="ex: she/her" readonly>
                         </li>
                     <input type="submit" value="Edit">
                 </div>

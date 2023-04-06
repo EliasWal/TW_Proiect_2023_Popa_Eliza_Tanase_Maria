@@ -46,7 +46,7 @@ body {
     flex-direction: row;
 }
 
-.signup-container {
+.general-container {
     margin-left: 20px;
     display: flex;
     flex-direction: column;
@@ -59,7 +59,7 @@ body {
     width: 100%;
 }
 
-.signup-container h2{
+.general-container h2{
     font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
     color:mediumpurple;
     font-size: 2em;   
@@ -67,7 +67,7 @@ body {
     margin-left: 1em;
 }
 
-#signup-form {
+#general-form {
     display: flex;
     flex-direction: row;
 }
@@ -77,14 +77,14 @@ body {
     flex-direction: column;
 }
 
-#signup-form label {
+#general-form label {
     font-size: 1.5em;
     line-height: 2em;
     margin-bottom: 0.5em;
     font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
     color:blueviolet;
 }
-#signup-form li{
+#general-form li{
     display: flex;
     flex-direction: column;
     margin-left: 10%;
@@ -140,7 +140,7 @@ input[type="submit"] {
 }
 
 @media(max-width: 1040){
-    #signup-form li{
+    #general-form li{
         width: 5em;
     }
 }
@@ -171,14 +171,14 @@ input[type="submit"] {
         font-size: small;
         margin-top: 1em;
     }
-    .signup-container{
+    .general-container{
         margin-left: 0;
     }
-    #signup-form{
+    #general-form{
         display: flex;
         flex-direction: column;
     }
-    .signup-container input[type="submit"]{
+    .general-container input[type="submit"]{
         display: flex;
         align-items: center;
         justify-content: center;
