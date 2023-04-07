@@ -18,13 +18,15 @@ body {
 #table-calender {
     margin-left: 20px;
     margin-right: 20px;
+    font-size: 1.2em;
     display: flex;
     flex-direction: column;
     margin-top: .5em;
-    background-color: lavender;
+    background-color: rgba(230,230,250, .3);
     border-radius: 2em;
     padding: 2em;
     width: 100%;
+    border: 1px solid rgba(230,230,250, .7);
 }
 
 
@@ -39,6 +41,7 @@ body {
 .time-inp, .sleep-chk, .feed-chk, .note-in {
     display: flex;
     flex-direction: column;
+    align-items: center;
 }
 
 .valori{
@@ -50,7 +53,6 @@ body {
 #table-calender li{
     display: flex;
     flex-direction: column;
-    margin-right: 2em;
     margin-top: 2em;
 }
 
@@ -72,8 +74,48 @@ input[type="text"]{
     border-radius: 0.5em;
     border: 1px solid #ccc;
     margin-bottom: .5em;
+    width: 500px;
 }
 
+.edit-buttons{
+    display: flex;
+    flex-direction: column;
+    margin-top: 3em;
+}
+
+.add-buttons button, .edit-buttons button {
+    font-size: medium;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    background: white;
+    border-radius: 1em;
+    height: 2.5em;
+    width: 6em;
+    align-items: center;
+}
+
+.add-buttons button{
+    margin-left: 1em;
+}
+
+.edit-buttons button {
+    font-size: medium;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    background:white;
+    border-radius: 1em;
+    height: 2.5em;
+    width: 6em;
+    align-items: center;
+    margin: .2em;
+}
+
+.add-buttons button img, .edit-buttons button img {
+    width: 1.2em;
+}
+.column-optional{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
 
 input[type="checkbox"] {
     font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
@@ -108,7 +150,6 @@ input[type="checkbox"] {
 }
 
 .choose-child li:hover {
-    color: hotpink;
     border-radius: .7em;
     font-weight: 900;
     margin-left: 1em;
@@ -122,8 +163,8 @@ input[type="checkbox"] {
     list-style-type: none;
     font-size: x-large;
     color: purple;
-    height: 5em;
-    justify-content: space-around ;
+    height: 8em;
+    justify-content: space-around;
     font-weight: 500;
     
 }
@@ -156,35 +197,15 @@ h1 {
     flex-direction: row;
     font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
     margin-bottom: 1em;
+    margin-top: 1em;
     align-self:center;
     -webkit-text-stroke: .3px blueviolet;
 }
 
-.child {
-    text-decoration: none;   
-    color: black;
-}
-
-.calendar img {
-    width: 83vw; 
-}
-
-.calendar-buttons {
-    padding: .5em;
-}
-
-.calendar-buttons button {
-    font-size: large;
-    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-    background:white;
-    border-radius: 1em;
-    height: 2.5em;
-    width: 6em;
-    align-items: center;
-}
-
-.calendar-buttons img {
-    width: 1.2em;
+@media(max-width:1220px){
+    input[type="text"]{
+        width: 90%;
+    }
 }
 
 @media(max-width:1060px) {
@@ -212,32 +233,22 @@ h1 {
         flex-direction: row;
         justify-content: space-evenly;
         align-items: center;
-        font-size: small;
+        font-size: large;
         background: none;
     }
-
-    .right {
-        background: rgba(230,230,250, .2);
-        margin-top: .2em;
-        margin-left: .2em; 
-        align-items: center;
+    #table-calender{
+        margin-left: 0;
+    }
+    input[type="text"]{
+        width: 30vw;
     }
 }
 
-@media(max-width:800px) {
-    .calendar-buttons button {
-        font-size:medium;
+@media(max-width:740px){
+    #table-calender{
+        font-size: .5em;
     }
-}
-
-@media(max-width:620px) {
-    .calendar-buttons button {
-        font-size:small;
-    }
-}
-
-@media(max-width:480px) {
-    .calendar-buttons button {
-        font-size:x-small;
+    .edit-buttons img{
+        width:10px;
     }
 }
