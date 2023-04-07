@@ -1,0 +1,108 @@
+body {
+    background-image: url("photos/settings-back.png");
+        background-repeat: no-repeat;
+        background-attachment: fixed;
+        background-size: cover;
+}
+
+.leftbar{
+    font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
+    background-color: lavender;
+    display: flex;
+    flex-direction: column;
+    width: 8em;
+    height: 100vh;
+    padding: 1em;
+    margin-top: .5em;  
+    font-size: larger;
+    border-radius: 1em;
+    margin-left: 10px;
+}
+.set-menu{
+    text-decoration: none;
+    list-style-type: none;
+    display: flex;
+    flex-direction: column;
+    position: relative;
+    margin-top: 40px;
+
+}
+
+.set-menu li {
+    margin-bottom: 2em;
+    text-decoration: none;
+}
+
+.set-menu li:hover {
+    color: blueviolet;
+    background-color: aliceblue;
+    border-radius: .7em;
+    font-weight: 900;
+    padding-left: .6em;
+
+}
+
+.container{
+    display: flex;
+    flex-direction: row;
+}
+
+.prieteni{
+    margin: 10px 20px 50% 20px;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    font-size: 1.5vw;
+    font-weight:400;
+    background-color: rgb(230,230,250);
+    padding: 2em;
+    border-radius: 1em;
+    color: rgb(105,53,156);
+    width: 100%;
+}
+
+.prieteni{
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    align-items: center;
+    justify-content: space-between;
+    list-style: none;
+    
+}
+@media(max-width: 1000px){
+    .prieteni {
+        font-size: 3vw;
+    }
+}
+@media(max-width: 430px){
+    .container {
+        flex-direction: column;
+    }
+    .leftbar h2{
+        font-size: large;
+    }
+    .leftbar {
+        margin-left: 0;
+        margin-top: 0;
+        border-radius: 0 ;
+        background-color: lavender;
+        width: 100%;
+        height: 5em;
+        text-align: center;
+    }
+
+    .set-menu {
+        display: flex;
+        flex-direction: row;
+        justify-content: space-between;
+        align-items: center;
+        font-size: small;
+        margin-top: 1em;
+    }
+    
+
+    .prieteni {
+        margin-left: 0;
+        margin-right: 0;
+        border-radius: 0%;
+    }
+}
