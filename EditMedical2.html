@@ -6,7 +6,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title> Baby manager </title>
     <link href="admin-topbar.css" rel="stylesheet" />
-    <link href="More.css" rel="stylesheet" />
+    <link href="Editmedical.css" rel="stylesheet" />
     <link rel="icon" type="image/png" href="https://cdn-icons-png.flaticon.com/512/2102/2102805.png"/>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta2/css/all.min.css" integrity="sha512-YWzhKL2whUzgiheMoBFwW8CKV4qpHQAEuvilg9FAn5VJUDwKZZxkJNuGM4XkWuk94WCrrwslk8yWNGmY1EduTA==" crossorigin="anonymous" referrerpolicy="no-referrer" /></head>
 </head>
@@ -44,50 +44,42 @@
                 </ul>
             </div>
             <div class="right">
-                <a class="buttons">
-                    <a href="Medical-child.html">
-                        <button>
-                            <img src="Photos/Back2.png" alt="back">
-                            Back 
-                        </button>
-                    </a>
-                    <a href="EditMedical1.html">
-                        <button>
-                            <img src="Photos/Edit.png" alt="edit">
-                            Edit 
-                        </button>
-                    </a>
+                <a href="Medical-child.html">
+                    <button>
+                        <img src="Photos/Back.png" alt="back">
+                        Back 
+                    </button>
                 </a>
-                <div class="table">
-                    <div class="row">
-                        <a class="table-header"> Record </a>
-                        <a class="table-value"> #1 </a>
-                    </div>
-                    <div class="row">
-                        <a class="table-header"> Date </a>
-                        <a class="table-value"> 30/7/2022 </a>
-                    </div>
-                    <div class="row">
-                        <a class="table-header"> Doctor </a>
-                        <a class="table-value"> Dr. Smith </a>
-                    </div>
-                    <div class="row">
-                        <a class="table-header"> Symptoms </a>
-                        <a class="table-value"> Sneezing, running nose </a>
-                    </div>
-                    <div class="row">
-                        <a class="table-header"> Diagnosis </a>
-                        <a class="table-value"> Alergy to dust </a>
-                    </div>
-                    <div class="row">
-                        <a class="table-header"> Medication </a>
-                        <a class="table-value"> - </a>
-                    </div>
-                    <div class="row">
-                        <a class="table-header"> Document </a>
-                        <a class="table-value"> - </a>
-                    </div>
+                <h1> Edit medical report </h1>
+                <form id="add-form" method="post" action="Medical-child.html">
+                    <li id="date">
+                        <label >Date</label>
+                        <input type="date"  value="2022-03-08" id="examinationdate">
+                    </li>
+                    <li id="doctor">
+                        <label>Doctor</label>
+                        <input type="text" value="Dr. Paul" id="doctor" name="doctor" placeholder="Doctor's name">
+                    </li>
+                    <li id="symptoms">
+                        <label >Symptoms</label>
+                        <input type="text" value="Severe throat pain" id="symptoms" name="symptoms" placeholder="Describe symptoms">
+                    </li>
+                    <li id="diagnosis">
+                        <label >Diagnosis</label>
+                        <input type="text" value="COVID" id="diagnosis" name="diagnosis" placeholder="Doctor's diagnosis">
+                    </li>
+                    <li id="medication">
+                        <label >Medication</label>
+                        <input type="text" value="" id="medication" name="medication" placeholder="Needed medication">
+                    </li>
+                    <li id="document">
+                        <label >Document</label>
+                        <input type="file" value="Photos/Test-result.png" id="document" name="document" placeholder="Add document">
+                    </li>
+                <div href="Medical-child.html"class="buttons-kid1">
+                    <input type="submit" value="Save">
                 </div>
+            </form>
             </div>
         </div>
 </body>
