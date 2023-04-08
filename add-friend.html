@@ -51,29 +51,39 @@
                 </ul>
 
             </div>
-            <div class="prieteni">
-                <div class="f1">
-                    <img src="Photos/friend-paul.jpg">
-                    <li>Name: Damian Karen</li>
-                    <li>Relation: Aunt</li>
+            <div class="kids-container">
+                <h2>Manage kids</h2>
+                <div class="child1">
+                    
+                    <form id="kids-form" method="post" action="kids-settings.html">
+                            <li id="name1">
+                                <label >First name</label>
+                                <input type="text" value="" id="name1" name="name1" placeholder="First name">
+                            </li>
+
+                            <li id="name2">
+                                <label >Second name</label>
+                                <input type="text" value="" id="name2" name="name2" placeholder="Second name">
+                            </li>
+    
+                            <li id="age">
+                                <label >Birthday</label>
+                                <input type="date"  value="" id="birthdate">
+                            </li>
+                            <li id="gender">
+                                <label id="gender">Gender</label>
+                                    <select id="genderSelect">
+                                        <option value="female">Female</option>
+                                        <option value="male" >Male</option>
+                                        <option value="non-binary">Non-binary</option>
+                                        <option value="nospecify" selected>Don't specify</option>
+                                    </select>
+                            </li>
+                        <div href="kids-settings.html"class="buttons-kid1">
+                            <input type="submit" value="Save">
+                        </div>
+                    </form>
                 </div>
-                <div class="f2">
-                    <img src="Photos/friend-paul.jpg">
-                    <li>Name: Martin Paul </li>
-                    <li>Relation: Friend with Eric</li>
-                </div>
-                <div class="f3">
-                    <img src="Photos/friend-paul.jpg">
-                    <li>Name: Harper Sofia</li>
-                    <li>Relation: Friend with Jane</li>
-                </div>
-                <div class="f4">
-                    <img src="Photos/friend-paul.jpg">
-                    <li>Name: Andresoon Liam</li>
-                    <li>Relation: Uncle</li>
-                </div>
-                </div>
-            </div>
         </div>
 </body>
 </html>
