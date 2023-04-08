@@ -1,0 +1,182 @@
+<!DOCTYPE html>
+<html lang="en-US">
+<head>
+    <meta charset="utf-8"/> 
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title> "Baby manager" report </title>
+    <link href="Report_Scholarly.css" rel="stylesheet" />
+</head>
+    <header>
+        <h1> "<i>Baby manager</i>" report </h1>
+    </header>
+    <body>
+        <div class="list">
+            <ol>
+                <li> 
+                    <a href="#introduction"> Introduction </a>
+                    <ol>
+                        <li> 
+                            <a href="#purpose"> Purpose </a> 
+                        </li>
+                        <li> 
+                            <a href="#scope"> Product scope </a>
+                        </li>
+                        <li> 
+                            <a href="#references"> References </a>
+                        </li>
+                    </ol>
+                </li>
+                <li> 
+                    <a href="#description"> Overall description </a>
+                    <ol>
+                        <li> 
+                            <a href="#functions"> Product functions </a> 
+                        </li>
+                        <li> 
+                            <a href="#userclasses"> User classes and Characteristics </a>
+                        </li>
+                        <li> 
+                            <a href="#environment"> Operating environment </a>
+                        </li>
+                        <li> 
+                            <a href="#dependencies"> Dependencies </a>
+                        </li>
+                    </ol>
+                </li>
+            </ol>
+        </div>
+        <section id="introduction">
+            <h2> 1. Introduction </h2>
+            <section id="purpose">
+                <h3> 1.1 Purpose </h3>
+                <p> 
+                    The purpose of this report is to present a detailed description of the "<i>Baby manager</i>" web application. It 
+                    will explain the purpose and features of the application, the interfaces and what the application will do.
+                </p>
+            </section>
+            <section id="scope">
+                <h3> 1.2 Product scope </h3>
+                <p> 
+                    This application will be a Web Baby Info Manager designated to help parents keep track of their children's most important
+                    information. It is designed to make the task of being a parent easier by providing tools to assist in scheduling 
+                    the every day life, as well as saving resources and documenting about their children's needs. By providing these tools,
+                    the application will meet parents' needs while remaining easy to understand and use.
+                </p>
+                <p>
+                    More specifically, the "<i>Baby Manager</i>" application is constructed to allow a parent to manage and save information
+                    and multimedia resources about timetables, medical histories, relationships with other children and personal journal 
+                    entries. 
+                </p>
+                <p>
+                    The goal of this application is to offer its users a safe place to stack their information concerning raising a child 
+                    and to access them at any time, from any device.
+                </p>
+            </section>
+            <section id="references">
+                <h3> 1.3 References </h3>
+                <p> 
+                    The application uses a library to style a "<i>Hamburger Menu</i>", which can be identified by three horizontal lines,
+                    that appears in the topbar section when the screen size is smaller (than 915 px). 
+                    By clicking on it, the menu for navigating the application will appear on the right side of the screen, and by 
+                    clicking the "<i>X</i>" icon, it will disappear. The reason to use this feature 
+                    comes from the need to create a responsive design and to have a pleasant interface for any of the application's 
+                    users, regarding of the device they use. The library can be found at 
+                    <a href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta2/css/all.min.css"> https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta2/css/all.min.css </a>.
+                </p>
+            </section>
+        </section>
+        <section id="description">
+            <h2> 2. Overall description </h2>
+            <section id="functions">
+                <h3> 2.1 Product functions </h3>
+                <h4> Functions you can access without an account: </h4>
+                <p>
+                    <i>Home function</i> brings a user back to the initial page, which presents the scope and tools of the application.
+                </p>
+                <p> 
+                    <i>Sign up function</i> allows a guest to create an account so that they can use the features offered and 
+                        their information can be stored in the data base.
+                </p>
+                <p>
+                    <i>Log in functions</i> grants access to a user that already has an account to their personal page and information.
+                </p>
+                <h4> Functions you can access with an account: </h4>
+                <p>
+                    <i>Home function</i> brings a user back to the initial page, which introduces the scope and tools of the application 
+                    and presents a tutorial on how to navigate the application.
+                </p>
+                <p>
+                    <i>Log out function</i> results in going back to the guest Welcome page, with the user no longer logged in their 
+                    account.
+                </p>
+                <p> 
+                    <i>Settings function</i> allows the user to make any changes to their personal profile.
+                </p>
+                <ul>
+                    <li> General settings </li>
+                    <li> Manage your children </li>
+                    <li> Change password </li>
+                </ul>
+                <p> 
+                    <i>Memories function</i> displays in a pleasing way the journal-entries-like blocks, each containing a picture and a 
+                    relevant description.
+                </p>
+                <ul>
+                    <li> Choose a child from the leftbar menu </li>
+                    <li> Add a memory </li>
+                    <li> Edit a memory</li>
+                    <li> Delete a memory </li>
+                    <li> Share a memory on the Social Media platforms </li>
+                </ul>
+                <p> 
+                    <i>Calendars function</i> offers the user a way to organize their children's feeding and sleeping timetables. 
+                </p>
+                <ul>
+                    <li> Choose a child from the leftbar menu </li>
+                    <li> Add a new entry in the calendar </li>
+                    <li> Edit the time or a note </li>
+                    <li> Mark an activity as checked/unchecked </li>
+                </ul>
+                <p> 
+                    <i>Friends function</i> presents to the user any relationship that their children might have. 
+                </p>
+                <ul>
+                    <li> Choose a child from the leftbar menu </li>
+                    <li> Add a new friend </li>
+                    <li> Edit a relationship </li>
+                    <li> Delete a relationship </li>
+                </ul>
+                <p> 
+                    <i>Medical function</i> saves the medical history of the user's children.  
+                </p>
+                <ul>
+                    <li> Choose a child from the leftbar menu </li>
+                    <li> Add a new record </li>
+                    <li> Edit a record </li>
+                    <li> Delete a record </li>
+                </ul>
+            </section>
+            <section id="userclasses">
+                <h3> 2.2. User classes and Characteristics</h3>
+                <p> 
+                    The Web application "<i>Baby Manager</i>" is intended for the parents and parents-to-be who are looking for 
+                management and organizing features for their children's journeys. 
+                </p>
+                <p> 
+                    A <i>guest user</i> is a person that has their first encounter with the application or a person that is not logged in.
+                    They have access to the "<i>Welcome</i>" page, where they can learn information about what they could 
+                    benefit once they create an account. The page is designed so that the guest user will be well documented about the 
+                    features and their uses, as to make a right decision whether or not to join. A guest user also has the possibility to
+                    sign up and become a <i>logged user</i>. By trying to log in without an account already created, the user will get a 
+                    warning about their credentials not being in the database. A guest user doesn't have access to any of the actual 
+                    features for managing their children's information. Parents or soon to be parents that are searching for applications
+                    about raising children may fit in this category. 
+                </p>
+                <p>
+                    A <i>logged user</i> is a person that has previously created an account by signing up and used their credentials to
+                    log in their said account.
+                </p>
+            </section>
+        </section>
+    </body>
+</html>
