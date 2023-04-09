@@ -1,9 +1,7 @@
 body {
-    background-image: url("https://images.pexels.com/photos/7130537/pexels-photo-7130537.jpeg");
-    background-repeat: no-repeat;
-    background-attachment: fixed;
-    background-size: cover;
+    background-color: #B28FF7;
 }
+
 .page {
     display: flex;
     flex-direction: row;
@@ -22,11 +20,10 @@ body {
     display: flex;
     flex-direction: column;
     margin-top: .5em;
-    background-color: rgba(230,230,250, .3);
+    background-color: lavender;
     border-radius: 2em;
     padding: 2em;
     width: 100%;
-    border: 1px solid rgba(230,230,250, .7);
 }
 
 
@@ -111,7 +108,7 @@ input[type="checkbox"] {
 
 .leftbar{
     font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
-    background-color: rgba(230,230,250, .6);
+    background-color: lavender;
     display: flex;
     flex-direction: column;
     width: 8em;
