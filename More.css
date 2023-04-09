@@ -1,10 +1,6 @@
 body {
-    background-image: url("https://images.pexels.com/photos/7130537/pexels-photo-7130537.jpeg");
-    background-repeat: no-repeat;
-    background-attachment: fixed;
-    background-size: cover;
+    background-color: #B28FF7;
 }
-
 
 .page {
     display: flex;
@@ -15,29 +11,34 @@ body {
 
 .leftbar{
     font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
-    background-color:plum;
+    background-color:lavender;
     display: flex;
     flex-direction: column;
-    width: 10em;
-    height: 100vh;
+    width: 8em;
     /*position: fixed;*/
     padding: 1em;
     margin-top: .5em;  
     margin-left: .5em;
     font-size: larger;
     border-radius: 1em;
-    border-style: inset;
-    border-color:hotpink;
 }
 
 .leftbar h2 {
-    background: rgba(230,230,250, .2); 
     border-radius: .2em;
     margin-bottom: 2em;
 }
 
+.choose-child {
+    list-style-type: none;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    position: relative;
+    margin-top: 40px;
+}
+
 .choose-child li:hover {
-    color: hotpink;
+    color: blueviolet;
     background-color: rgba(240,248,255, .5);
     border-radius: .7em;
     font-weight: 900;
@@ -45,25 +46,16 @@ body {
 
 }
 
-.choose-child {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    background: rgba(230,230,250, .2); 
-    border-radius: .5em;
-    position: relative;
-}
-
 .child {
     text-decoration: none;   
-    color: black;
+    color: mediumpurple;
 }
 
 .right {
     font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
     padding: 3em;
     align-items: center;
-    background: rgba(230,230,250, .2); /* lavender */
+    background: lavender; /* lavender */
     margin-top: .5em;
     margin-left: .5em; 
     margin-right: 0;
@@ -146,7 +138,6 @@ body {
     }
 
     .right {
-        background: rgba(230,230,250, .2);
         margin-top: .2em;
         margin-left: .2em; 
     }
