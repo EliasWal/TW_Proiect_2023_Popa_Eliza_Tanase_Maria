@@ -191,6 +191,14 @@
                     <li> Edit a record </li>
                     <li> Delete a record </li>
                 </ul>
+                <p> 
+                    <i>Media function</i> offers the user a way to see and upload files for having them in one place. 
+                </p>
+                <ul>
+                    <li> Upload files like photos, videos, audio or any type of doc </li>
+                    <li> Edit an existing file </li>
+                    <li> Delete unwanted file</li>
+                </ul>
             </section>
             <section id="userclasses">
                 <h3> 2.2. User classes and Characteristics</h3>
@@ -211,7 +219,7 @@
                 <p>
                     A <i>logged user</i> is a person that has previously created an account by signing up and used their credentials to
                     log in their said account. They have access to all the pages involved in the process of navigating the application, 
-                    including: Home, Settings, Memories, Calendars, Friends and Medical. A logged user is the only one that can save and
+                    including: Home, Settings, Memories, Calendars, Friends, Media and Medical. A logged user is the only one that can save and
                     manage their information within the "<i>Baby manager</i>" application. Every time they enter their account again, the
                     information will be loaded from the database. They can also, at any point, log out of their account and become a 
                     <i>guest user</i>, with no way of accessing data until they log in back again. For the most part, the application is 
@@ -259,7 +267,7 @@
             <p>
                 Another important tool that the user can find in every page is the topbar. Located at the start area of the page, it 
                 contains features with links for navigating the whole application. The user can access Memories, Calendars, Friends,
-                Medical, Home and Settings, as well as press the now "Log out" button to disconnect from their account.
+                Medical, Media, Home and Settings, as well as press the now "Log out" button to disconnect from their account.
             </p>
             <p>
                 By pressing the wheel-like image next to the "Log out" button, the user accesses their personal profile settings. They can, 
@@ -267,7 +275,7 @@
                 change their password.
             </p>
             <p>
-                Each of the main pages "Memories", "Calendars", "Friends", "Medical" have an introductive page to describe the tools that
+                Each of the main pages "Memories", "Calendars", "Media", "Medical" have an introductive page to describe the tools that
                 will be used and what is the scope of them. The user will, in consequence, have at their disposal a short documentation 
                 prepared for navigating easily. 
             </p>
@@ -496,6 +504,27 @@
                     <h4> 4.8.3 Functional Requirements </h4>
                     <p>
                         The friends list will be saved in the database and loaded. Every change will be immediately seen by the user
+                        in the main page.
+                    </p>
+                </section>
+            </section>
+            <section id="media">
+                <h3> 4.9 Media  </h3>
+                <section>
+                    <h4> 4.9.1 Description </h4>
+                    <p>
+                        The "Media" page shows already uploaded files like photos, videos and audio files.
+                    </p>
+                    <h4> 4.9.2 Response Sequence </h4>
+                    <p>
+                        The user can "Upload" a new file, by stating the wanted title and uploading from his PC the file.
+                    </p>
+                    <p>
+                        For each uploaded file, the information can be "Edit"-ed or "Delete"-ed using a form.
+                    </p>
+                    <h4> 4.9.3 Functional Requirements </h4>
+                    <p>
+                        The uploaded filrs will be saved in the database and loaded form it. Every change will be immediately seen by the user
                         in the main page.
                     </p>
                 </section>
