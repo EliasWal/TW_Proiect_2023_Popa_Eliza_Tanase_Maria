@@ -19,7 +19,7 @@
         margin-top: 2em;
     }
 
-    img {
+    #userinterfaces img {
         width: 400px;
     }
 
@@ -29,4 +29,8 @@
 
     #features p {
         margin-left: 1em;
+    }
+
+    #settings img {
+        width: 20px;
     }

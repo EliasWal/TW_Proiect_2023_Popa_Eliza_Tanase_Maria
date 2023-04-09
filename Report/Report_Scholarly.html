@@ -65,13 +65,13 @@
                             <a href="#memories"> Memories </a>
                         </li>
                         <li>
-                            <a href="#memories"> Calendars </a>
+                            <a href="#calendars"> Calendars </a>
                         </li>
                         <li>
                             <a href="#medical"> Medical </a>
                         </li>
                         <li>
-                            <a href="#memories"> Friends </a>
+                            <a href="#friends"> Friends </a>
                         </li>
                     </ol>
                 </li>
@@ -176,7 +176,6 @@
                     <i>Friends function</i> presents to the user any relationship that their children might have. 
                 </p>
                 <ul>
-                    <li> Choose a child from the leftbar menu </li>
                     <li> Add a new friend </li>
                     <li> Edit a relationship </li>
                     <li> Delete a relationship </li>
@@ -263,9 +262,7 @@
             <p>
                 By pressing the wheel-like image next to the "Log out" button, the user accesses their personal profile settings. They can, 
                 then, choose from the leftside menu, whether they want to manage their general settings, their children's information or
-                change their password. <!--Each one of these pages have forms that can be edited by adding input or choosing from a dropdown
-                list and pressing the "Edit" or "Save" button. "Manage your children" feature has two additional buttons, "Add child" and 
-                "Delete" that will create new fields for another child or eliminate the wanted fields.-->
+                change their password.
             </p>
             <p>
                 Each of the main pages "Memories", "Calendars", "Friends", "Medical" have an introductive page to describe the tools that
@@ -277,21 +274,8 @@
                 information they want to see. After choosing the prefered child in any of the pages "Memories", "Calendars" and "Medical"
                 another page of information will be accessed.
             </p>
-            <!--<p>
-                In the page "Memories" the user can see the journal entries that contain an image and a part
-                of the description and, above them, the date of the memory. When the user hovers over the journal entry, the whole 
-                description becomes visible. 
-            </p>
             <p>
-                "Calendars" offers a form-like page, with input fields for time and notes, as well as checkboxes to mark as done one of the
-                activities, sleep or feed.
-            </p>
-            <p>
-                The "Medical" page loads a table of information concerning the health problems the user's child had.
-            </p>-->
-            <p>
-                For the "Friends" page, as a difference, all the data of the user's children is stored in one page. <!--where they can find a list
-                of people associated with a photo and a relationship. --> Here, in the leftside menu, they can open the list of friends, 
+                For the "Friends" page, as a difference, all the data of the user's children is stored in one page. Here, in the leftside menu, they can open the list of friends, 
                 as well as to add a new friend.
             </p>
             <p>
@@ -320,12 +304,210 @@
                     <p>
                         It can be accessed by clicking the "Home" hyperlink.
                     </p>
-                    <!--<h4> 4.1.3 Functional Requirements </h4>
+                    <h4> 4.1.3 Functional Requirements </h4>
                     <p>
-                        
-                    </p>-->
+                        The page will be loaded on the browser every time the application is accessed or a user logges in.
+                    </p>
                 </section>
             </section>
+            <section id="signup">
+                <h3> 4.2 Sign up </h3>
+                <section>
+                    <h4> 4.2.1 Description </h4>
+                    <p>
+                        The "Sign up" feature allows a user that doesn't have an account to create one and to benefit of all the managing
+                        features.
+                    </p>
+                    <h4> 4.2.2 Response Sequence </h4>
+                    <p>
+                        It can be accessed by clicking the "Sign up" button. This operation will result in loading a page with a form. 
+                        For creating an account, it is mandatory that the user fills in all the personal data in the form's white spaces
+                        or chooses from the examples added in the dropdown list. By clicking on the "Create an account" button, the 
+                        registration will be finished and the user will be automatically logged.
+                    </p>
+                    <h4> 4.2.3 Functional Requirements </h4>
+                    <p>
+                        The user's personal information will be safely saved in a database and used later to verify the user's log in.
+                        If the same email address or username have been used for another account registered on the application,  an 
+                        error will occur in the signing up process. The user will be notified about this problem.
+                    </p>
+                </section>
+            </section>
+            <section id="login">
+                <h3> 4.3 Log in  </h3>
+                <section>
+                    <h4> 4.3.1 Description </h4>
+                    <p>
+                        The "Log in" feature allows a user with an already created account to access it.
+                    </p>
+                    <h4> 4.3.2 Response Sequence </h4>
+                    <p>
+                        It can be accessed by clicking the "Log in" button. This operation will result in loading a page with a form. 
+                        For logging in an account, it is mandatory that the user completes their credentials (username and password) 
+                        in the form's white spaces. By pressing the "Log in" button in the form page, the user will be redirected on 
+                        the members' "Welcome" page.
+                    </p>
+                    <h4> 4.3.3 Functional Requirements </h4>
+                    <p>
+                        The user's credentials will be verified in the process of searching them in the application's database. If they 
+                        coincide with one of the user's that have previously signed up, then they will have access to the logged page.
+                        Their information will be loaded from the database. If there is no matching, an error will occur in the process
+                        of logging in. The user will be notified about this problem.      
+                    </p>
+                    <p>
+                        * A logged in user can exit their account by pressing the "Log out" button.
+                    </p>
+                </section>
+            </section>
+            <section id="settings">
+                <h3> 4.4 Settings  </h3>
+                <section>
+                    <h4> 4.4.1 Description </h4>
+                    <p>
+                        The "Settings" feature's purpose is allowing the user to manage their personal profile information.
+                    </p>
+                    <h4> 4.4.2 Response Sequence </h4>
+                    <p>
+                        It can be accessed by a logged user by clicking the wheel-like button [<img src="Settings.png" alt="settings">]. 
+                    </p>
+                    <p>
+                        The "General" settings consist of a form that already has the user's data loaded. In this page they can edit any
+                        of their personal information and click on "Edit" to save them.
+                    </p>
+                    <p>
+                        The "Manage your children" settings is constructed by multiple sections for each of the user's children. Once 
+                        again, they can "Edit" the information for a child, and even "Delete" them. They can also "Add" a new child by 
+                        inserting their data. 
+                    </p>
+                    <p>
+                        The "Change your password" feature is created to do so. The new password that the user chooses will be the only
+                        one used after that to log in their account.
+                    </p>
+                    <p>
+                        The changes that the user makes to their personal data are irreversible and any other previous inputs will be
+                        deleted.
+                    </p>
+                    <h4> 4.4.3 Functional Requirements </h4>
+                    <p>
+                        Any change in the user's profile will be added to the database and the old, not valid information will be deleted.
+                        If the user tries to enter their account using old credentials, the database will consider their login information
+                        as a new user that doesn't have an account.
+                    </p>
+                </section>
+            </section>
+            <section id="memories">
+                <h3> 4.5 Memories  </h3>
+                <section>
+                    <h4> 4.5.1 Description </h4>
+                    <p>
+                        In the page "Memories" the user can see the journal entries that are considered to be "memories".
+                    </p>
+                    <h4> 4.5.2 Response Sequence </h4>
+                    <p>
+                        The "Children" list in the left bar allows the user to choose a child's page.
+                    </p>
+                    <p>
+                        The user can "Add" a new journal entry by introducing some prefered image and description, as well as a date for 
+                        the memory.
+                    </p>
+                    <p>
+                        When the page is loaded, the user can see only a part of the description, for a good management of the space. 
+                        When the user hovers over the journal entry, the whole description becomes visible.
+                    </p>
+                    <p>
+                        For each of the "memories", the user can choose to "Edit", "Delete" or "Share" the information.
+                    </p>
+                    <h4> 4.5.3 Functional Requirements </h4>
+                    <p>
+                        The journal entries will be saved in the database and loaded. Every change will be immediately seen by the user
+                        in the main page.
+                    </p>
+                </section>
+            </section>
+            <section id="calendars">
+                <h3> 4.6 Calendars  </h3>
+                <section>
+                    <h4> 4.6.1 Description </h4>
+                    <p>
+                        The "Calendars" page is an interactive timetable for the useful activities of eating and sleeping.
+                    </p>
+                    <h4> 4.6.2 Response Sequence </h4>
+                    <p>
+                        The "Children" list in the left bar allows the user to choose a child's page.
+                    </p>
+                    <p>
+                        The user can "Add" a new calendar input for their prefered activities.
+                    </p>
+                    <p>
+                        For every line of the calendar, the time and notes can be managed. Also, one of the two activities can 
+                        be marked as done/not done with the use of checkboxes. The changes will be saved by clicking "Edit".
+                    </p>
+                    <h4> 4.6.3 Functional Requirements </h4>
+                    <p>
+                        The calendar information will be saved in the database and loaded. Every change will be immediately seen by the user
+                        in the main page.
+                    </p>
+                </section>
+            </section>
+            <section id="medical">
+                <h3> 4.7 Medical  </h3>
+                <section>
+                    <h4> 4.7.1 Description </h4>
+                    <p>
+                        The "Medical" page saves records of any health problems of the child in a "Medical History" template.
+                    </p>
+                    <h4> 4.7.2 Response Sequence </h4>
+                    <p>
+                        The "Children" list in the left bar allows the user to choose a child's page.
+                    </p>
+                    <p>
+                        The user can "Add" input for a new medical record, including a document of any kind. 
+                    </p>
+                    <p>
+                        For every line of the table, the information can be managed by clicking "Edit".
+                    </p>
+                    <h4> 4.7.3 Functional Requirements </h4>
+                    <p>
+                        The medical records will be saved in the database and loaded. Every change will be immediately seen by the user
+                        in the main page.
+                    </p>
+                </section>
+            </section>
+            <section id="friends">
+                <h3> 4.8 Friends  </h3>
+                <section>
+                    <h4> 4.8.1 Description </h4>
+                    <p>
+                        The "Friends" page shows a list of any relationships the user's children might have.
+                    </p>
+                    <h4> 4.8.2 Response Sequence </h4>
+                    <p>
+                        The user can "Add" a new friend, by stating their name, relationship with the child, as well as including a 
+                        reference photo.
+                    </p>
+                    <p>
+                        For every friend in the list, the information can be "Edit"-ed or "Delete"-ed.
+                    </p>
+                    <h4> 4.8.3 Functional Requirements </h4>
+                    <p>
+                        The friends list will be saved in the database and loaded. Every change will be immediately seen by the user
+                        in the main page.
+                    </p>
+                </section>
+            </section>
+        </section>
+        <section id="security">
+            <h2> 5. Security requirements </h2>
+            <p>
+                The information received from the user will be encrypted and only after that saved in the database.
+            </p>
+            <p> 
+                The personal data loaded from the database will be available only after checking the authenticity of the user by
+                comparing the credentials offered in the log in stage with the credentials of existing users.
+            </p>
+            <p>
+                The main part of the application will not be available to guest users, who don't own or are not logged in an account.
+            </p>
         </section>
     </body>
 </html>
