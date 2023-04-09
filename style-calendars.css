@@ -1,8 +1,5 @@
 body {
-    background-image: url("https://images.pexels.com/photos/7130537/pexels-photo-7130537.jpeg");
-    background-repeat: no-repeat;
-    background-attachment: fixed;
-    background-size: cover;
+    background-color: #B28FF7;
 }
 
 .page {
@@ -14,11 +11,10 @@ body {
 
 .leftbar{
     font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
-    background-color: rgba(230,230,250, .6);
+    background-color: lavender;
     display: flex;
     flex-direction: column;
-    width: 10em;
-    height: 100vh;
+    width: 8em;
     /*position: fixed;*/
     padding: 1em;
     margin-top: .5em;  
@@ -28,47 +24,39 @@ body {
 }
 
 .leftbar h2 {
-    color: darkorchid;
+    border-radius: .2em;
     margin-bottom: 2em;
-}
-
-.choose-child li:hover {
-    color: hotpink;
-    border-radius: .7em;
-    font-weight: 900;
-    margin-left: 1em;
 }
 
 .choose-child {
+    list-style-type: none;
     display: flex;
     flex-direction: column;
-    border-radius: .5em;
-    text-decoration: none;
-    list-style-type: none;
-    font-size: x-large;
-    color: purple;
-    height: 5em;
-    justify-content: space-around ;
-    font-weight: 500;
-    
+    align-items: center;
+    position: relative;
+    margin-top: 40px;
 }
-.choose-child .child1, .child2{
-    text-decoration: none;   
-    color: darkorchid;
-    background-color: rgb(255, 255, 255);
+
+.choose-child li:hover {
+    color: blueviolet;
+    background-color: rgba(240,248,255, .5);
     border-radius: .7em;
-    padding: .5em;
-    margin-bottom: 2em;
+    font-weight: 900;
+    padding-left: .6em;
+
 }
 
-
+.child {
+    text-decoration: none;   
+    color: mediumpurple;
+}
 
 .right {
     padding: 3em;
     align-items: center;
     font-family: 'Segoe UI', cursive;
     font-size: x-large;
-    background: rgba(230,230,250, .5); /* lavender */
+    background: lavender; /* lavender */
     margin-top: .5em;
     margin-left: .5em; 
     margin-right: .5em;

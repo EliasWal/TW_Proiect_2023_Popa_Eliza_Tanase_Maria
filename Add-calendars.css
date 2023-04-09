@@ -132,7 +132,7 @@ input[type="file"] {
     background-color: white;
 }
 
-input[type="date"]{
+input[type="time"]{
     font-size: 1.2em;
     line-height: 1.7em;
     padding: 1em;
