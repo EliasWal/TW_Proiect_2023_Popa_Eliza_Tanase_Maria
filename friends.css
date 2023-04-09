@@ -79,13 +79,21 @@ body {
 }
 
 .prieteni .f1 img, .f3 img, .f4 img, .f2 img{
-    width: 250px;
+    width: 28vw;
     margin: auto;
     max-width: 100%;
     height: auto;
     margin-bottom: 1em;
     border-radius: 30%;
-    box-shadow: 10px 10px 20px black;
+    box-shadow: 10px 10px 20px rgb(149, 149, 161);
+}
+
+@media(max-width: 1500px){
+    .prieteni{
+        display: flex;
+        justify-content: space-between;
+        align-items:flex-start;
+    }
 }
 
 @media(max-width: 1000px){
@@ -95,6 +103,7 @@ body {
         justify-content: center;
         align-items: center;
     }
+   
 }
 @media(max-width: 430px){
     .container {
@@ -128,6 +137,10 @@ body {
         margin-left: 0;
         margin-right: 0;
         border-radius: 0;
+        
+    }
+    .f1,.f2,.f3,.f4{
+        margin: .3em;
     }
     
 }
