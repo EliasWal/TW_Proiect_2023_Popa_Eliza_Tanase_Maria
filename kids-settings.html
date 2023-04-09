@@ -96,40 +96,7 @@
                             <input type="reset" value="Delete">
                         </div>
                     </form>
-                    <form id="kids-form1" method="post" action="kids-settings-edit.html">
-                        <li id="name1">
-                            <label >First name</label>
-                            <input type="text" value="Damian" id="name1" name="name1" placeholder="First name" readonly>
-                        </li>
-
-                        <li id="name2">
-                            <label >Second name</label>
-                            <input type="text" value="Lucy" id="name2" name="name2" placeholder="Second name" readonly>
-                        </li>
-
-                        <li id="age">
-                            <label >Birthday</label>
-                            <input type="date"  value="2022-05-20" id="birthdate" readonly>
-                        </li>
-                        <li id="gender">
-                            <label id="gender">Gender</label>
-                                <select id="genderSelect" >
-                                    <option value="female" selected>Female</option>
-                                    <option value="male" disabled>Male</option>
-                                    <option value="non-binary" disabled>Non-binary</option>
-                                    <option value="nospecify" disabled>Don't specify</option>
-                                </select>
-                        </li>
-                    <div class="buttons-kid1">
-                        <input type="submit" value="Edit">
-                        <button id="delete">Delete</button>
-                        <script>
-                            const deleteButton = document.querySelector('#delete');
-                            const deleteForm = document.querySelector('#kids-form1');
-                            deleteButton.addEventListener('click', () => {deleteForm.remove(); });
-                        </script>
-                    </div>
-                </form>
+                    
                 </div>
             </div>
         </div>

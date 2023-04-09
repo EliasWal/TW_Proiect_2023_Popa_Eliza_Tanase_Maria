@@ -6,7 +6,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title> Baby manager </title>
     <link href="admin-topbar.css" rel="stylesheet" />
-    <link href="friends.css" rel="stylesheet" />
+    <link href="edit-friend.css" rel="stylesheet" />
     <link rel="icon" type="image/png" href="https://cdn-icons-png.flaticon.com/512/2102/2102805.png"/>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta2/css/all.min.css" integrity="sha512-YWzhKL2whUzgiheMoBFwW8CKV4qpHQAEuvilg9FAn5VJUDwKZZxkJNuGM4XkWuk94WCrrwslk8yWNGmY1EduTA==" crossorigin="anonymous" referrerpolicy="no-referrer" /></head>
 </head>
@@ -43,7 +43,7 @@
             <div class="leftbar">
                 <h2>Friends</h2>
                 <ul class="set-menu">
-                    <li id="general">
+                    <li id="prieten">
                         <a href="friends.html">Friends</a></li>
                     <li id="add-friend">
                         <a href="add-friend.html">Add friend</a>
@@ -51,48 +51,28 @@
                 </ul>
 
             </div>
-            <div class="prieteni">
-                <div class="f1">
-                    <img src="Photos/friend-karen.jpg">
-                    <li>Name: Damian Karen</li>
-                    <li>Relation: Aunt</li>
-                    <li id="edit">
-                        <a href="edit-friend.html">
-                            <input type="submit" value="Edit">
-                        </a>
-                    </li>
-                </div>
-                <div class="f2">
-                    <img src="Photos/friend-paul.jpg">
-                    <li>Name: Martin Paul </li>
-                    <li>Relation: Friend with Eric</li>
-                    <li id="edit">
-                        <a href="edit-friend.html">
-                            <input type="submit" value="Edit">
-                        </a>
-                    </li>
-                </div>
-                <div class="f3">
-                    <img src="Photos/friend-sofia.jpg">
-                    <li>Name: Harper Sofia</li>
-                    <li>Relation: Friend with Jane</li>
-                    <li id="edit">
-                        <a href="edit-friend.html">
-                            <input type="submit" value="Edit">
-                        </a>
-                    </li>
-                </div>
-                <div class="f4">
-                    <img src="Photos/friend-liam.jpg">
-                    <li>Name: Andresoon Liam</li>
-                    <li>Relation: Uncle</li>
-                    <li id="edit">
-                        <a href="edit-friend.html">
-                            <input type="submit" value="Edit">
-                        </a>
-                    </li>
-                </div>
-                </div>
+            <div class="friend-container">
+                <h2>Edit info about friends</h2>
+                <form id="friend-form" method="post" action="friends.html">
+                            <li id="Name">
+                                <label >Name</label>
+                                <input type="text" value="Damian Karen" id="name" name="name" placeholder="Full name">
+                            </li>
+                            <li id="Relation">
+                                <label >Relation</label>
+                                <input type="text" value="Aunt" id="relation" name="relation" placeholder="Type of friend">
+                            </li>
+                            <li id="Photo">
+                                <label> Photo</label>
+                                <input type="file" id="photo" name="photo" accept="image/*">
+                            </li>
+                            <div class="buttons">
+                                <input type="submit" value="Save">
+                                <a href="edit-friend-deleted.html">
+                                    <input type="button" id="del" value="Delete">
+                                </a>
+                            </div>
+                </form>
             </div>
         </div>
 </body>

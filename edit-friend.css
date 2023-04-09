@@ -128,8 +128,27 @@ input[type="submit"] {
     margin-right: 2em;
 }
 
+#del{
+    font-size: 1.2em;
+    background-color: mediumpurple;
+    width:5em;
+    height:2.5em;
+    line-height: 1.5em;
+    border-radius: 0.5em;
+    border: none;
+    margin-top: 2em;
+    color:antiquewhite;
+    text-align: center;
+}
+
 input[type="submit"]:hover{
     background-color: plum;
+}
+
+
+.buttons {
+    display: flex;
+    flex-direction: row;
 }
 
 
@@ -171,6 +190,7 @@ input[type="submit"]:hover{
     
 }
 
+
 @media(max-width: 350px){
     #friend-form{
         width: 100%;
@@ -178,5 +198,9 @@ input[type="submit"]:hover{
 
     input[type="text"], input[type="file"]{
         width: 100%;
+    }
+    .buttons {
+        display: flex;
+        justify-content: space-around;
     }
 }
