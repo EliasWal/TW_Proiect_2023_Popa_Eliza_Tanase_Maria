@@ -19,7 +19,6 @@ body {
     display: flex;
     flex-direction: column;
     width: 10em;
-    height: 100vh;
     /*position: fixed;*/
     padding: 1em;
     margin-top: .5em;  
