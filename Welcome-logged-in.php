@@ -1,6 +1,7 @@
 <?php
 require "config.php";
-
+if(!isset($_COOKIE["login"]))
+    header("location:login.php");
 ?>
 <!DOCTYPE html>
 <html lang="en-US">
