@@ -1,0 +1,192 @@
+body {
+    background-image: url("../photos/settings-back.png");
+        background-repeat: no-repeat;
+        background-attachment: fixed;
+        background-size: cover;
+}
+
+.leftbar{
+    font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
+    background-color: lavender;
+    display: flex;
+    flex-direction: column;
+    width: 8em;
+    height: 100vh;
+    padding: 1em;
+    margin-top: .5em;  
+    font-size: larger;
+    border-radius: 1em;
+    margin-left: 10px;
+}
+.set-menu{
+    text-decoration: none;
+    list-style-type: none;
+    display: flex;
+    flex-direction: column;
+    position: relative;
+    margin-top: 40px;
+}
+
+.set-menu li {
+    margin-bottom: 2em;
+    text-decoration: none;
+}
+
+.set-menu li:hover {
+    color: blueviolet;
+    background-color: aliceblue;
+    border-radius: .7em;
+    font-weight: 900;
+    padding-left: .6em;
+
+}
+
+.container{
+    display: flex;
+    flex-direction: row;
+}
+
+.general-container {
+    margin-left: 20px;
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
+    margin-top: .5em;
+    background-color: lavender;
+    border-radius: 2em;
+    margin-right: 20px;
+    padding: 2em;
+    width: 100%;
+}
+
+.general-container h2{
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    color:mediumpurple;
+    font-size: 2em;   
+    margin-bottom: 2em;
+    margin-left: 1em;
+}
+
+#general-form {
+    display: flex;
+    flex-direction: row;
+}
+
+#col1, #col2 {
+    display: flex;
+    flex-direction: column;
+}
+
+#general-form label {
+    font-size: 1.5em;
+    line-height: 2em;
+    margin-bottom: 0.5em;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    color:blueviolet;
+}
+#general-form li{
+    display: flex;
+    flex-direction: column;
+    margin-left: 10%;
+    width: 80%;
+}
+input[type="text"],
+input[type="password"],
+input[type="email"],
+input[type="tel"]{
+    font-size: 1.2em;
+    line-height: 1em;
+    padding: 1em;
+    margin-bottom: 1em;
+    border-radius: 0.5em;
+    border: 1px solid #ccc;
+    width: 100%;
+    max-width: 400px;
+}
+
+#genderSelect {
+    font-size: 1.2em;
+    line-height: 1em;
+    padding: 1em;
+    margin-bottom: 1em;
+    border-radius: 0.5em;
+    border: 1px solid #ccc;
+    width: 100%;
+    max-width: 400px;
+}
+
+input[type="submit"] {
+    font-size: 1.2em;
+    background-color: mediumpurple;
+    width:9.25em;
+    height:3.125em;
+    line-height: 1.5em;
+    border-radius: 0.5em;
+    border: none;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin-top:1.5em;
+    color:antiquewhite;
+    margin-left: -25%;
+}
+
+.col1{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    margin-bottom: 90px;
+}
+
+@media(max-width: 1040){
+    #general-form li{
+        width: 5em;
+    }
+}
+
+@media(max-width: 700px){
+    .container {
+        display: flex;
+        flex-direction: column;
+    }
+    .leftbar h2{
+        font-size: large;
+    }
+    .leftbar {
+        margin-left: 0;
+        margin-top: 0;
+        border-radius: 0 ;
+        background-color: lavender;
+        width: 100%;
+        height: 5em;
+        text-align: center;
+    }
+
+    .set-menu {
+        display: flex;
+        flex-direction: row;
+        justify-content: space-between;
+        align-items: center;
+        font-size: small;
+        margin-top: 1em;
+    }
+    .general-container{
+        margin-left: 0;
+    }
+    #general-form{
+        display: flex;
+        flex-direction: column;
+    }
+    .general-container input[type="submit"]{
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        margin-left: 30%;
+    }
+    input[type="submit"]{
+        width:7em;
+    height:2.2em;
+    }
+    
+}

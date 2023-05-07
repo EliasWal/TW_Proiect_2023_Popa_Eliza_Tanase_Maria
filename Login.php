@@ -1,6 +1,5 @@
 <?php 
 require 'config.php';
-session_start();
     if(isset($_POST["submit"])){
         $username = $_POST["username"];
         $password = $_POST["password"];
@@ -8,10 +7,16 @@ session_start();
         $row = mysqli_fetch_assoc($sql);
         if(mysqli_num_rows($sql) > 0){
             if($password == $row["password"]){
+                session_start();
                 $_SESSION["login"]=true;
                 $_SESSION["id"] = $row["id"];
                 $_SESSION["username"] = $username;
-                header("Location:Welcome-logged-in.php");
+                if(isset($_REQUEST["remember"]) && $_REQUEST["remember"]==1)
+                {   setcookie("login","1",time()+60);}
+                else
+                {   setcookie("login", "1");}
+                    header("Location:Welcome-logged-in.php");
+                
             }
             else{
                 echo "<script>alert('Wrong password!');</script>";
@@ -64,6 +69,10 @@ session_start();
                 <input type="text" id="username" name="username" placeholder="Enter your username" required>
                 <label id="password">Password</label>
                 <input type="password" id="password" name="password" placeholder="Enter your password" required>
+                <div id="remember-check">
+                    <label for="remember">Keep me logged in</label>
+                    <input type="checkbox" required value="1" name="remember">
+                </div>
                 <input type="submit" name="submit" value="Log in">
             </form>
         </div>
