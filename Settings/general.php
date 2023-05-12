@@ -3,10 +3,19 @@ require "../config.php";
 
 session_start();
 
+if(!isset($_COOKIE["login"]))
+    header("location: ../login.php");
+
+
 if(!isset($_SESSION["login"]) || $_SESSION['login']===false){
-    header("Location:../login.php");
+    header("Location: ../login.php");
 }
 
+$user_id = $_SESSION["id"];
+$username = $_SESSION["username"];
+
+$sql= mysqli_query($mysql, "SELECT * FROM user_registred where id='$user_id'");
+$row = mysqli_fetch_assoc($sql);
 ?>
 <!DOCTYPE html>
 <html lang="en-US">
@@ -40,42 +49,43 @@ if(!isset($_SESSION["login"]) || $_SESSION['login']===false){
                     <div id="col1">
                         <li id="name1">
                             <label >First name</label>
-                            <input type="text" value="Damian" id="name1" name="name1" placeholder="First name" readonly>
+                            <input type="text" value="<?php echo $row["firstname"] ?>" id="name1" name="name1" placeholder="First name" readonly>
                         <li id="name2">
                             <label >Second name</label>
-                            <input type="text" value="Andreea" id="name2" name="name2" placeholder="Second name" readonly>
+                            <input type="text" value="<?php echo $row["lastname"] ?>" id="name2" name="name2" placeholder="Second name" readonly>
                         </li>
                         </li>
                         <li id="phone">
                             <label >Phone number</label>
-                            <input type="tel"  value="0748154447" id="phone" name="phone" placeholder="ex: 07xxxxxxxx" readonly>
+                            <input type="tel"  value="<?php echo $row["phone"] ?>" id="phone" name="phone" placeholder="ex: 07xxxxxxxx" readonly>
                         </li>
                         <li id="email">
                             <label>Email</label>
-                            <input type="email"  value="d.andreea@gmail.com" id="email-adress" name="email" placeholder="ex: name@example.com" readonly>
+                            <input type="email"  value="<?php echo $row["email"] ?>" id="email-adress" name="email" placeholder="ex: name@example.com" readonly>
                         </li>
                     </div>
                     <div id="col2">
                         <li id="username">
                             <label>Username</label>
-                            <input type="text" value="Andreea" id="username" name="username" placeholder="Enter your username" readonly>
+                            <input type="text" value="<?php echo $username;?>" id="username" name="username" placeholder="Enter your username" readonly>
                         </li>
                         <li id="address">
                             <label >Address</label>
-                            <input type="text" value="Iasi, Jud Iasi" id="address" name="address" placeholder="Enter your address" readonly>
+                            <input type="text" value="<?php echo $row["address"] ?>" id="address" name="address" placeholder="Enter your address" readonly>
                         </li>
                         <li id="gender">
                             <label id="gender">Gender</label>
+                            
                             <select id="genderSelect">
-                                <option value="female">Female</option>
-                                <option value="male" disabled>Male</option>
-                                <option value="non-binary" disabled>Non-binary</option>
-                                <option value="nospecify" disabled>Don't specify</option>
+                                <option value="female" <?php if ($row["gender"] == 'female') echo 'selected'; else echo 'disabled'; ?> >Female</option>
+                                <option value="male" <?php if ($row["gender"] == 'male') echo 'selected'; else echo 'disabled'; ?>>Male</option>
+                                <option value="non-binary"<?php if ($row["gender"] == 'non-binary') echo 'selected'; else echo 'disabled'; ?>>Non-binary</option>
+                                <option value="nospecify" <?php if ($row["gender"] == 'n/a') echo 'selected'; else echo 'disabled'; ?>>Don't specify</option>
                             </select>
                         </li>
                         <li id="pronouns">
                             <label >Pronouns</label>
-                            <input type="text" value="She/Her" id="pronouns" name="pronouns" placeholder="ex: she/her" readonly>
+                            <input type="text" value="<?php echo $row["pronouns"] ?>" id="pronouns" name="pronouns" placeholder="ex: she/her" readonly>
                         </li>
                     <input type="submit" value="Edit">
                 </div>
