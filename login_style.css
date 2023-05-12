@@ -69,6 +69,11 @@ input[type="submit"] {
     color:antiquewhite;
 }
 
+
+.error-msg {
+    color: red;
+}
+
 @media (max-width: 490px) {
     input[type="text"],
     input[type="password"]{

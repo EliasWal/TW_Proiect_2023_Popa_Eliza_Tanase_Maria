@@ -1,5 +1,6 @@
 <?php 
-require 'config.php';
+    require 'config.php';
+    session_start();
     if(isset($_POST["submit"])){
         $username = $_POST["username"];
         $password = $_POST["password"];
@@ -11,19 +12,22 @@ require 'config.php';
                 $_SESSION["login"]=true;
                 $_SESSION["id"] = $row["id"];
                 $_SESSION["username"] = $username;
-                if(isset($_REQUEST["remember"]) && $_REQUEST["remember"]==1)
-                {   setcookie("login","1",time()+60);}
+                
+                if(isset($_REQUEST["remember"]))
+                {   setcookie("login","1",time()+86400 * 30);}
                 else
                 {   setcookie("login", "1");}
                     header("Location:Welcome-logged-in.php");
                 
             }
             else{
-                echo "<script>alert('Wrong password!');</script>";
+                //echo "<script>alert('Wrong password!');</script>";
+                $_SESSION["message"] = "Wrong password!";
             }
         }
         else{
-            echo "<script>alert('User not registered!');</script>";
+           // echo "<script>alert('User not registered!');</script>";
+           $_SESSION["message"] = "User not registered!";
         }
     }
 ?>
@@ -70,11 +74,19 @@ require 'config.php';
                 <label id="password">Password</label>
                 <input type="password" id="password" name="password" placeholder="Enter your password" required>
                 <div id="remember-check">
-                    <label for="remember">Keep me logged in</label>
-                    <input type="checkbox" required value="1" name="remember">
+                    <label>
+                    Remember me <input type="checkbox" value="1" name="remember">
+                    </label>
                 </div>
                 <input type="submit" name="submit" value="Log in">
             </form>
+            <span >
+                <?php if(isset($_SESSION["message"])){
+                        echo $_SESSION["message"];
+                    }
+                    unset($_SESSION["message"]);
+                ?>
+            </span>
         </div>
 </body>
 </html>
