@@ -1,3 +1,21 @@
+<?php 
+require "../config.php";
+
+session_start();
+
+if(!isset($_COOKIE["login"]))
+    header("location: ../login.php");
+
+
+if(!isset($_SESSION["login"]) || $_SESSION['login']===false){
+    header("Location: ../login.php");
+}
+
+$user_id = $_SESSION["id"];
+$username = $_SESSION["username"];
+
+?>
+
 <!DOCTYPE html>
 <html lang="en-US">
 <head>
@@ -28,48 +46,53 @@
                 <h2>Manage kids</h2>
                 <div class="child1">
                     <div class="kids">
-                        <label id="sel-kid">
-                                <select id="select-kid">
+                        <!-- <label id="sel-kid">
+                                <select id="select-kid" name="kid-select">
                                     <option value="Eric" selected>Eric</option>
                                     <option value="Lucy">Lucy</option>
                                 </select>
-                        </label>
+                        </label> -->
                         <form action="manage-kids-add.php">
                             <button class="add-kid">
                                 Add kid
                             </button>
                         </form>
                     </div>
+                    <?php 
+                        $sql= mysqli_query($mysql, "SELECT * FROM child where id_parent='$user_id'");
+                        while ($row = mysqli_fetch_assoc($sql)) {
+                        $child_id = $row['id'];
+                    ?>
                     <form id="kids-form" method="post" action="kids-settings-edit.php">
                             <li id="name1">
                                 <label >First name</label>
-                                <input type="text" value="Damian" id="name1" name="name1" placeholder="First name" readonly>
+                                <input type="text" value="<?php echo $row["firstname"] ?>" id="name1" name="name1" placeholder="First name" readonly>
                             </li>
 
                             <li id="name2">
                                 <label >Second name</label>
-                                <input type="text" value="Eric" id="name2" name="name2" placeholder="Second name" readonly>
+                                <input type="text" value="<?php echo $row["lastname"] ?>" id="name2" name="name2" placeholder="Second name" readonly>
                             </li>
     
                             <li id="age">
                                 <label >Birthday</label>
-                                <input type="date"  value="2021-06-15" id="birthdate" readonly>
+                                <input type="date"  value="<?php echo $row["birthday"] ?>" id="birthdate" readonly>
                             </li>
                             <li id="gender">
-                                <label id="gender">Gender</label>
-                                    <select id="genderSelect" >
-                                        <option value="female" disabled>Female</option>
-                                        <option value="male" selected>Male</option>
-                                        <option value="non-binary" disabled>Non-binary</option>
-                                        <option value="nospecify" disabled>Don't specify</option>
-                                    </select>
-                            </li>
+                            <label id="gender">Gender</label>
+                            <select id="genderSelect" name="gender">
+                                <option value="female" <?php if ($row["gender"] == 'female') echo 'selected'; ?> >Female</option>
+                                <option value="male" <?php if ($row["gender"] == 'male') echo 'selected';?>>Male</option>
+                                <option value="non-binary"<?php if ($row["gender"] == 'non-binary') echo 'selected'; ?>>Non-binary</option>
+                                <option value="nospecify" <?php if ($row["gender"] == 'n/a') echo 'selected';?>>Don't specify</option>
+                            </select>
+                        </li>
                         <div class="buttons-kid1">
                             <input type="submit" value="Edit">
-                            <input type="reset" value="Delete">
+                            <input type="submit" value="Delete">
                         </div>
                     </form>
-                    
+                    <?php } ?>
                 </div>
             </div>
         </div>

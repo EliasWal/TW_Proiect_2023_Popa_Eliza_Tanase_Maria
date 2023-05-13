@@ -169,8 +169,12 @@ input[type="date"]{
     align-items: center;
     justify-content: center;
     color:antiquewhite;
-    margin-left: 2em;
     text-decoration:none;
+}
+
+
+.delete-butt a{
+    text-decoration: none;
 }
 
 .add-kid:hover{

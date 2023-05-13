@@ -1,3 +1,36 @@
+<?php 
+require '../config.php';
+
+session_start();
+
+if(!isset($_COOKIE["login"]))
+    header("location: ../login.php");
+
+
+if(!isset($_SESSION["login"]) || $_SESSION['login']===false){
+    header("Location: ../login.php");
+}
+
+$user_id = $_SESSION["id"];
+
+if(isset($_POST['submit'])){
+    $firstname = $_POST['name1'];
+    $lastname = $_POST['name2'];
+    $birthday = $_POST['birthday'];
+    $gender = $_POST['gender'];
+
+    $sql = "INSERT INTO child (id_parent, firstname, lastname, birthday, gender) VALUES(?,?,?,?,?)";
+    $stmtinsert = $mysql->prepare($sql);
+    $rez= $stmtinsert->execute([$user_id, $firstname,$lastname,$birthday,$gender]);
+    if($rez){
+             $_SESSION["message"] = "Child added succesfully to the acoount!";
+            }    
+    else {
+            echo"<script>alert('Error. child could not be added!');</script>";
+         }
+    
+}
+?>
 <!DOCTYPE html>
 <html lang="en-US">
 <head>
@@ -26,9 +59,14 @@
             </div>
             <div class="kids-container">
                 <h2>Manage kids</h2>
+                <?php if(isset($_SESSION["message"])){
+                        echo "<h2 style=''>" . $_SESSION["message"] . "</h2>";
+                    }
+                    unset($_SESSION["message"]);
+                ?>
                 <div class="child1">
                     
-                    <form id="kids-form" method="post" action="kids-settings.php">
+                    <form id="kids-form" method="post" >
                             <li id="name1">
                                 <label >First name</label>
                                 <input type="text" value="" id="name1" name="name1" placeholder="First name">
@@ -41,11 +79,11 @@
     
                             <li id="age">
                                 <label >Birthday</label>
-                                <input type="date"  value="" id="birthdate">
+                                <input type="date" name="birthday" value="" id="birthdate">
                             </li>
                             <li id="gender">
                                 <label id="gender">Gender</label>
-                                    <select id="genderSelect">
+                                    <select id="genderSelect" name="gender">
                                         <option value="female">Female</option>
                                         <option value="male" >Male</option>
                                         <option value="non-binary">Non-binary</option>
@@ -53,7 +91,7 @@
                                     </select>
                             </li>
                         <div href="kids-settings.html"class="buttons-kid1">
-                            <input type="submit" value="Save">
+                            <input type="submit" name="submit" value="Save">
                         </div>
                     </form>
                 </div>
