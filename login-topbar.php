@@ -12,14 +12,14 @@
                   </div>
                 <input type='checkbox' id='check' />
                 <span class="menu">
-                    <li><a href="../Memories.html">Memories</a></li>
+                    <li><a href="../Memories/Memories.php">Memories</a></li>
                     <li><a href="../Calendars.html">Calendars</a></li>
                     <li><a href="../friends.html">Friends</a></li>
                     <li><a href="../Medical.html">Medical</a></li>
-                    <li><a href="../Welcome-logged-in.html">Home</a></li>
+                    <li><a href="../Welcome-logged-in.php">Home</a></li>
                     <li><a href="../media.html">Media</a></li>
                     <li class='settings'>
-                        <a href='settings.php'>
+                        <a href='../Settings/settings.php'>
                             <img src='../Photos/settings.png'/>
                         </a>
                     </li>

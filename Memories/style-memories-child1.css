@@ -147,6 +147,10 @@ h5 {
     font-size: medium;
 }
 
+.post:hover .initial-description {
+    display: none;
+}
+
 .description {
     display: flex;
     flex-direction: column;

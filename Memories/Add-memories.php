@@ -1,3 +1,36 @@
+<?php 
+require '../config.php';
+
+session_start();
+
+if(!isset($_COOKIE["login"]))
+    header("location: ../login.php");
+
+
+if(!isset($_SESSION["login"]) || $_SESSION['login']===false){
+    header("Location: ../login.php");
+}
+
+$user_id = $_SESSION["id"];
+
+if(isset($_POST['submit'])){
+    $date = $_POST['date'];
+    $title = $_POST['title'];
+    $description = $_POST['description'];
+    $picture = $_POST['picture'];
+
+    $sql = "INSERT INTO memory(id_user, date, title, description, picture) VALUES(?,?,?,?, ?)";
+    $stmtinsert = $mysql->prepare($sql);
+    $rez= $stmtinsert->execute([$user_id, $date, $title, $description, $picture]);
+    if($rez){
+             $_SESSION["message"] = "Memory added succesfully to the acount!";
+            }    
+    else {
+            echo"<script>alert('Error. Memory could not be added!');</script>";
+         }
+    
+}
+?>
 <!DOCTYPE html>
 <html lang="en-US">
 <head>
@@ -11,30 +44,7 @@
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta2/css/all.min.css" integrity="sha512-YWzhKL2whUzgiheMoBFwW8CKV4qpHQAEuvilg9FAn5VJUDwKZZxkJNuGM4XkWuk94WCrrwslk8yWNGmY1EduTA==" crossorigin="anonymous" referrerpolicy="no-referrer" /></head>
 </head>
 <body>
-    <header>
-        <nav>
-            <ul class='nav-bar'>
-                <div class='logo'>
-                        <img src='Photos\Baby manager.png'/> 
-                        <span class='logo-name'>BABY MANAGER</span>
-                  </div>
-                <input type='checkbox' id='check' />
-                <span class="menu">
-                    <li><a href="Memories.html">Memories</a></li>
-                    <li><a href="Calendars.html">Calendars</a></li>
-                    <li><a href="friends.html">Friends</a></li>
-                    <li><a href="Medical.html">Medical</a></li>
-                    <li><a href="Welcome-logged-in.html">Home</a></li>
-                    <li><a href="media.html">Media</a></li>
-                    <li class='settings'><a href='settings.html'><img src='Photos\settings.png'/></a></li>
-                    <a href="Welcome.html">
-                    <button class="logout"> Log out </button></a>
-                    <label for="check" class="close-menu"><i class="fas fa-times"></i></label>
-                </span>
-                <label for="check" class="open-menu"><i class="fas fa-bars"></i></label>
-            </ul>
-        </nav>
-        </header>
+    <?php require "../login-topbar.php"; ?> 
         <div class="page">
             <div class="leftbar">
                 <h2>Children</h2>
@@ -46,15 +56,20 @@
             <div class="right">
                 <a href="Memories-child.html">
                     <button>
-                        <img src="Photos/Back.png" alt="back">
+                        <img src="../Photos/Back.png" alt="back">
                         Back 
                     </button>
                 </a>
                 <h1> Add a new memory </h1>
-                <form id="add-form" method="post" action="Memories-child.html">
+                <?php if(isset($_SESSION["message"])){
+                        echo "<h1 style='text-decoration:none;'>" . $_SESSION["message"] . "</h1>";
+                    }
+                    unset($_SESSION["message"]);
+                ?>
+                <form id="add-form" method="post">
                     <li id="date">
                         <label >Date</label>
-                        <input type="date"  value="" id="memorydate">
+                        <input type="date"  value="" id="memorydate" name="date">
                     </li>
                     <li id="title">
                         <label>Title</label>
@@ -62,14 +77,14 @@
                     </li>
                     <li id="description">
                         <label >Description</label>
-                        <textarea rows="10" cols="100" placeholder="Describe the memory"></textarea>
+                        <textarea name="description" rows="10" cols="100" placeholder="Describe the memory"></textarea>
                     </li>
                     <li id="picture">
                         <label >Picture</label>
                         <input type="file" accept="image/*" value="" id="picture" name="picture" placeholder="Add picture">
                     </li>
                 <div href="Memories-child.html" class="buttons-kid1">
-                    <input type="submit" value="Save">
+                    <input type="submit" name="submit" value="Save">
                 </div>
             </form>
             </div>

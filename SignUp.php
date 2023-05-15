@@ -61,9 +61,9 @@ require 'config.php';
                 <span class="menu">
                     <li><a href="Welcome.html">Home</a></li>
                     <li><a href="AboutUs.html">About us</a></li>
-                    <a href="SignUp.html">
+                    <a href="SignUp.php">
                     <button  class="sign"> Sign up </button></a>
-                    <a href="Login.html">
+                    <a href="Login.php">
                     <button class="login"> Log in </button></a>
                     <label for="check" class="close-menu"><i class="fas fa-times"></i></label>
                 </span>
