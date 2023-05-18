@@ -14,6 +14,21 @@ if(!isset($_SESSION["login"]) || $_SESSION['login']===false){
 $user_id = $_SESSION["id"];
 $username = $_SESSION["username"];
 
+
+if(isset($_POST['delete'])){
+    $child_id = $_POST['id'];
+    $sql = "DELETE FROM child WHERE id='$child_id' AND id_parent='$user_id'";
+    $res = mysqli_query($mysql, $sql);
+    if($res){
+        $_SESSION["message"] = "Entry deleted successfully";
+        header("Location: kids-settings.php");
+        exit();
+    }
+    else{
+        echo "<script>alert('Error. Entry could not be deleted!');</script>";
+    }
+}
+
 ?>
 
 <!DOCTYPE html>
@@ -44,6 +59,12 @@ $username = $_SESSION["username"];
             </div>
             <div class="kids-container">
                 <h2>Manage kids</h2>
+                <?php 
+                if (isset($_SESSION["message"])) {
+                    echo "<h2 style=''>" . $_SESSION["message"] . "</h2>";
+                    unset($_SESSION["message"]);
+                }
+                ?>
                 <div class="child1">
                     <div class="kids">
                         <form action="manage-kids-add.php">
@@ -57,7 +78,7 @@ $username = $_SESSION["username"];
                         while ($row = mysqli_fetch_assoc($sql)) {
                         $child_id = $row['id'];
                     ?>
-                    <form id="kids-form" method="post" action="kids-settings-edit.php">
+                    <form id="kids-form" method="post" action="kids-settings-edit.php?id=<?php echo $child_id; ?>">
                             <li id="name1">
                                 <label >First name</label>
                                 <input type="text" value="<?php echo $row["firstname"] ?>" id="name1" name="name1" placeholder="First name" readonly>
@@ -82,9 +103,12 @@ $username = $_SESSION["username"];
                             </select>
                         </li>
                         <div class="buttons-kid1">
-                            <input type="submit" value="Edit">
-                            <input type="submit" value="Delete">
+                            <input type="submit" name="edit" value="Edit">
                         </div>
+                    </form>
+                    <form method="post">
+                        <input type="hidden" name="id" value="<?php echo $child_id; ?>">
+                        <input type="submit" name="delete" value="Delete">
                     </form>
                     <?php } ?>
                 </div>

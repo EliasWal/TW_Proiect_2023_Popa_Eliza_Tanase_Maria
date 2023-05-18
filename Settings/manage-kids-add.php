@@ -24,6 +24,7 @@ if(isset($_POST['submit'])){
     $rez= $stmtinsert->execute([$user_id, $firstname,$lastname,$birthday,$gender]);
     if($rez){
              $_SESSION["message"] = "Child added succesfully to the acoount!";
+             header("Location: kids-settings.php");
             }    
     else {
             echo"<script>alert('Error. child could not be added!');</script>";
@@ -59,11 +60,11 @@ if(isset($_POST['submit'])){
             </div>
             <div class="kids-container">
                 <h2>Manage kids</h2>
-                <?php if(isset($_SESSION["message"])){
+                <!-- <?php if(isset($_SESSION["message"])){
                         echo "<h2 style=''>" . $_SESSION["message"] . "</h2>";
                     }
                     unset($_SESSION["message"]);
-                ?>
+                ?> -->
                 <div class="child1">
                     
                     <form id="kids-form" method="post" >
