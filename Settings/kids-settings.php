@@ -46,12 +46,6 @@ $username = $_SESSION["username"];
                 <h2>Manage kids</h2>
                 <div class="child1">
                     <div class="kids">
-                        <!-- <label id="sel-kid">
-                                <select id="select-kid" name="kid-select">
-                                    <option value="Eric" selected>Eric</option>
-                                    <option value="Lucy">Lucy</option>
-                                </select>
-                        </label> -->
                         <form action="manage-kids-add.php">
                             <button class="add-kid">
                                 Add kid

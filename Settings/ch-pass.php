@@ -1,3 +1,53 @@
+<?php 
+require "../config.php";
+
+session_start();
+
+if(!isset($_COOKIE["login"]))
+    header("location: ../login.php");
+
+
+if(!isset($_SESSION["login"]) || $_SESSION['login']===false){
+    header("Location: ../login.php");
+}
+
+$user_id = $_SESSION["id"];
+$username = $_SESSION["username"];
+$sql_u = mysqli_query($mysql,"SELECT * FROM user_registred where id='$user_id'");
+$row = mysqli_fetch_assoc($sql_u);
+
+if(isset($_POST['submit'])){
+    $oldpass = $_POST['password-old'];
+    $newpass = $_POST['password'];
+    $repass = $_POST['repeatpassword'];
+    if($row['password'] != $oldpass) 
+    {
+        echo "<script>alert('Error. Incorrect old password!');</script>";
+    }
+    else 
+    if($row['password'] == $newpass)
+    {
+        echo "<script>alert('Error. This is the same password!');</script>";
+    }
+    else 
+    if($newpass != $repass){
+        echo "<script>alert('Error. The passwords does not match!');</script>";
+    }
+    else 
+    {
+        $sql = "UPDATE user_registred SET password='$newpass' WHERE id=$user_id";
+        $rez = mysqli_query($mysql, $sql);
+        if ($rez) 
+        {   
+            $_SESSION["message"] = "Password updated successfully";
+        } else 
+        {
+            echo "<script>alert('Error. Password could not be updated!');</script>";
+        }    
+    }
+}
+?>
+
 <!DOCTYPE html>
 <html lang="en-US">
 <head>
@@ -26,7 +76,12 @@
             </div>
             <div class="pass-container">
                 <h2>Change your password</h2>
-                <form id="pass-form" method="post" action="ch-pass-save.html">
+                <?php if(isset($_SESSION["message"])){
+                        echo "<h2 style=''>" . $_SESSION["message"] . "</h2>";
+                    }
+                    unset($_SESSION["message"]);
+                ?>
+                <form id="pass-form" method="post" >
                     <li  id="old-password">
                         <label>Old password</label>
                         <input type="password" id="password-old" name="password-old" placeholder="Enter your old password" required>
@@ -41,7 +96,7 @@
                         <label>Repeat Password</label>
                         <input type="password" id="repeatpassword" name="repeatpassword" placeholder="Enter your password" required>
                     </li>
-                    <input type="submit" value="Save">
+                    <input type="submit" name="submit" value="Save">
                 </form>
                 </div>
             </div>
