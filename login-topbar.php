@@ -14,7 +14,7 @@
                 <span class="menu">
                     <li><a href="../Memories/Memories.php">Memories</a></li>
                     <li><a href="../Calendars.html">Calendars</a></li>
-                    <li><a href="../friends.php">Friends</a></li>
+                    <li><a href="../Friends/friends.php">Friends</a></li>
                     <li><a href="../Medical.html">Medical</a></li>
                     <li><a href="../Welcome-logged-in.php">Home</a></li>
                     <li><a href="../media.html">Media</a></li>
