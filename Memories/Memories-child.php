@@ -1,19 +1,23 @@
 <?php 
-require "../config.php";
+    require "../config.php";
 
-session_start();
+    session_start();
 
-if(!isset($_COOKIE["login"]))
-    header("location: ../login.php");
+    if(!isset($_COOKIE["login"]))
+        header("location: ../login.php");
 
 
-if(!isset($_SESSION["login"]) || $_SESSION['login']===false){
-    header("Location: ../login.php");
-}
+    if(!isset($_SESSION["login"]) || $_SESSION['login']===false){
+        header("Location: ../login.php");
+    }
 
-$user_id = $_SESSION["id"];
+    $user_id = $_SESSION["id"];
+    $id_child = $_GET['id'];
+    
 
-$sql= mysqli_query($mysql, "SELECT * FROM memory where id_user='$user_id'");
+$sql= mysqli_query($mysql, "SELECT * FROM memory where id_user='$user_id' and id_child='$id_child'");
+
+$sql_name = mysqli_query($mysql, "SELECT * FROM child where id='$id_child'");
 ?>
 <!DOCTYPE html>
 <html lang="en-US">
@@ -30,17 +34,15 @@ $sql= mysqli_query($mysql, "SELECT * FROM memory where id_user='$user_id'");
 <body>
     <?php require "../login-topbar.php"; ?> 
         <div class="page">
-            <div class="leftbar">
-                <h2>Children</h2>
-                <ul class="choose-child">
-                    <li> <a href="Memories-child.php" class="child">Child 1 </a> </li>
-                    <li> <a href="Memories-child.php" class="child">Child 2 </a> </li>
-                </ul>
-            </div>
+            <?php require "../leftbar.php"; ?> 
             <div class="right">
-                <h5> Jane's memories </h5>
+                <?php
+                    $row = mysqli_fetch_assoc($sql_name);
+                    $name = $row['firstname'];
+                ?>
+                <h5> <?php echo $name; ?>'s memories </h5>
                 <div class="add-buttons">
-                    <a href="Add-memories.php">
+                    <a href="Add-memories.php?id=<?php echo $id_child; ?>">
                         <button>
                             <img src="../Photos/Add.png" alt="add">
                             Add 
@@ -90,7 +92,7 @@ $sql= mysqli_query($mysql, "SELECT * FROM memory where id_user='$user_id'");
                         </div>
                     </div>
                     <div class="post-buttons">
-                        <a href="Edit-memories1.html">
+                        <a href="Edit-memories.php?id=<?php echo $row['id']; ?>">
                             <button>
                                 <img src="../Photos/Edit.png" alt="edit">
                                 Edit 

@@ -1,38 +1,38 @@
-<?php 
-require '../config.php';
+<?php
+    require "../config.php";
 
-session_start();
+    session_start();
+    
+    if(!isset($_COOKIE["login"]))
+        header("location: ../login.php");
+    
+    
+    if(!isset($_SESSION["login"]) || $_SESSION['login']===false){
+        header("Location: ../login.php");
+    }
 
-if(!isset($_COOKIE["login"]))
-    header("location: ../login.php");
+    $user_id = $_SESSION["id"];
+    $id_memory = $_GET['id'];
 
+    $sql= mysqli_query($mysql, "SELECT * FROM memory where id='$id_memory'");
 
-if(!isset($_SESSION["login"]) || $_SESSION['login']===false){
-    header("Location: ../login.php");
-}
+    if(isset($_POST['submit'])){
+        $date = $_POST['date'];
+        $title = $_POST['title'];
+        $description = $_POST['description'];
+        $picture = $_POST['picture'];
 
-$user_id = $_SESSION["id"];
-$id_child = $_GET['id'];
-
-if(isset($_POST['submit'])){
-    $date = $_POST['date'];
-    $title = $_POST['title'];
-    $description = $_POST['description'];
-    $picture = $_POST['picture'];
-
-    $sql = "INSERT INTO memory(id_user, id_child, date, title, description, picture) VALUES(?,?,?,?,?,?)";
-    $stmtinsert = $mysql->prepare($sql);
-    $rez= $stmtinsert->execute([$user_id, $id_child, $date, $title, $description, $picture]);
-    if($rez){
-             $_SESSION["message"] = "Memory added succesfully to the acount!";
+        $sql_m = "UPDATE memory SET date='$date', title='$title', description='$description', picture='$picture' WHERE id=$id_memory";
+        $rez = mysqli_query($mysql, $sql_m);
+        if($rez){
+            $_SESSION["message"] = "Memory updated succesfully to the acount!";
             }    
-    else {
-            echo"<script>alert('Error. Memory could not be added!');</script>";
-         }
-}
-
-$sql_name = mysqli_query($mysql, "SELECT * FROM child where id='$id_child'");
+        else {
+            echo"<script>alert('Error. Memory could not be updated!');</script>";
+        }
+    }
 ?>
+
 <!DOCTYPE html>
 <html lang="en-US">
 <head>
@@ -41,7 +41,7 @@ $sql_name = mysqli_query($mysql, "SELECT * FROM child where id='$id_child'");
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title> Baby manager </title>
     <link href="admin-topbar.css" rel="stylesheet" />
-    <link href="Add-memories.css" rel="stylesheet" />
+    <link href="Edit-memories.css" rel="stylesheet" />
     <link rel="icon" type="image/png" href="https://cdn-icons-png.flaticon.com/512/2102/2102805.png"/>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta2/css/all.min.css" integrity="sha512-YWzhKL2whUzgiheMoBFwW8CKV4qpHQAEuvilg9FAn5VJUDwKZZxkJNuGM4XkWuk94WCrrwslk8yWNGmY1EduTA==" crossorigin="anonymous" referrerpolicy="no-referrer" /></head>
 </head>
@@ -50,43 +50,45 @@ $sql_name = mysqli_query($mysql, "SELECT * FROM child where id='$id_child'");
         <div class="page">
             <?php require "../leftbar.php"; ?> 
             <div class="right">
-                <a href="Memories-child.html">
+                <?php
+                    while ($row = mysqli_fetch_assoc($sql)) {
+                ?>
+                <a href="Memories-child.php?id=<?php echo $row['id_child']; ?>">
                     <button>
                         <img src="../Photos/Back.png" alt="back">
                         Back 
                     </button>
                 </a>
-                <?php
-                    $row = mysqli_fetch_assoc($sql_name);
-                    $name = $row['firstname'];
-                ?>
-                <h1> Add a new memory for <?php echo $name; ?> </h1>
+                <h1> Edit the memory </h1>
                 <?php if(isset($_SESSION["message"])){
-                        echo "<h1 style='text-decoration:none;'>" . $_SESSION["message"] . "</h1>";
+                        echo "<h2 style=''>" . $_SESSION["message"] . "</h2>";
                     }
                     unset($_SESSION["message"]);
                 ?>
                 <form id="add-form" method="post">
                     <li id="date">
                         <label >Date</label>
-                        <input type="date"  value="" id="memorydate" name="date">
+                        <input type="date"  value="<?php echo $row['date']; ?>" id="memorydate">
                     </li>
                     <li id="title">
                         <label>Title</label>
-                        <input type="text" value="" id="title" name="title" placeholder="Add a title">
+                        <input type="text" value="<?php echo $row['title']; ?>" id="title" name="title" placeholder="Add a title">
                     </li>
                     <li id="description">
                         <label >Description</label>
-                        <textarea name="description" rows="10" cols="100" placeholder="Describe the memory"></textarea>
+                        <textarea rows="10" cols="100" placeholder="Describe the memory"><?php echo $row['description']; ?></textarea>
                     </li>
                     <li id="picture">
                         <label >Picture</label>
                         <input type="file" accept="image/*" value="" id="picture" name="picture" placeholder="Add picture">
                     </li>
-                <div href="Memories-child.html" class="buttons-kid1">
+                <div class="buttons-kid1">
                     <input type="submit" name="submit" value="Save">
                 </div>
-            </form>
+                </form>
+                <?php 
+                    }
+                ?>
             </div>
         </div>
 </body>

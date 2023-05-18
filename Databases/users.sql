@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: May 15, 2023 at 10:54 PM
+-- Generation Time: May 19, 2023 at 01:19 AM
 -- Server version: 10.4.27-MariaDB
 -- PHP Version: 8.2.0
 
@@ -112,6 +112,7 @@ CREATE TABLE `medical_report` (
 CREATE TABLE `memory` (
   `id` int(11) NOT NULL,
   `id_user` int(11) NOT NULL,
+  `id_child` int(11) NOT NULL,
   `date` date NOT NULL,
   `title` varchar(200) NOT NULL,
   `description` varchar(1000) NOT NULL,
@@ -122,9 +123,10 @@ CREATE TABLE `memory` (
 -- Dumping data for table `memory`
 --
 
-INSERT INTO `memory` (`id`, `id_user`, `date`, `title`, `description`, `picture`) VALUES
-(2, 6, '2023-05-20', 'Playing at Kindergarten', 'We have been struggling for a few months to make Jane feel safe at kindergaten.\r\nEvery day as soon as she would step into the kindergaten, she would start crying.\r\nSince we didn\'t have any way of keeping her at home, we decided to continue to take her to the kindergarten, where she would be safe and would have other children to be around, and hope for the best.\r\nToday, it was the first time she was happy to go there and I managed to take a picture of her playing.\r\nShe is more and more brave every day and I\'m so proud of her!', 0x506f7374312e6a7067),
-(3, 6, '2016-06-07', 'Always a foodie', 'Some parents have a battle with their child every day trying to convince them to eat their meal.\r\nOur Jane has never caused us problems like this.\r\nFrom fruits and vegetables, to yogurt, eggs and cheese, she eats them all.\r\nAlthough she is not a fan of pasta, but maybe when she grows older we will try to give her pasta again.\r\nToday she had rice, and it was finger-liking good!', 0x506f7374322e6a7067);
+INSERT INTO `memory` (`id`, `id_user`, `id_child`, `date`, `title`, `description`, `picture`) VALUES
+(2, 6, 1, '2023-05-20', 'Playing at Kindergarten', 'We have been struggling for a few months to make Andreea feel safe at kindergaten.\r\nEvery day as soon as they would step into the kindergaten, they would start crying.\r\nSince we didn\'t have any way of keeping them at home, we decided to continue to take them to the kindergarten, where they would be safe and would have other children to be around, and hope for the best.\r\nToday, it was the first time they were happy to go there and I managed to take a picture of them playing.\r\nThey are more and more brave every day and I\'m so proud of them!', ''),
+(3, 6, 2, '2016-06-07', 'Always a foodie', 'Some parents have a battle with their child every day trying to convince them to eat their meal.\r\nOur Damian has never caused us problems like this.\r\nFrom fruits and vegetables, to yogurt, eggs and cheese, he eats them all.\r\nAlthough he is not a fan of pasta, but maybe when he grows older we will try to give him pasta again.\r\nToday he had rice, and it was finger-licking good!', ''),
+(4, 6, 2, '0000-00-00', 'Something', '', '');
 
 -- --------------------------------------------------------
 
@@ -239,7 +241,7 @@ ALTER TABLE `medical_report`
 -- AUTO_INCREMENT for table `memory`
 --
 ALTER TABLE `memory`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
 
 --
 -- AUTO_INCREMENT for table `user_registred`

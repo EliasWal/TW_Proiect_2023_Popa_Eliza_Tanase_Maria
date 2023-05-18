@@ -1,3 +1,16 @@
+<?php
+    require "../config.php";
+
+    session_start();
+    
+    if(!isset($_COOKIE["login"]))
+        header("location: ../login.php");
+    
+    
+    if(!isset($_SESSION["login"]) || $_SESSION['login']===false){
+        header("Location: ../login.php");
+    }
+?>
 <!DOCTYPE html>
 <html lang="en-US">
 <head>
@@ -13,13 +26,7 @@
 <body>
     <?php require "../login-topbar.php"; ?> 
         <div class="page">
-            <div class="leftbar">
-                <h2>Children</h2>
-                <ul class="choose-child">
-                    <li> <a href="Memories-child.php" class="child">Child 1 </a> </li>
-                    <li> <a href="Memories-child.php" class="child">Child 2 </a> </li>
-                </ul>
-            </div>
+            <?php require "../leftbar.php"; ?> 
             <div class="right">
                 <h3> 
                     <img src="https://cdn-icons-png.flaticon.com/512/3507/3507545.png" alt="memories">
