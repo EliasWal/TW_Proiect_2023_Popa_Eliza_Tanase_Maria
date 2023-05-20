@@ -50,7 +50,7 @@ $sql_name = mysqli_query($mysql, "SELECT * FROM child where id='$id_child'");
         <div class="page">
             <?php require "../leftbar.php"; ?> 
             <div class="right">
-                <a href="Memories-child.html">
+                <a href="Memories-child.php?id=<?php echo $id_child; ?>">
                     <button>
                         <img src="../Photos/Back.png" alt="back">
                         Back 

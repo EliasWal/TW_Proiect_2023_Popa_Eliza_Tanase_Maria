@@ -13,6 +13,19 @@
 
     $user_id = $_SESSION["id"];
     $id_child = $_GET['id'];
+
+    if (isset($_GET['idm'])) {
+        $idm = $_GET['idm'];
+        $delete = mysqli_query($mysql, "DELETE FROM memory WHERE id=$idm");
+        if($delete){
+            $_SESSION["message"] = "Memory deleted successfully";
+            header("Location: Memories-child.php");
+            exit();
+        }
+        else{
+            echo "<script>alert('Error. Memory could not be deleted!');</script>";
+        }
+    }
     
 
 $sql= mysqli_query($mysql, "SELECT * FROM memory where id_user='$user_id' and id_child='$id_child'");
@@ -56,6 +69,10 @@ $sql_name = mysqli_query($mysql, "SELECT * FROM child where id='$id_child'");
                 <div class="postline">
                     <div class="post">
                         <div>
+                            <?php
+                                $imageData = base64_encode($row['picture']);
+                                $src = 'data:image;base64,' . $imageData;
+                            ?>
                             <img src="https://www.epl.ca/wp-content/uploads/sites/18/2020/11/EPLAroundtheBranch_Kids_2019-5746-X3-670x447.jpg" alt="Post1">
                         </div>
                         <div class="description">
@@ -98,13 +115,13 @@ $sql_name = mysqli_query($mysql, "SELECT * FROM child where id='$id_child'");
                                 Edit 
                             </button>
                         </a>
-                        <a href="Memories-child.html">
+                        <a href="Memories-child.php?id=<?php echo $id_child; ?>&idm=<?php echo $row['id']; ?>">
                             <button>
                                 <img src="../Photos/Delete.png" alt="delete">
                                 Delete 
                             </button>
                         </a>
-                        <a href="Memories-child.html">
+                        <a href="Memories-child.php">
                             <button>
                                 <img src="../Photos/Share.png" alt="share">
                                 Share

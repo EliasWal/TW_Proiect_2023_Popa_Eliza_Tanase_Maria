@@ -68,7 +68,7 @@
                 <form id="add-form" method="post">
                     <li id="date">
                         <label >Date</label>
-                        <input type="date"  value="<?php echo $row['date']; ?>" id="memorydate">
+                        <input type="date"  value="<?php echo $row['date']; ?>" id="memorydate" name="date">
                     </li>
                     <li id="title">
                         <label>Title</label>
@@ -76,7 +76,7 @@
                     </li>
                     <li id="description">
                         <label >Description</label>
-                        <textarea rows="10" cols="100" placeholder="Describe the memory"><?php echo $row['description']; ?></textarea>
+                        <textarea name="description" rows="10" cols="100" placeholder="Describe the memory"><?php echo $row['description']; ?></textarea>
                     </li>
                     <li id="picture">
                         <label >Picture</label>
