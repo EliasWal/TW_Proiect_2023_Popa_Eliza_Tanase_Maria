@@ -119,8 +119,6 @@ input[type="password"]{
     border: 1px solid #ccc;
 }
 
-
-
 input[type="date"]{
     font-size: 1.2em;
     line-height: 1.7em;
@@ -139,19 +137,7 @@ input[type="date"]{
     height:3em;
 }
 
-#sel-kid {
-    display: flex;
-    flex-direction: column;
-    margin-bottom: 1em;
-  }
 
-#sel-kid select {
-    font-size: 1.2em;
-    padding: 0.5em;border-radius: 0.5em;
-    border: 1px solid #ccc;
-    cursor: pointer;
-    width: 100px;
-}
 .kids{
     display: flex;
     flex-direction: row;
@@ -186,6 +172,7 @@ input[type="date"]{
     flex-direction: row;
     justify-content: center;
     align-items: center;
+    margin-top: 1.7em;
 }
 
 input[type="submit"] {
@@ -202,20 +189,6 @@ input[type="submit"] {
     margin-top: 1.5em;
     color:antiquewhite;
     margin-right: 2em;
-}
-input[type="reset"] {
-    font-size: 1.2em;
-    background-color: mediumpurple;
-    width:5em;
-    height:2.5em;
-    line-height: 1.5em;
-    border-radius: 0.5em;
-    border: none;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    margin-top:1.5em;
-    color:antiquewhite;
 }
 input[type="reset"]:hover{
     background-color: palevioletred;
@@ -262,13 +235,7 @@ input[type="submit"]:hover{
         display: flex;
         flex-direction: column;
     }
-    .kids-container .buttons-kid1{
-        display: flex;
-        flex-direction: row;
-        justify-content: center;
-        align-items: center;
-        margin-left: -45%;
-    }
+  
     .leftbar h2{
         font-size: large;
     }
@@ -305,11 +272,6 @@ input[type="submit"]:hover{
         display: flex;
         align-items: center;
         justify-content: center;
-        margin-left: 30%;
-    }
-    input[type="submit"]{
-        width:7em;
-    height:2.2em;
     }
     
 }

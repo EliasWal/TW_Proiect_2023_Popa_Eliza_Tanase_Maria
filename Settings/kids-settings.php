@@ -103,12 +103,15 @@ if(isset($_POST['delete'])){
                             </select>
                         </li>
                         <div class="buttons-kid1">
-                            <input type="submit" name="edit" value="Edit">
+                            <form method="post" action="kids-settings-edit.php?id=<?php echo $child_id; ?>">
+                                <input type="hidden" name="id" value="<?php echo $child_id; ?>">
+                                <input type="submit" name="edit" value="Edit">
+                            </form>
+                            <form method="post">
+                                <input type="hidden" name="id" value="<?php echo $child_id; ?>">
+                                <input type="submit" name="delete" value="Delete">
+                            </form>
                         </div>
-                    </form>
-                    <form method="post">
-                        <input type="hidden" name="id" value="<?php echo $child_id; ?>">
-                        <input type="submit" name="delete" value="Delete">
                     </form>
                     <?php } ?>
                 </div>
