@@ -96,7 +96,12 @@ if(isset($_POST['delete'])){
                             </li>
                             <li id="Photo">
                                 <label> Photo</label>
-                                <input type="file" value="<?php echo $row["photo"] ?>" id="photo" name="photo" accept="image/*">
+                                <?php
+                    $imageData = base64_encode($row['photo']);
+                    $src = 'data:image;base64,' . $imageData;
+                    ?>
+                    <img src="<?php echo $src; ?>">
+                                <input type="file" value="" id="photo" name="photo" accept="image/*">
                             </li>
                             <div class="buttons">
                                 <input type="submit" name="submit" value="Save">

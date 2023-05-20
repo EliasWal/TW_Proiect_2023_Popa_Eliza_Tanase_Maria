@@ -39,12 +39,13 @@ $user_id = $_SESSION["id"];
                 </ul>
 
             </div>
+            <div class="prieteni">
             <?php 
                 $sql= mysqli_query($mysql, "SELECT * FROM friend where id_user='$user_id'");
                 while ($row = mysqli_fetch_assoc($sql)) {
                 $friend_id = $row['id'];
             ?>
-            <div class="prieteni">
+            
                 <div class="f1">
                     <?php
                     $imageData = base64_encode($row['photo']);

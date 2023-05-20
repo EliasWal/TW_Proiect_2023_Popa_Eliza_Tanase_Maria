@@ -16,6 +16,7 @@ body {
     font-size: larger;
     border-radius: 1em;
     margin-left: 10px;
+    min-height: 100%;
 }
 .set-menu{
     list-style-type: none;
@@ -83,23 +84,23 @@ input[type="submit"]:hover {
     justify-content: space-between;
     list-style: none;
 }
-
-.prieteni .f1, .f2, .f3, .f4{
+.prieteni .f1 {
     background-color: rgb(176, 195, 247, .5);
     padding: 1em;
     display: flex;
     flex-direction: column;
     align-items: center;
     border-radius: 1em;
-    margin-bottom: 1em;
+    margin-bottom: 1em; 
     width: 14em;
 }
 
-.prieteni .f1 img, .f3 img, .f4 img, .f2 img{
-    width: 28vw;
+
+.prieteni .f1 img{
+    width: 26vw;
     margin: auto;
     max-width: 100%;
-    height: auto;
+    height:26vh;
     margin-bottom: 1em;
     border-radius: 30%;
     box-shadow: 10px 10px 20px rgb(149, 149, 161);
