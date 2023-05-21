@@ -47,7 +47,7 @@ $sql_name = mysqli_query($mysql, "SELECT * FROM child where id='$id_child'");
 <body>
     <?php require "../login-topbar.php"; ?> 
         <div class="page">
-            <?php require "../leftbar.php"; ?> 
+            <?php require "leftbar-memories.php"; ?> 
             <div class="right">
                 <?php
                     $row = mysqli_fetch_assoc($sql_name);

@@ -21,7 +21,7 @@ body {
     /*position: fixed;*/
     padding: 1em;
     margin-top: .5em;  
-    margin-left: .5em;
+    margin-left: 10px;
     font-size: larger;
     border-radius: 1em;
 }

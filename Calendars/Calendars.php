@@ -19,24 +19,23 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title> Baby manager </title>
     <link href="admin-topbar.css" rel="stylesheet" />
-    <link href="style-memories.css" rel="stylesheet" />
+    <link href="style-calendars.css" rel="stylesheet" />
     <link rel="icon" type="image/png" href="https://cdn-icons-png.flaticon.com/512/2102/2102805.png"/>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta2/css/all.min.css" integrity="sha512-YWzhKL2whUzgiheMoBFwW8CKV4qpHQAEuvilg9FAn5VJUDwKZZxkJNuGM4XkWuk94WCrrwslk8yWNGmY1EduTA==" crossorigin="anonymous" referrerpolicy="no-referrer" /></head>
 </head>
 <body>
     <?php require "../login-topbar.php"; ?> 
         <div class="page">
-            <?php require "leftbar-memories.php"; ?> 
+            <?php require "leftbar-calendars.php"; ?> 
             <div class="right">
                 <h3> 
-                    <img src="https://cdn-icons-png.flaticon.com/512/3507/3507545.png" alt="memories">
-                    Memories
+                    <img src="../Photos/Calendar.png" alt="calendar">
+                    Calendars
                 </h3>
-                <p> The <i>"Memories"</i> feature offers you a way to organise your child's adventures.  </p>
-                <p> After you select from the <i> left side menu </i> the child you want to see the memories of, you can edit to add 
-                your photos and descriptions of special moments with your child. </p>
-                <p> Now you have a digital photo album to remember every step of your child! Scroll down in your <i>Memories</i> section
-                to see every day of your child from the very first one! </p>
+                <p> The <i>"Calendars"</i> feature offers you a way to organise your child's sleeping and food schedules.  </p>
+                <p> After you select from the <i> left side menu </i> the child you want to see the calendar of, you can edit to add 
+                your prefered activities and their time period. </p>
+                <p> After you finish with your favourite activities, you can mark them as checked. </p>
             </div>
         </div>
 </body>

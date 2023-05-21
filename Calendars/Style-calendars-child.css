@@ -1,0 +1,263 @@
+body {
+    background-color: #B28FF7;
+}
+
+.page {
+    display: flex;
+    flex-direction: row;
+    margin-top: .5em;
+}
+
+.container{
+    display: flex;
+    flex-direction: column; 
+}
+
+#table-calender {
+    margin-left: 20px;
+    margin-right: 20px;
+    font-size: 1.2em;
+    display: flex;
+    flex-direction: column;
+    margin-top: .5em;
+    background-color: lavender;
+    border-radius: 2em;
+    padding: 2em;
+    width: 100%;
+}
+
+
+#table-calender label{
+    font-size: 1.5em;
+    line-height: 1em;
+    margin-bottom: 1em;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    color:blueviolet;
+    justify-content: space-around;
+}
+
+.time-inp, .sleep-chk, .feed-chk, .note-in {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+
+.valori, .labels{
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+}
+
+table td {
+    padding: 10px;
+    text-align: center;
+}
+
+input[type="time"]{
+    font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
+    font-size: 1em;
+    line-height: 1em;
+    padding: .5em;
+    border-radius: 0.5em;
+    border: 1px solid #ccc;
+    margin-bottom: .5em;
+}
+
+input[type="text"]{
+    font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
+    font-size: 1em;
+    line-height: 1em;
+    padding: .4em;
+    border-radius: 0.5em;
+    border: 1px solid #ccc;
+    margin-bottom: .5em;
+    width: 500px;
+}
+
+.buttons button {
+    font-size: medium;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    background: white;
+    border-radius: 1em;
+    height: 2.5em;
+    width: 6em;
+    align-items: center;
+}
+
+.buttons {
+    display: flex;
+    flex-direction: row;
+    margin-left: 1em;
+}
+
+.buttons button img {
+    width: 1.2em;
+}
+
+.column-optional{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+input[type="checkbox"] {
+    font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
+    font-size: 5em;
+    line-height: 5em;
+    padding: .5em;
+    border-radius: 0.5em;
+    border: 1px solid #ccc;
+    margin-bottom: .5em;
+    vertical-align: middle;
+  }
+
+
+.leftbar{
+    font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
+    background-color: lavender;
+    display: flex;
+    flex-direction: column;
+    width: 8em;
+    /*position: fixed;*/
+    padding: 1em;
+    margin-top: .5em;  
+    margin-left: .5em;
+    font-size: larger;
+    border-radius: 1em;
+}
+
+.leftbar h2 {
+    border-radius: .2em;
+    margin-bottom: 2em;
+}
+
+.choose-child {
+    list-style-type: none;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    position: relative;
+    margin-top: 40px;
+}
+
+.choose-child li:hover {
+    color: blueviolet;
+    background-color: rgba(240,248,255, .5);
+    border-radius: .7em;
+    font-weight: 900;
+    padding-left: .6em;
+
+}
+
+.choose-child .child{
+    text-decoration: none;   
+    color: mediumpurple;
+}
+
+.content {
+    background: rgba(230,230,250, .2); /* lavender */
+    padding: 1em;
+    margin-top: .5em; 
+    margin-right: .5em;
+    margin-left: .5em;
+    border-radius: .5em;
+    width: 100vw;
+    height: 100%;
+    
+}
+
+h1 {
+    font-size: xx-large;
+    color: palevioletred;
+    flex-direction: row;
+    font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
+    margin-bottom: 1em;
+    margin-top: 1em;
+    align-self:center;
+    background-color: lavender;
+    border-radius: .2em;
+    padding: .2em;
+    -webkit-text-stroke: .3px blueviolet;
+}
+
+@media(max-width:1220px){
+    input[type="text"]{
+        width: 90%;
+    }
+}
+
+@media(max-width:900px) {
+    .page {
+        flex-direction: column;
+    }
+
+    .leftbar {
+        width: 100vw;
+        height: 5em;
+        text-align: center;
+        justify-content: center;
+        margin-top: 0;
+        margin-left: 0;
+        border-radius: 0;
+        padding: 0;
+    }
+
+    .leftbar h2 {
+        margin-bottom: 0;
+        background: none;
+    }
+
+    .choose-child {
+        flex-direction: row;
+        justify-content: space-evenly;
+        align-items: center;
+        font-size: large;
+        background: none;
+    }
+    #table-calender{
+        margin-left: 0;
+    }
+    input[type="text"]{
+        width: 30vw;
+    }
+}
+
+@media(max-width:740px){
+    #table-calender{
+        font-size: 1em;
+    }
+
+    .buttons button img{
+        width:10px;
+    }
+
+    .buttons button {
+        margin-bottom: .2em;
+        width: 5em;
+    }
+}
+
+@media(max-width:530px) {
+    #table-calender {
+        font-size: .7em
+    }
+
+    .buttons button {
+        font-size: small;
+    }
+
+    input[type="checkbox"]{
+        margin-bottom:.45em;
+    }
+
+    input[type="text"]{
+        padding:.5em;
+    }
+}
+
+@media(max-width:420px) {
+    #table-calender label {
+        font-size:small;
+    }
+}

@@ -26,7 +26,6 @@ body {
 .choose-child {
     list-style-type: none;
     display: flex;
-    align-items: center;
     flex-direction: column;
     position: relative;
     margin-top: 40px;
@@ -133,7 +132,7 @@ input[type="file"] {
     background-color: white;
 }
 
-input[type="date"]{
+input[type="time"]{
     font-size: 1.2em;
     line-height: 1.7em;
     padding: 1em;
