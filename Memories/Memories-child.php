@@ -19,7 +19,7 @@
         $delete = mysqli_query($mysql, "DELETE FROM memory WHERE id=$idm");
         if($delete){
             $_SESSION["message"] = "Memory deleted successfully";
-            header("Location: Memories-child.php");
+            header("Location: Memories-child.php?id=$id_child");
             exit();
         }
         else{
@@ -121,7 +121,7 @@ $sql_name = mysqli_query($mysql, "SELECT * FROM child where id='$id_child'");
                                 Delete 
                             </button>
                         </a>
-                        <a href="Memories-child.php">
+                        <a href="Memories-child.php?id=<?php echo $id_child; ?>">
                             <button>
                                 <img src="../Photos/Share.png" alt="share">
                                 Share
