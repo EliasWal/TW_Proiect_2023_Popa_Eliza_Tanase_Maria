@@ -86,31 +86,31 @@ if(isset($_POST['delete'])){
                 }
                 ?>
                 <form id="friend-form" method="post" action="">
-                            <li id="Name">
-                                <label >Name</label>
-                                <input type="text" value="<?php echo $row["name"] ?>" id="name" name="name" placeholder="Full name">
-                            </li>
-                            <li id="Relation">
-                                <label >Relation</label>
-                                <input type="text" value="<?php echo $row["relationship"] ?>" id="relation" name="relation" placeholder="Type of friend">
-                            </li>
-                            <li id="Photo">
-                                <label> Photo</label>
-                                <?php
-                    $imageData = base64_encode($row['photo']);
-                    $src = 'data:image;base64,' . $imageData;
-                    ?>
-                    <img src="<?php echo $src; ?>">
-                                <input type="file" value="" id="photo" name="photo" accept="image/*">
-                            </li>
-                            <div class="buttons">
-                                <input type="submit" name="submit" value="Save">
-                            </div>
+                    <li id="Name">
+                        <label >Name</label>
+                        <input type="text" value="<?php echo $row["name"] ?>" id="name" name="name" placeholder="Full name">
+                    </li>
+                    <li id="Relation">
+                        <label >Relation</label>
+                        <input type="text" value="<?php echo $row["relationship"] ?>" id="relation" name="relation" placeholder="Type of friend">
+                    </li>
+                    <li id="Photo">
+                        <label> Photo</label>
+                        <?php
+                            $imageData = base64_encode($row['photo']);
+                            $src = 'data:image;base64,' . $imageData;
+                        ?>
+                        <img src="<?php echo $src; ?>">
+                        <input type="file" value="" id="photo" name="photo" accept="image/*">
+                    </li>
+                    <div class="buttons">
+                        <input type="submit" name="submit" value="Save">
+                    </div>
                 </form>
                 <form method="post">
                         <input type="hidden" name="id" value="<?php echo $friend_id; ?>">
                         <input type="submit" name="delete" value="Delete">
-                    </form>
+                </form>
             </div>
         </div>
 </body>

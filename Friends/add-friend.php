@@ -16,27 +16,19 @@ if (isset($_POST['submit'])) {
     $name = $_POST['name'];
     $relationship = $_POST['relation'];
 
-    // Check if a file was uploaded
     if (isset($_FILES['photo'])) {
         $file = $_FILES['photo'];
 
-        // Get the file data
         $fileName = $file['name'];
         $fileTmpName = $file['tmp_name'];
         $fileSize = $file['size'];
         $fileError = $file['error'];
 
-        // Read the file content
         $fileData = file_get_contents($fileTmpName);
 
-        // Include the database connection configuration
-        require '../config.php';
-
-        // Prepare the SQL statement
         $stmt = $mysql->prepare("INSERT INTO friend (id_user, name, relationship, photo) VALUES (?, ?, ?, ?)");
-        $stmt->bind_param("isbs", $user_id, $name, $relationship, $fileData);
+        $stmt->bind_param("isss", $user_id, $name, $relationship, $fileData);
 
-        // Execute the statement
         if ($stmt->execute()) {
             $_SESSION["message"] = "Friend added successfully to the account!";
             header("Location: friends.php");
@@ -45,7 +37,6 @@ if (isset($_POST['submit'])) {
             echo "<script>alert('Error. Friend could not be added!');</script>";
         }
 
-        // Close the statement and the database connection
         $stmt->close();
         $conn->close();
     }
@@ -80,17 +71,21 @@ if (isset($_POST['submit'])) {
         <div class="friend-container">
             <h2>Add friend</h2>
             <form id="friend-form" method="post" enctype="multipart/form-data">
-    <li id="Name">
-        <label>Name</label>
-        <input type="text" value="" id="name" name="name" placeholder="Full name" required>
-    </li>
-    <li id="Relation">
-        <label>Relation</label>
-        <input type="text" value="" id="relation" name="relation" placeholder="Type of friend" required>
-    </li>
-    <li id="Photo">
-        <label>Photo</label>
-        <input type="file" id="photo" name="photo" accept="image/*">
-    </li>
-    <input type="submit" name="submit" value="Save">
-</form>
+                <li id="Name">
+                    <label>Name</label>
+                    <input type="text" value="" id="name" name="name" placeholder="Full name" required>
+                </li>
+                <li id="Relation">
+                    <label>Relation</label>
+                    <input type="text" value="" id="relation" name="relation" placeholder="Type of friend" required>
+                </li>
+                <li id="Photo">
+                    <label>Photo</label>
+                    <input type="file" id="photo" name="photo" accept="image/*">
+                </li>
+                <input type="submit" name="submit" value="Save">
+            </form>
+        </div>
+    </div>
+</body>
+</html>

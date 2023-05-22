@@ -34,35 +34,38 @@ $user_id = $_SESSION["id"];
                     <li id="general">
                         <a href="friends.php">Friends</a></li>
                     <li id="add-friend">
-                        <a href="add-friend.php">Add friend</a>
-                    </li>
+                        <a href="add-friend.php">Add friend</a> </li>
                 </ul>
 
             </div>
             <div class="prieteni">
-            <?php 
-                $sql= mysqli_query($mysql, "SELECT * FROM friend where id_user='$user_id'");
-                while ($row = mysqli_fetch_assoc($sql)) {
-                $friend_id = $row['id'];
-            ?>
-            
-                <div class="f1">
-                    <?php
-                    $imageData = base64_encode($row['photo']);
-                    $src = 'data:image;base64,' . $imageData;
+                <?php 
+                    $sql= mysqli_query($mysql, "SELECT * FROM friend where id_user='$user_id'");
+                    if (mysqli_num_rows($sql) == 0) {
+                        echo "Add some friends from the leftbar";
+                    } 
+                    else 
+                    {   while ($row = mysqli_fetch_assoc($sql)) {
+                            $friend_id = $row['id'];
+                            ?>
+                            <div class="f1">
+                                <?php
+                                $imageData = base64_encode($row['photo']);
+                                $src = 'data:image;base64,' . $imageData;
+                                ?>
+                                <img src="<?php echo $src; ?>">
+                                <li>Name:  <?php echo $row['name']; ?></li>
+                                <li>Relation: <?php echo $row['relationship']; ?></li>
+                                <li id="edit">
+                                    <a href="edit-friend.php?id=<?php echo $friend_id; ?>">
+                                        <input type="submit" value="Edit">
+                                    </a>
+                                </li>
+                            </div>
+                        <?php 
+                        }
+                    } 
                     ?>
-                    <img src="<?php echo $src; ?>">
-                    <li>Name:  <?php echo $row['name']; ?></li>
-                    <li>Relation: <?php echo $row['relationship']; ?></li>
-                    <li id="edit">
-                        <a href="edit-friend.php?id=<?php echo $friend_id; ?>">
-                            <input type="submit" value="Edit">
-                        </a>
-                    </li>
-                </div>
-                <?php } ?>
-                </div>
-                
             </div>
         </div>
 </body>
