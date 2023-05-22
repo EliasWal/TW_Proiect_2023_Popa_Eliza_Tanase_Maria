@@ -61,6 +61,18 @@ if(isset($_POST['delete'])){
     <link href="edit-friend.css" rel="stylesheet" />
     <link rel="icon" type="image/png" href="https://cdn-icons-png.flaticon.com/512/2102/2102805.png"/>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta2/css/all.min.css" integrity="sha512-YWzhKL2whUzgiheMoBFwW8CKV4qpHQAEuvilg9FAn5VJUDwKZZxkJNuGM4XkWuk94WCrrwslk8yWNGmY1EduTA==" crossorigin="anonymous" referrerpolicy="no-referrer" /></head>
+    <script>
+        function previewPhoto(event) {
+            var input = event.target;
+            if (input.files && input.files[0]) {
+                var reader = new FileReader();
+                reader.onload = function (e) {
+                    document.getElementById('previewImage').src = e.target.result;
+                };
+                reader.readAsDataURL(input.files[0]);
+            }
+        }
+    </script>
 </head>
 <body>
     <?php require "../login-topbar.php"; ?> 
@@ -100,8 +112,8 @@ if(isset($_POST['delete'])){
                             $imageData = base64_encode($row['photo']);
                             $src = 'data:image;base64,' . $imageData;
                         ?>
-                        <img src="<?php echo $src; ?>">
-                        <input type="file" value="" id="photo" name="photo" accept="image/*">
+                        <img id="previewImage" src="<?php echo $src; ?>">
+                        <input type="file" value="" id="photo" name="photo" accept="image/*" onchange="previewPhoto(event)">
                     </li>
                     <div class="buttons">
                         <input type="submit" name="submit" value="Save">
