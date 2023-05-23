@@ -53,6 +53,21 @@ if (isset($_POST['submit'])) {
     <link href="add-friend.css" rel="stylesheet" />
     <link rel="icon" type="image/png" href="https://cdn-icons-png.flaticon.com/512/2102/2102805.png"/>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta2/css/all.min.css" integrity="sha512-YWzhKL2whUzgiheMoBFwW8CKV4qpHQAEuvilg9FAn5VJUDwKZZxkJNuGM4XkWuk94WCrrwslk8yWNGmY1EduTA==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+    <script>
+        function previewPhoto(event) {
+            var input = event.target;
+            if (input.files && input.files[0]) {
+                var reader = new FileReader();
+                reader.onload = function (e) {
+                    document.getElementById('previewImage').src = e.target.result;
+                    document.getElementById('previewImage').style.display = 'block'; // Show the image element
+                };
+                reader.readAsDataURL(input.files[0]);
+            } else {
+                document.getElementById('previewImage').style.display = 'none'; // Hide the image element
+            }
+        }
+    </script>
 </head>
 <body>
     <?php require "../login-topbar.php"; ?> 
@@ -81,7 +96,8 @@ if (isset($_POST['submit'])) {
                 </li>
                 <li id="Photo">
                     <label>Photo</label>
-                    <input type="file" id="photo" name="photo" accept="image/*">
+                    <img id="previewImage" src="" style="display: none;"> <!-- Initially hidden -->
+                    <input type="file" id="photo" name="photo" accept="image/*" onchange="previewPhoto(event)">
                 </li>
                 <input type="submit" name="submit" value="Save">
             </form>

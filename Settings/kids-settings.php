@@ -18,6 +18,10 @@ $username = $_SESSION["username"];
 if(isset($_POST['delete'])){
     $child_id = $_POST['id'];
     $sql = "DELETE FROM child WHERE id='$child_id' AND id_parent='$user_id'";
+    $sql1 = "DELETE FROM memory WHERE id_child='$child_id' AND id_user='$user_id'";
+    $sql2 = "DELETE FROM calendar WHERE id_child='$child_id' AND id_user='$user_id'";
+    $res2 = mysqli_query($mysql, $sql2);
+    $res1 = mysqli_query($mysql, $sql1);
     $res = mysqli_query($mysql, $sql);
     if($res){
         $_SESSION["message"] = "Entry deleted successfully";

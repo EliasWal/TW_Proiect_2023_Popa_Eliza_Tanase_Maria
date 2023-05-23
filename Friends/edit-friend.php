@@ -117,12 +117,14 @@ if(isset($_POST['delete'])){
                     </li>
                     <div class="buttons">
                         <input type="submit" name="submit" value="Save">
-                    </div>
-                </form>
-                <form method="post">
+                        <form method="post">
                         <input type="hidden" name="id" value="<?php echo $friend_id; ?>">
                         <input type="submit" name="delete" value="Delete">
                 </form>
+                    </div>
+                    
+                </form>
+                
             </div>
         </div>
 </body>

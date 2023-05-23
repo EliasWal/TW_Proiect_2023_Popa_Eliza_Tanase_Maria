@@ -108,7 +108,7 @@ input[type="file"]{
     border-radius: 0.5em;
     border: 1px solid #ccc;
     background-color: white;
-    width: 14em ;
+    width: 50em ;
 }
 
 #Photo {
@@ -145,7 +145,7 @@ input[type="submit"] {
     display: flex;
     align-items: center;
     justify-content: center;
-    margin-top: 2em;
+    margin-top: .5em;
     color:antiquewhite;
     margin-right: 2em;
 }
@@ -207,7 +207,20 @@ input[type="submit"]:hover{
         margin-top: 1em;
     }
     input[type="text"], input[type="file"]{
-        width: 15em;
+        width: 100%;
+    }
+    #Picture {
+        width: 50%;
+        height: 50%;
+    }
+    #friend-form img{
+        margin: auto;
+        margin-bottom: 20px;
+    }
+    input[type="submit"]{
+        display: flex;
+        justify-content: center;
+        align-items: center;
     }
     
 }
@@ -224,5 +237,13 @@ input[type="submit"]:hover{
     .buttons {
         display: flex;
         justify-content: space-around;
+    }
+
+   #friend-form img{
+        display: block;
+        width: 150px;
+        height: 150px;
+        margin: auto;
+        
     }
 }

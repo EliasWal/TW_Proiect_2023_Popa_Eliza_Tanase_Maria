@@ -17,7 +17,7 @@
                     <li><a href="../Friends/friends.php">Friends</a></li>
                     <li><a href="../Medical.html">Medical</a></li>
                     <li><a href="../Welcome-logged-in.php">Home</a></li>
-                    <li><a href="../media.html">Media</a></li>
+                    <li><a href="../media.php">Media</a></li>
                     <li class='settings'>
                         <a href='../Settings/settings.php'>
                             <img src='../Photos/settings.png'/>
