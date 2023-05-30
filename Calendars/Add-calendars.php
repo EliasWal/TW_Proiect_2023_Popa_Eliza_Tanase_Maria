@@ -18,9 +18,10 @@
         $time = $_POST['time'];
         $notes = $_POST['notes'];
     
-        $sql = "INSERT INTO calendar(id_user, id_child, time, sleep, feed, notes) VALUES(?,?,?,?,?,?)";
+        $sql = "INSERT INTO calendar(id_user, id_child, time, notes) VALUES(?,?,?,?)";
         $stmtinsert = $mysql->prepare($sql);
-        $rez= $stmtinsert->execute([$user_id, $id_child, $time, 0, 0, $notes]);
+        $stmtinsert->bind_param("iids", $user_id, $id_child, $time, $notes);
+        $rez= $stmtinsert->execute();
         if($rez){
                  $_SESSION["message"] = "Entry added succesfully to the calendar!";
                 }    
