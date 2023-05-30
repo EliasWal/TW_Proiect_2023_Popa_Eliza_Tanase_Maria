@@ -19,10 +19,10 @@ if(isset($_POST['submit'])){
     $title = $_POST['title'];
     $description = $_POST['description'];
     $picture = $_POST['picture'];
-
     $sql = "INSERT INTO memory(id_user, id_child, date, title, description, picture) VALUES(?,?,?,?,?,?)";
     $stmtinsert = $mysql->prepare($sql);
-    $rez= $stmtinsert->execute([$user_id, $id_child, $date, $title, $description, $picture]);
+    $stmtinsert->bind_param('iisssb', $user_id, $id_child, $date, $title, $description, $picture);
+    $rez= $stmtinsert->execute();
     if($rez){
              $_SESSION["message"] = "Memory added succesfully to the acount!";
             }    
