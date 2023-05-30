@@ -21,10 +21,12 @@ if(isset($_POST['submit'])){
 
     $sql = "INSERT INTO child (id_parent, firstname, lastname, birthday, gender) VALUES(?,?,?,?,?)";
     $stmtinsert = $mysql->prepare($sql);
-    $rez= $stmtinsert->execute([$user_id, $firstname,$lastname,$birthday,$gender]);
+    $stmtinsert->bind_param('issss', $user_id, $firstname,$lastname,$birthday,$gender);
+    $rez= $stmtinsert->execute();
     if($rez){
              $_SESSION["message"] = "Child added succesfully to the acoount!";
              header("Location: kids-settings.php");
+             exit;
             }    
     else {
             echo"<script>alert('Error. child could not be added!');</script>";
