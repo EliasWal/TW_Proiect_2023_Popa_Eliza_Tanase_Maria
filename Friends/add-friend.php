@@ -1,7 +1,6 @@
 <?php
 require '../config.php';
-
-session_start();
+require 'friend-service.php';
 
 if (!isset($_COOKIE["login"]))
     header("location: ../login.php");
@@ -12,35 +11,7 @@ if (!isset($_SESSION["login"]) || $_SESSION['login'] === false) {
 
 $user_id = $_SESSION["id"];
 
-if (isset($_POST['submit'])) {
-    $name = $_POST['name'];
-    $relationship = $_POST['relation'];
 
-    if (isset($_FILES['photo'])) {
-        $file = $_FILES['photo'];
-
-        $fileName = $file['name'];
-        $fileTmpName = $file['tmp_name'];
-        $fileSize = $file['size'];
-        $fileError = $file['error'];
-
-        $fileData = file_get_contents($fileTmpName);
-
-        $stmt = $mysql->prepare("INSERT INTO friend (id_user, name, relationship, photo) VALUES (?, ?, ?, ?)");
-        $stmt->bind_param("isss", $user_id, $name, $relationship, $fileData);
-
-        if ($stmt->execute()) {
-            $_SESSION["message"] = "Friend added successfully to the account!";
-            header("Location: friends.php");
-            exit;
-        } else {
-            echo "<script>alert('Error. Friend could not be added!');</script>";
-        }
-
-        $stmt->close();
-        $conn->close();
-    }
-}
 ?>
 <!DOCTYPE html>
 <html lang="en-US">
@@ -96,7 +67,7 @@ if (isset($_POST['submit'])) {
                 </li>
                 <li id="Photo">
                     <label>Photo</label>
-                    <img id="previewImage" src="" style="display: none;"> <!-- Initially hidden -->
+                    <img id="previewImage" src="" style="display: none;">
                     <input type="file" id="photo" name="photo" accept="image/*" onchange="previewPhoto(event)">
                 </li>
                 <input type="submit" name="submit" value="Save">

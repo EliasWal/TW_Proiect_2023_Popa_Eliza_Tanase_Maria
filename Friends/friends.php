@@ -12,6 +12,7 @@ if(!isset($_SESSION["login"]) || $_SESSION['login']===false){
 }
 
 $user_id = $_SESSION["id"];
+
 ?>
 <!DOCTYPE html>
 <html lang="en-US">
