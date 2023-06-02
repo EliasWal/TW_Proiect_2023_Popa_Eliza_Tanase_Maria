@@ -73,7 +73,8 @@ $sql_name = mysqli_query($mysql, "SELECT * FROM child where id='$id_child'");
                                 $imageData = base64_encode($row['picture']);
                                 $src = 'data:image;base64,' . $imageData;
                             ?>
-                            <img src="https://www.epl.ca/wp-content/uploads/sites/18/2020/11/EPLAroundtheBranch_Kids_2019-5746-X3-670x447.jpg" alt="Post1">
+                            <img src="<?php echo $src;?>">
+                            <!-- <img src="https://www.epl.ca/wp-content/uploads/sites/18/2020/11/EPLAroundtheBranch_Kids_2019-5746-X3-670x447.jpg" alt="Post1"> -->
                         </div>
                         <div class="description">
                             <h3> <?php echo $row['title']; ?> </h3>

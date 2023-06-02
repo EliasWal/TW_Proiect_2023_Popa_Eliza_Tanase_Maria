@@ -18,17 +18,30 @@ if(isset($_POST['submit'])){
     $date = $_POST['date'];
     $title = $_POST['title'];
     $description = $_POST['description'];
-    $picture = $_POST['picture'];
-    $sql = "INSERT INTO memory(id_user, id_child, date, title, description, picture) VALUES(?,?,?,?,?,?)";
-    $stmtinsert = $mysql->prepare($sql);
-    $stmtinsert->bind_param('iisssb', $user_id, $id_child, $date, $title, $description, $picture);
-    $rez= $stmtinsert->execute();
-    if($rez){
-             $_SESSION["message"] = "Memory added succesfully to the acount!";
-            }    
-    else {
-            echo"<script>alert('Error. Memory could not be added!');</script>";
-         }
+
+    if (isset($_FILES['picture'])) {
+        $file = $_FILES['picture'];
+
+        $fileName = $file['name'];
+        $fileTmpName = $file['tmp_name'];
+        $fileSize = $file['size'];
+        $fileError = $file['error'];
+
+        $fileData = file_get_contents($fileTmpName);
+
+        $sql = "INSERT INTO memory(id_user, id_child, date, title, description, picture) VALUES(?,?,?,?,?,?)";
+        $stmtinsert = $mysql->prepare($sql);
+        $stmtinsert->bind_param('iissss', $user_id, $id_child, $date, $title, $description, $fileData);
+        $rez= $stmtinsert->execute();
+        
+        if($rez){
+                $_SESSION["message"] = "Memory added succesfully to the acount!";
+                }    
+        else {
+                echo"<script>alert('Error. Memory could not be added!');</script>";
+            }
+    }
+    else echo "Nope!";
 }
 
 $sql_name = mysqli_query($mysql, "SELECT * FROM child where id='$id_child'");
@@ -66,7 +79,7 @@ $sql_name = mysqli_query($mysql, "SELECT * FROM child where id='$id_child'");
                     }
                     unset($_SESSION["message"]);
                 ?>
-                <form id="add-form" method="post">
+                <form id="add-form" method="post" enctype="multipart/form-data">
                     <li id="date">
                         <label >Date</label>
                         <input type="date"  value="" id="memorydate" name="date">
