@@ -44,6 +44,18 @@
     <link href="Edit-memories-style.css" rel="stylesheet" />
     <link rel="icon" type="image/png" href="https://cdn-icons-png.flaticon.com/512/2102/2102805.png"/>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta2/css/all.min.css" integrity="sha512-YWzhKL2whUzgiheMoBFwW8CKV4qpHQAEuvilg9FAn5VJUDwKZZxkJNuGM4XkWuk94WCrrwslk8yWNGmY1EduTA==" crossorigin="anonymous" referrerpolicy="no-referrer" /></head>
+    <script>
+        function previewPhoto(event) {
+            var input = event.target;
+            if (input.files && input.files[0]) {
+                var reader = new FileReader();
+                reader.onload = function (e) {
+                    document.getElementById('previewImage').src = e.target.result;
+                };
+                reader.readAsDataURL(input.files[0]);
+            }
+        }
+    </script>
 </head>
 <body>
     <?php require "../login-topbar.php"; ?> 
@@ -60,11 +72,13 @@
                     </button>
                 </a>
                 <h1> Edit the memory </h1>
+                <h1>
                 <?php if(isset($_SESSION["message"])){
                         echo "<h2 style=''>" . $_SESSION["message"] . "</h2>";
                     }
                     unset($_SESSION["message"]);
                 ?>
+                </h1>
                 <form id="add-form" method="post">
                     <li id="date">
                         <label >Date</label>
@@ -80,7 +94,12 @@
                     </li>
                     <li id="picture">
                         <label >Picture</label>
-                        <input type="file" accept="image/*" value="" id="picture" name="picture" placeholder="Add picture">
+                        <?php
+                            $imageData = base64_encode($row['picture']);
+                            $src = 'data:image;base64,' . $imageData;
+                        ?>
+                        <img src="<?php echo $src;?>" id="previewImage">
+                        <input type="file" accept="image/*" value="" id="picture" name="picture" placeholder="Add picture" onchange="previewPhoto(event)">
                     </li>
                 <div class="buttons-kid1">
                     <input type="submit" name="submit" value="Save">
