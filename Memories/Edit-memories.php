@@ -20,17 +20,28 @@
         $date = $_POST['date'];
         $title = $_POST['title'];
         $description = $_POST['description'];
-        $picture = $_POST['picture'];
 
-        $sql_m = "UPDATE memory SET date='$date', title='$title', description='$description', picture='$picture' WHERE id=$id_memory";
-        $rez = mysqli_query($mysql, $sql_m);
-        if($rez){
-            $_SESSION["message"] = "Memory updated succesfully to the acount!";
-            }    
-        else {
-            echo"<script>alert('Error. Memory could not be updated!');</script>";
+        if(isset($_FILES['picture'])) {
+            $file = $_FILES['picture'];
+
+            $fileName = $file['name'];
+            $fileTmpName = $file['tmp_name'];
+            $fileSize = $file['size'];
+            $fileError = $file['error'];
+
+            $fileData = file_get_contents($fileTmpName);
+
+            $sql_m = "UPDATE memory SET date='$date', title='$title', description='$description', picture='$fileData' WHERE id=$id_memory";
+            $rez = mysqli_query($mysql, $sql_m);
+            if($rez){
+                $_SESSION["message"] = "Memory updated succesfully to the acount!";
+                }    
+            else {
+                echo"<script>alert('Error. Memory could not be updated!');</script>";
+            }
         }
-    }
+        else {echo "Nope!";}
+}
 ?>
 
 <!DOCTYPE html>
@@ -79,7 +90,7 @@
                     unset($_SESSION["message"]);
                 ?>
                 </h1>
-                <form id="add-form" method="post">
+                <form id="add-form" method="post" enctype="multipart/form-data">
                     <li id="date">
                         <label >Date</label>
                         <input type="date"  value="<?php echo $row['date']; ?>" id="memorydate" name="date">

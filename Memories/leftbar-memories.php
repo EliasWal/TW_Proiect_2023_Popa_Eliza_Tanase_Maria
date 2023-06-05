@@ -1,4 +1,5 @@
 <?php
+    include "../config.php";
     $user_id = $_SESSION["id"];
 
     $sql2= mysqli_query($mysql, "SELECT * FROM child where id_parent='$user_id'");
