@@ -1,3 +1,24 @@
+<?php
+    require "../config.php";
+
+    session_start();
+    
+    if(!isset($_COOKIE["login"]))
+        header("location: ../login.php");
+    
+    
+    if(!isset($_SESSION["login"]) || $_SESSION['login']===false){
+        header("Location: ../login.php");
+    }
+
+    $user_id = $_SESSION["id"];
+    $id_child = $_GET['id'];
+
+    $sql= mysqli_query($mysql, "SELECT * FROM medical_report where id_user='$user_id' and id_child='$id_child'");
+
+    $sql_name = mysqli_query($mysql, "SELECT * FROM child where id='$id_child'");
+?>
+
 <!DOCTYPE html>
 <html lang="en-US">
 <head>
@@ -11,44 +32,19 @@
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta2/css/all.min.css" integrity="sha512-YWzhKL2whUzgiheMoBFwW8CKV4qpHQAEuvilg9FAn5VJUDwKZZxkJNuGM4XkWuk94WCrrwslk8yWNGmY1EduTA==" crossorigin="anonymous" referrerpolicy="no-referrer" /></head>
 </head>
 <body>
-    <header>
-        <nav>
-            <ul class='nav-bar'>
-                <div class='logo'>
-                        <img src='Photos\Baby manager.png'/> 
-                        <span class='logo-name'>BABY MANAGER</span>
-                  </div>
-                <input type='checkbox' id='check' />
-                <span class="menu">
-                    <li><a href="Memories.html">Memories</a></li>
-                    <li><a href="Calendars.html">Calendars</a></li>
-                    <li><a href="friends.html">Friends</a></li>
-                    <li><a href="Medical.html">Medical</a></li>
-                    <li><a href="Welcome-logged-in.html">Home</a></li>
-                    <li><a href="media.html">Media</a></li>
-                    <li class='settings'><a href='settings.html'><img src='Photos\settings.png'/></a></li>
-                    <a href="Welcome.html">
-                    <button class="logout"> Log out </button></a>
-                    <label for="check" class="close-menu"><i class="fas fa-times"></i></label>
-                </span>
-                <label for="check" class="open-menu"><i class="fas fa-bars"></i></label>
-            </ul>
-        </nav>
-        </header>
+    <?php require "../login-topbar.php"; ?> 
         <div class="page">
-            <div class="leftbar">
-                <h2>Children</h2>
-                <ul class="choose-child">
-                    <li> <a href="Medical-child.html" class="child">Child 1 </a> </li>
-                    <li> <a href="Medical-child.html" class="child">Child 2 </a> </li>
-                </ul>
-            </div>
+            <?php require "leftbar-medical.php"; ?> 
             <div class="right">
-                <h1> Jane's medical history </h1>
+                <?php
+                    $row = mysqli_fetch_assoc($sql_name);
+                    $name = $row['firstname'];
+                ?>
+                <h1> <?php echo $name; ?>'s memories </h1>
                 <div class="medical-buttons">
-                    <a href="Add-Medical.html">
+                    <a href="Add-Medical.php?id=<?php echo $id_child; ?>">
                         <button>
-                            <img src="Photos/Add.png" alt="add">
+                            <img src="../Photos/Add.png" alt="add">
                             Add 
                         </button>
                     </a>
@@ -107,19 +103,19 @@
                         <div class="edit-buttons">
                             <a class="table-value" href="EditMedical1.html">
                                 <button>
-                                    <img src="Photos/Edit.png" alt="edit">
+                                    <img src="../Photos/Edit.png" alt="edit">
                                     Edit 
                                 </button>
                             </a>
                             <a class="table-value" href="EditMedical2.html">
                                 <button>
-                                    <img src="Photos/Edit.png" alt="edit">
+                                    <img src="../Photos/Edit.png" alt="edit">
                                     Edit 
                                 </button>
                             </a>
                             <a class="table-value" href="EditMedical3.html">
                                 <button>
-                                    <img src="Photos/Edit.png" alt="edit">
+                                    <img src="../Photos/Edit.png" alt="edit">
                                     Edit 
                                 </button>
                             </a>
