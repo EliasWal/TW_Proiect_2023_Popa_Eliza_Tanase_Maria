@@ -26,12 +26,12 @@ if(!isset($_COOKIE["login"]))
                 <input type='checkbox' id='check' />
                 <span class="menu">
                     <li><a href="Memories/Memories.php">Memories</a></li>
-                    <li><a href="Calendars.html">Calendars</a></li>
-                    <li><a href="friends.html">Friends</a></li>
-                    <li><a href="Medical.html">Medical</a></li>
+                    <li><a href="Calendars/Calendars.php">Calendars</a></li>
+                    <li><a href="Friends/friends.php">Friends</a></li>
+                    <li><a href="Medical/Medical.php">Medical</a></li>
                     <li><a href="Welcome-logged-in.php">Home</a></li>
-                    <li><a href="media.html">Media</a></li>
-                    <li class='settings'><a href='Settings\settings.php'><img src='Photos\settings.png'/></a></li>
+                    <li><a href="Media/media.php">Media</a></li>
+                    <li class='settings'><a href='Settings/settings.php'><img src='Photos/settings.png'/></a></li>
                     <a href="logout.php">
                     <button class="logout"> Log out </button></a>
                     <label for="check" class="close-menu"><i class="fas fa-times"></i></label>
