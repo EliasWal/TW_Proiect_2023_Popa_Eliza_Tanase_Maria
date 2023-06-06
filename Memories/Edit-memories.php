@@ -1,6 +1,6 @@
 <?php
     require "../config.php";
-
+    require "media-service.php";
     session_start();
     
     if(!isset($_COOKIE["login"]))
