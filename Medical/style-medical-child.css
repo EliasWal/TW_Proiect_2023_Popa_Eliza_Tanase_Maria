@@ -96,14 +96,17 @@ h1 {
 }
 
 .table {
-    display:flex;
-    flex-direction: row;
-    justify-content: space-evenly;
     border-radius: .5em;
     border-style: solid;
     padding: 1em;
     text-decoration: none;
 
+}
+
+.valori, .labels{
+    display: flex;
+    flex-direction: row;
+    justify-content: space-evenly;
 }
 
 .column, .column-optional, .column-more, .column-optional2 {
@@ -129,7 +132,7 @@ h1 {
     align-self: center;
     display: grid;
     position: relative;
-    grid-template-columns: minmax(auto, 5em);
+    grid-template-columns: minmax(auto, 6em);
     grid-template-rows: minmax(auto, 3em);
 }
 

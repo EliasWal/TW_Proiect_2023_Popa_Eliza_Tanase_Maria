@@ -13,6 +13,7 @@
 
     $user_id = $_SESSION["id"];
     $id_child = $_GET['id'];
+    $contor = 0;
 
     $sql= mysqli_query($mysql, "SELECT * FROM medical_report where id_user='$user_id' and id_child='$id_child'");
 
@@ -27,7 +28,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title> Baby manager </title>
     <link href="admin-topbar.css" rel="stylesheet" />
-    <link href="style-medical-child.css" rel="stylesheet" />
+    <link href="Style-medical-child.css" rel="stylesheet" />
     <link rel="icon" type="image/png" href="https://cdn-icons-png.flaticon.com/512/2102/2102805.png"/>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta2/css/all.min.css" integrity="sha512-YWzhKL2whUzgiheMoBFwW8CKV4qpHQAEuvilg9FAn5VJUDwKZZxkJNuGM4XkWuk94WCrrwslk8yWNGmY1EduTA==" crossorigin="anonymous" referrerpolicy="no-referrer" /></head>
 </head>
@@ -49,79 +50,46 @@
                         </button>
                     </a>
                 </div>
-                <div class="table">
-                    <div class="column">
-                        <a class="table-header"> Record </a>
-                        <a class="table-value"> #1 </a>
-                        <a class="table-value"> #2 </a>
-                        <a class="table-value"> #3 </a>
-                    </div>
-                    <div class="column-optional">
-                        <a class="table-header"> Date </a>
-                        <a class="table-value"> 30/7/2022 </a>
-                        <a class="table-value"> 8/3/2022 </a>
-                        <a class="table-value"> 12/12/2021 </a>
-                    </div>
-                    <div class="column-optional">
-                        <a class="table-header"> Doctor </a>
-                        <a class="table-value"> Dr. Smith </a>
-                        <a class="table-value"> Dr. Paul </a>
-                        <a class="table-value"> Dr. Smith </a>
-                    </div>
-                    <div class="column-optional2">
-                        <a class="table-header"> Symptoms </a>
-                        <a class="table-value"> Sneezing, running nose </a>
-                        <a class="table-value"> Severe throat pain </a>
-                        <a class="table-value"> Eye pain </a>
-                    </div>
-                    <div class="column">
-                        <a class="table-header"> Diagnosis </a>
-                        <a class="table-value"> Alergy to dust </a>
-                        <a class="table-value"> COVID </a>
-                        <a class="table-value"> Eye infection </a>
-                    </div>
-                    <div class="column-optional">
-                        <a class="table-header"> Medication </a>
-                        <a class="table-value"> - </a>
-                        <a class="table-value"> - </a>
-                        <a class="table-value"> Eye drops </a>
-                    </div>
-                    <div class="column-optional">
-                        <a class="table-header"> Document </a>
-                        <a class="table-value"> - </a>
-                        <a class="table-value"> Test-result.png </a>
-                        <a class="table-value"> - </a>
-                    </div>
-                    <div class="column-more">
-                        <a class="table-header"> More </a>
-                        <a class="table-value" href="More1.html"> ... </a>
-                        <a class="table-value" href="More2.html"> ... </a>
-                        <a class="table-value" href="More3.html"> ... </a>
-                    </div>
-                    <div class="column-optional">
-                        <a class="edit"> Edit </a>
+                <table class="table">
+                    <tr class="labels"> 
+                        <th class="column"> <a class="table-header"> Record </a> </th>
+                        <th class="column-optional"> <a class="table-header"> Date </a> </th>
+                        <th class="column-optional"> <a class="table-header"> Doctor </a> </th>
+                        <th class="column-optional2"> <a class="table-header"> Symptoms </a> </th>
+                        <th class="column"> <a class="table-header"> Diagnosis </a> </th>
+                        <th class="column-optional"> <a class="table-header"> Medication </a> </th>
+                        <th class="column-optional"> <a class="table-header"> Document </a> </th>
+                        <th class="column-more"> <a class="table-header"> More </a> </th>
+                        <th class="column-optional"> <a class="edit"> Edit </a> </th>
+                    </tr>
+                <?php
+                    while ($row = mysqli_fetch_assoc($sql)) {
+                        $contor = $contor + 1;
+                ?>
+                <tr class="valori">
+                    <td class="column"> <a class="table-value"> #<?php echo $contor; ?> </a> </td>
+                    <td class="column-optional"><a class="table-value"> <?php echo $row['date'];?> </a> </td>
+                    <td class="column-optional"> <a class="table-value"> <?php echo $row['doctor'];?> </a> </td>
+                    <td class="column-optional2"> <a class="table-value"> <?php echo $row['symptoms'];?> </a> </td>
+                    <td class="column"> <a class="table-value"> <?php echo $row['diagnosis'];?> </a> </td>
+                    <td class="column-optional"> <a class="table-value"> <?php echo $row['medication'];?> </a> </td>
+                    <td class="column-optional"> <a class="table-value"> <?php echo $row['document'];?> </a> </td>   
+                    <td class="column-more"> <a class="table-value" href="More.php?id=<?php echo $row['id'];?>&contor=<?php echo $contor;?>"> ... </a> </td>
+                    <td> <div class="column-optional">
                         <div class="edit-buttons">
-                            <a class="table-value" href="EditMedical1.html">
-                                <button>
-                                    <img src="../Photos/Edit.png" alt="edit">
-                                    Edit 
-                                </button>
-                            </a>
-                            <a class="table-value" href="EditMedical2.html">
-                                <button>
-                                    <img src="../Photos/Edit.png" alt="edit">
-                                    Edit 
-                                </button>
-                            </a>
-                            <a class="table-value" href="EditMedical3.html">
+                            <a class="table-value" href="EditMedical.php?id=<?php echo $row['id'];?>">
                                 <button>
                                     <img src="../Photos/Edit.png" alt="edit">
                                     Edit 
                                 </button>
                             </a>
                         </div>
-                    </div>
-                </div>
+                    </div> <td>
+                </tr>
+                <?php
+                    }
+                ?>
+                </table>
             </div>
         </div>
 </body>
