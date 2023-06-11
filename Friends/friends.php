@@ -1,7 +1,7 @@
 <?php 
 require '../config.php';
+require 'friend-service.php';
 
-session_start();
 
 if(!isset($_COOKIE["login"]))
     header("location: ../login.php");
@@ -12,6 +12,9 @@ if(!isset($_SESSION["login"]) || $_SESSION['login']===false){
 }
 
 $user_id = $_SESSION["id"];
+
+$friends = getFriends($user_id);
+
 
 ?>
 <!DOCTYPE html>

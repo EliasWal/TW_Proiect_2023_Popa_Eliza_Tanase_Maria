@@ -1,7 +1,6 @@
 <?php 
 require '../config.php';
-
-session_start();
+require 'friend-service.php';
 
 if(!isset($_COOKIE["login"]))
     header("location: ../login.php");
@@ -33,20 +32,6 @@ if(isset($_POST['submit'])){
             echo "<script>alert('Error. Friend could not be updated!');</script>";
         }
     } 
-}
-
-if(isset($_POST['delete'])){
-    $friend_id = $_POST['id'];
-    $sql = "DELETE FROM friend WHERE id='$friend_id' AND id_user='$user_id'";
-    $res = mysqli_query($mysql, $sql);
-    if($res){
-        $_SESSION["message"] = "Entry deleted successfully";
-        header("Location: friends.php");
-        exit();
-    }
-    else{
-        echo "<script>alert('Error. Entry could not be deleted!');</script>";
-    }
 }
 
 ?>
@@ -118,9 +103,9 @@ if(isset($_POST['delete'])){
                     <div class="buttons">
                         <input type="submit" name="submit" value="Save">
                         <form method="post">
-                        <input type="hidden" name="id" value="<?php echo $friend_id; ?>">
-                        <input type="submit" name="delete" value="Delete">
-                </form>
+                            <input type="hidden" name="id" value="<?php echo $friend_id; ?>">
+                            <button type="submit" name="delete">Delete</button>
+                        </form>
                     </div>
                     
                 </form>
