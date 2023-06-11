@@ -1,3 +1,19 @@
+<?php 
+require '../config.php';
+
+session_start();
+
+if(!isset($_COOKIE["login"]))
+    header("location: ../login.php");
+
+
+if(!isset($_SESSION["login"]) || $_SESSION['login']===false){
+    header("Location: ../login.php");
+}
+
+$user_id = $_SESSION["id"];
+
+?>
 <!DOCTYPE html>
 <html lang="en-US">
 <head>
@@ -27,9 +43,23 @@
                 <div class="files">
                     <h2> Your files</h2>
                     <div class="files-upl">
+                        <?php 
+                            $sql = mysqli_query($mysql, "SELECT * FROM media WHERE id_user = $user_id");
+                            if(mysqli_num_rows($sql) == 0){
+                                echo "Add some files first!";
+                            }
+                            else
+                            {
+                                while($row = mysqli_fetch_assoc($sql))
+                                {
+                        ?>
                         <div class="f1">
-                            <p>Jane cleaning the house</p>
-                            <img src="../Photos/media-kid.jpg" alt="Jane cleaning the house ">
+                            <?php 
+                            $imageData = base64_encode($row['picture']);
+                            $src = 'data:image;base64,' . $imageData;
+                            ?>
+                            <p><?php echo $row['title']; ?></p>
+                            <img src="<?php echo $src; ?>">
                             <div id="edit">
                                 <a href="edit-media.php">
                                     <input type="submit" value="Edit">
@@ -39,50 +69,10 @@
                                 </a>
                             </div>
                         </div>
-                        <div class="f2">
-                            <p>Eric in the garden</p>
-                            <img src="../Photos/media-kid1.jpg" alt="Eric in the garden">
-                            <div id="edit">
-                                <a href="edit-media.php">
-                                    <input type="submit" value="Edit">
-                                </a>
-                                <a href="delete-media.php">
-                                    <input type="submit" value="Delete">
-                                </a>
-                            </div>
-                        </div>
-                        <div class="f3">
-                            <p>Favorite children song</p>
-                            <audio controls>
-                                <source src="../horse.ogg" type="audio/ogg">
-                                <source src="../horse.mp3" type="audio/mpeg">
-                              Your browser does not support the audio element.
-                            </audio>
-                            <div id="edit">
-                                <a href="edit-media.php">
-                                    <input type="submit" value="Edit">
-                                </a>
-                                <a href="delete-media.php">
-                                    <input type="submit" value="Delete">
-                                </a>
-                            </div>
-                        </div>
-                        <div class="f4">
-                            <p>Children playing</p>
-                            <video width="280" height="180" controls>
-                                <source src="../movie.mp4" type="video/mp4">
-                                <source src="../movie.ogg" type="video/ogg">
-                                Your browser does not support the video tag.
-                            </video>
-                            <div id="edit">
-                                <a href="edit-media.php">
-                                    <input type="submit" value="Edit">
-                                </a>
-                                <a href="delete-media.php">
-                                    <input type="submit" value="Delete">
-                                </a>
-                            </div>
-                        </div>
+                        <?php
+                            }
+                        }
+                        ?>
                         
                     </div>
                 </div>
