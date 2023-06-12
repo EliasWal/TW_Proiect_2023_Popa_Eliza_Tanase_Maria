@@ -91,7 +91,7 @@ input[type="text"]{
     margin-left: 1em;
 }
 
-.buttons button img {
+.buttons button img, .delete-buttons img {
     width: 1.2em;
 }
 

@@ -15,6 +15,15 @@
     $id_child = $_GET['id'];
     $contor = 0;
 
+    if (isset($_GET['idm'])) {
+        $idm = $_GET['idm'];
+        $delete = mysqli_query($mysql, "DELETE FROM medical_report WHERE id=$idm");
+        if($delete){
+            header("Location: Medical-child.php?id=$id_child");
+            exit();
+        }
+    }
+
     $sql= mysqli_query($mysql, "SELECT * FROM medical_report where id_user='$user_id' and id_child='$id_child'");
 
     $sql_name = mysqli_query($mysql, "SELECT * FROM child where id='$id_child'");
@@ -28,7 +37,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title> Baby manager </title>
     <link href="admin-topbar.css" rel="stylesheet" />
-    <link href="Style-medical-child.css" rel="stylesheet" />
+    <link href="Style-medical-child3.css" rel="stylesheet" />
     <link rel="icon" type="image/png" href="https://cdn-icons-png.flaticon.com/512/2102/2102805.png"/>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta2/css/all.min.css" integrity="sha512-YWzhKL2whUzgiheMoBFwW8CKV4qpHQAEuvilg9FAn5VJUDwKZZxkJNuGM4XkWuk94WCrrwslk8yWNGmY1EduTA==" crossorigin="anonymous" referrerpolicy="no-referrer" /></head>
 </head>
@@ -58,9 +67,9 @@
                         <th class="column-optional2"> <a class="table-header"> Symptoms </a> </th>
                         <th class="column"> <a class="table-header"> Diagnosis </a> </th>
                         <th class="column-optional"> <a class="table-header"> Medication </a> </th>
-                        <th class="column-optional"> <a class="table-header"> Document </a> </th>
                         <th class="column-more"> <a class="table-header"> More </a> </th>
                         <th class="column-optional"> <a class="edit"> Edit </a> </th>
+                        <th class="column-optional"> <a class="delete"> D </a> </th>
                     </tr>
                 <?php
                     while ($row = mysqli_fetch_assoc($sql)) {
@@ -72,8 +81,7 @@
                     <td class="column-optional"> <a class="table-value"> <?php echo $row['doctor'];?> </a> </td>
                     <td class="column-optional2"> <a class="table-value"> <?php echo $row['symptoms'];?> </a> </td>
                     <td class="column"> <a class="table-value"> <?php echo $row['diagnosis'];?> </a> </td>
-                    <td class="column-optional"> <a class="table-value"> <?php echo $row['medication'];?> </a> </td>
-                    <td class="column-optional"> <a class="table-value"> <?php echo $row['document'];?> </a> </td>   
+                    <td class="column-optional"> <a class="table-value"> <?php echo $row['medication'];?> </a> </td>  
                     <td class="column-more"> <a class="table-value" href="More.php?id=<?php echo $row['id'];?>&contor=<?php echo $contor;?>"> ... </a> </td>
                     <td> <div class="column-optional">
                         <div class="edit-buttons">
@@ -81,6 +89,15 @@
                                 <button>
                                     <img src="../Photos/Edit.png" alt="edit">
                                     Edit 
+                                </button>
+                            </a>
+                        </div>
+                    </div> <td>
+                    <td> <div class="column-optional">
+                        <div class="delete-buttons">
+                            <a class="table-value" href="Medical-child.php?id=<?php echo $id_child; ?>&idm=<?php echo $row['id']; ?>">
+                                <button>
+                                    <img src="../Photos/bin.png" alt="edit">
                                 </button>
                             </a>
                         </div>

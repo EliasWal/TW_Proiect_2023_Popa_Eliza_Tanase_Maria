@@ -20,23 +20,26 @@
 
     $sql_= mysqli_query($mysql, "SELECT * FROM calendar where id_user='$user_id' and id_child='$id_child' ORDER BY time");
 
+    $array = array();
+    $contor = -1;
     
     if(isset($_POST['submit'])){
-        while($row = mysqli_fetch_assoc($sql_))
-        {
-            $time = $_POST['time'];
-            $sleep = $_POST['sleep'];
-            $feed = $_POST['feed'];
-            $notes = $_POST['notes'];
-            $id = $row['id'];
+        $table = $_POST['table'];
 
-            $sql_c = "UPDATE calendar SET time='$time', sleep='$sleep', feed='$feed', notes='$notes' WHERE id='$id'";
-            $rez = mysqli_query($mysql, $sql_m);
+        foreach($table as $row) {
+            $contor = $contor + 1;
+            $time = $row['time'];
+            $sleep = $row['sleep'];
+            $feed = $row['feed'];
+            $notes = $row['notes'];
+
+            $sql_c = "UPDATE calendar SET time='$time', sleep='$sleep', feed='$feed', noted='$notes' WHERE id=$array[$contor]";
+            $rez = mysqli_query($mysql, $sql_c);
             if($rez){
-                $_SESSION["message"] = "Memory updated succesfully to the acount!";
-                }    
+                $_SESSION["message"] = "Medical report updated succesfully to the acount!";
+            }    
             else {
-                echo"<script>alert('Error. Memory could not be updated!');</script>";
+                echo"<script>alert('Error. Medical report could not be updated!');</script>";
             }
         }
     }
@@ -69,16 +72,14 @@
                     }
                     unset($_SESSION["message"]);
                 ?>
-                <div class="buttons">
-                        <a>
-                            <button>
-                                <img src="../Photos/Save.png" alt="save">
-                                Save
-                            </button>
-                        </a>
-                </div>
-                <form id="table-calender" method="post"  action="">
-                    <table>
+                <form method="post"  action="">
+                    <div class="buttons">
+                            <a>
+                                <input type="submit" name="submit" value="Save">
+                            </a>
+                    </div>
+                    <div id="table-calender" >
+                    <table id="table">
                         <div class="labels">
                             <tr>
                                 <th><label for="time">Time</label></th>
@@ -89,6 +90,7 @@
                         </div>
                         <?php
                             while ($row = mysqli_fetch_assoc($sql)) {
+                                array_push($array, $row['id']);
                         ?>
                         <tr>
                             <div class="valori">
@@ -100,11 +102,11 @@
                                         if($row['sleep'] == 1)
                                         {
                                     ?>
-                                        <td><input type="checkbox" id="sleep" name="sleep" checked></td>
+                                        <td><input type="checkbox" id="sleep" value="1" name="sleep" checked></td>
                                     <?php
                                         } else {
                                     ?>
-                                        <td><input type="checkbox" id="sleep" name="sleep"></td>
+                                        <td><input type="checkbox" id="sleep" value="1" name="sleep"></td>
                                     <?php
                                         }
                                     ?>
@@ -114,11 +116,11 @@
                                         if($row['feed'] == 1)
                                         {
                                     ?>
-                                        <td><input type="checkbox" id="feed" name="feed" checked></td>
+                                        <td><input type="checkbox" id="feed" value="1" name="feed" checked></td>
                                     <?php
                                         } else {
                                     ?>
-                                        <td><input type="checkbox" id="feed" name="feed"></td>
+                                        <td><input type="checkbox" id="feed" value="1" name="feed"></td>
                                     <?php
                                         }
                                     ?>
@@ -132,6 +134,7 @@
                             }
                         ?>
                     </table>
+                    </div>
                 </form>
             </div>
         </div>

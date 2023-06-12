@@ -21,9 +21,8 @@
         $symptoms = $_POST['symptoms'];
         $diagnosis = $_POST['diagnosis'];
         $medication = $_POST['medication'];
-        $document = $_POST['document'];
 
-        $sql_m = "UPDATE medical_report SET date='$date', doctor='$doctor', symptoms='$symptoms', diagnosis='$diagnosis', medication='$medication', document='$document' WHERE id=$id_medical";
+        $sql_m = "UPDATE medical_report SET date='$date', doctor='$doctor', symptoms='$symptoms', diagnosis='$diagnosis', medication='$medication' WHERE id=$id_medical";
         $rez = mysqli_query($mysql, $sql_m);
         if($rez){
             $_SESSION["message"] = "Medical report updated succesfully to the acount!";
@@ -86,10 +85,6 @@
                     <li id="medication">
                         <label >Medication</label>
                         <input type="text" value="<?php echo $row['medication']; ?>" id="medication" name="medication" placeholder="Needed medication">
-                    </li>
-                    <li id="document">
-                        <label >Document</label>
-                        <input type="file" value="<?php echo $row['document']; ?>" id="document" name="document" placeholder="Add document">
                     </li>
                 <div class="buttons-kid1">
                     <input type="submit" name="submit" value="Save">

@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: May 22, 2023 at 04:39 PM
+-- Generation Time: Jun 12, 2023 at 02:28 PM
 -- Server version: 10.4.27-MariaDB
 -- PHP Version: 8.2.0
 
@@ -68,7 +68,8 @@ CREATE TABLE `child` (
 
 INSERT INTO `child` (`id`, `id_parent`, `firstname`, `lastname`, `birthday`, `gender`) VALUES
 (1, 6, 'Andreea', 'Tanase', '2023-05-11', 'non-binary'),
-(2, 6, 'Damian', 'Tanase', '2023-05-04', 'male');
+(2, 6, 'Damian', 'Tanase', '2023-05-04', 'male'),
+(3, 6, 'Ionut', 'Tanase', '2023-05-02', 'nospecify');
 
 -- --------------------------------------------------------
 
@@ -113,6 +114,7 @@ CREATE TABLE `media` (
 CREATE TABLE `medical_report` (
   `id` int(11) NOT NULL,
   `id_user` int(11) NOT NULL,
+  `id_child` int(11) NOT NULL,
   `date` date NOT NULL,
   `doctor` varchar(200) NOT NULL,
   `symptoms` varchar(400) NOT NULL,
@@ -120,6 +122,19 @@ CREATE TABLE `medical_report` (
   `medication` varchar(400) NOT NULL,
   `document` longtext NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+
+--
+-- Dumping data for table `medical_report`
+--
+
+INSERT INTO `medical_report` (`id`, `id_user`, `id_child`, `date`, `doctor`, `symptoms`, `diagnosis`, `medication`, `document`) VALUES
+(1, 6, 1, '2022-07-30', 'Dr. Smith', 'Sneezing, running nose', 'Alergy to dust', '', ''),
+(2, 6, 1, '2022-08-03', 'Dr. Paul', 'Severe throat pain', 'COVID', '', ''),
+(3, 6, 2, '2021-12-09', 'Dr. Smith', 'Eye pain', 'Eye infection', 'Eye drops', ''),
+(4, 6, 3, '2023-02-01', 'Dr. June', 'Headache, sneezing, runny nose', 'Seasonal cold', 'Nurofen', ''),
+(5, 6, 2, '2022-12-09', 'Dr. Johnson', 'Headache', 'Dehydration', 'Water!', ''),
+(6, 6, 2, '2022-11-08', 'Dr. Jackson', 'Shoulder pain, can\'t move', 'Shoulder dislocation', 'Painkillers', ''),
+(7, 6, 3, '2023-06-17', 'Dr. Jackson', 'Knee pain', 'Falling down', '', '');
 
 -- --------------------------------------------------------
 
@@ -234,7 +249,7 @@ ALTER TABLE `calendar`
 -- AUTO_INCREMENT for table `child`
 --
 ALTER TABLE `child`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
 
 --
 -- AUTO_INCREMENT for table `friend`
@@ -252,13 +267,13 @@ ALTER TABLE `media`
 -- AUTO_INCREMENT for table `medical_report`
 --
 ALTER TABLE `medical_report`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=8;
 
 --
 -- AUTO_INCREMENT for table `memory`
 --
 ALTER TABLE `memory`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=18;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=20;
 
 --
 -- AUTO_INCREMENT for table `user_registred`

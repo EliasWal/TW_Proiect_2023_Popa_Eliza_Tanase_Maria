@@ -20,11 +20,10 @@
         $symptoms = $_POST['symptoms'];
         $diagnosis = $_POST['diagnosis'];
         $medication = $_POST['medication'];
-        $document = $_POST['document'];
 
-        $sql = "INSERT INTO medical_report(id_user, id_child, date, doctor, symptoms, diagnosis, medication, document) VALUES(?,?,?,?,?,?,?,?)";
+        $sql = "INSERT INTO medical_report(id_user, id_child, date, doctor, symptoms, diagnosis, medication) VALUES(?,?,?,?,?,?,?)";
         $stmtinsert = $mysql->prepare($sql);
-        $stmtinsert->bind_param("iissssss", $user_id, $id_child, $date, $doctor, $symptoms, $diagnosis, $medication, $document);
+        $stmtinsert->bind_param("iisssss", $user_id, $id_child, $date, $doctor, $symptoms, $diagnosis, $medication);
         $rez= $stmtinsert->execute();
         if($rez){
                 $_SESSION["message"] = "Entry added succesfully to the medical report!";
@@ -90,10 +89,6 @@
                     <li id="medication">
                         <label >Medication</label>
                         <input type="text" value="" id="medication" name="medication" placeholder="Needed medication">
-                    </li>
-                    <li id="document">
-                        <label >Document</label>
-                        <input type="file" value="" id="document" name="document" placeholder="Add document">
                     </li>
                 <div href="Medical-child.php"class="buttons-kid1">
                     <input type="submit" name="submit" value="Save">

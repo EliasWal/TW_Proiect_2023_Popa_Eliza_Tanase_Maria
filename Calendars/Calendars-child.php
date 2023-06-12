@@ -13,6 +13,15 @@
 
     $user_id = $_SESSION["id"];
     $id_child = $_GET['id'];
+
+    if (isset($_GET['idc'])) {
+        $idc = $_GET['idc'];
+        $delete = mysqli_query($mysql, "DELETE FROM calendar WHERE id=$idc");
+        if($delete){
+            header("Location: Calendars-child.php?id=$id_child");
+            exit();
+        }
+    }
     
     $sql= mysqli_query($mysql, "SELECT * FROM calendar where id_user='$user_id' and id_child='$id_child' ORDER BY time");
 
@@ -26,7 +35,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title> Baby manager </title>
     <link href="admin-topbar.css" rel="stylesheet" />
-    <link href="Style-calendars-child.css" rel="stylesheet" />
+    <link href="Style-calendars-child1.css" rel="stylesheet" />
     <link rel="icon" type="image/png" href="https://cdn-icons-png.flaticon.com/512/2102/2102805.png"/>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta2/css/all.min.css" integrity="sha512-YWzhKL2whUzgiheMoBFwW8CKV4qpHQAEuvilg9FAn5VJUDwKZZxkJNuGM4XkWuk94WCrrwslk8yWNGmY1EduTA==" crossorigin="anonymous" referrerpolicy="no-referrer" />
 </head>
@@ -103,6 +112,13 @@
                                 <div class="note-in">
                                     <td><input type="text" id="note" name="note" value="<?php echo $row['notes']; ?>" readonly></td>
                                 </div>
+                                <td> 
+                                    <div class="delete-buttons">
+                                        <a class="table-value" href="Calendars-child.php?id=<?php echo $id_child; ?>&idc=<?php echo $row['id']; ?>">
+                                            <img src="../Photos/bin.png" alt="edit">
+                                        </a>
+                                    </div>
+                                <td>
                             </div>
                         </tr>
                         <?php
