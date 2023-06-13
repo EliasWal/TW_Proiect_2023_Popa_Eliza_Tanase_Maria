@@ -18,28 +18,39 @@
 
     $sql_name = mysqli_query($mysql, "SELECT * FROM child where id='$id_child'");
 
-    $sql_= mysqli_query($mysql, "SELECT * FROM calendar where id_user='$user_id' and id_child='$id_child' ORDER BY time");
-
     $array = array();
     $contor = -1;
+
     
     if(isset($_POST['submit'])){
-        $table = $_POST['table'];
+        $time_ = $_POST['time'];
+        $sleep_ = $_POST['sleep'];
+        $feed_ = $_POST['feed'];
+        $notes_ = $_POST['notes'];
+        $i = -1;
 
-        foreach($table as $row) {
-            $contor = $contor + 1;
-            $time = $row['time'];
-            $sleep = $row['sleep'];
-            $feed = $row['feed'];
-            $notes = $row['notes'];
+        while ($row = mysqli_fetch_assoc($sql)) {
+            $i = $i + 1;
+            $id = $row['id'];
+            
+            $time = $time_[$i];
+            if(in_array($id, $sleep_))
+                $sleep = 1;
+            else
+                $sleep = 0;
+            if(in_array($id, $feed_))
+                $feed = 1;
+            else
+                $feed = 0;
+            $notes = $notes_[$i];
 
-            $sql_c = "UPDATE calendar SET time='$time', sleep='$sleep', feed='$feed', noted='$notes' WHERE id=$array[$contor]";
+            $sql_c = "UPDATE calendar SET time='$time', sleep='$sleep', feed='$feed', notes='$notes' WHERE id=$id";
             $rez = mysqli_query($mysql, $sql_c);
             if($rez){
-                $_SESSION["message"] = "Medical report updated succesfully to the acount!";
+                $_SESSION["message"] = "Calendars updated succesfully to the account!";
             }    
             else {
-                echo"<script>alert('Error. Medical report could not be updated!');</script>";
+                echo"<script>alert('Error. Calendars could not be updated!');</script>";
             }
         }
     }
@@ -53,7 +64,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title> Baby manager </title>
     <link href="admin-topbar.css" rel="stylesheet" />
-    <link href="Style-calendars-child.css" rel="stylesheet" />
+    <link href="Style-calendars-child2.css" rel="stylesheet" />
     <link rel="icon" type="image/png" href="https://cdn-icons-png.flaticon.com/512/2102/2102805.png"/>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta2/css/all.min.css" integrity="sha512-YWzhKL2whUzgiheMoBFwW8CKV4qpHQAEuvilg9FAn5VJUDwKZZxkJNuGM4XkWuk94WCrrwslk8yWNGmY1EduTA==" crossorigin="anonymous" referrerpolicy="no-referrer" />
 </head>
@@ -72,12 +83,16 @@
                     }
                     unset($_SESSION["message"]);
                 ?>
+                <div class="buttons">
+                    <a href="Calendars-child.php?id=<?php echo $id_child; ?>">
+                        <button>
+                            <img src="../Photos/Back2.png" alt="back">
+                            Back 
+                        </button>
+                    </a>
                 <form method="post"  action="">
-                    <div class="buttons">
-                            <a>
-                                <input type="submit" name="submit" value="Save">
-                            </a>
-                    </div>
+                    <input type="submit" name="submit" value="Save">
+                </div>
                     <div id="table-calender" >
                     <table id="table">
                         <div class="labels">
@@ -90,23 +105,22 @@
                         </div>
                         <?php
                             while ($row = mysqli_fetch_assoc($sql)) {
-                                array_push($array, $row['id']);
                         ?>
                         <tr>
                             <div class="valori">
                                 <div class="time-inp">
-                                    <td><input type="time" value="<?php echo $row['time']; ?>" id="time" name="time"></td>
+                                    <td><input type="time" value="<?php echo $row['time']; ?>" id="time" name="time[]"></td>
                                 </div>
                                 <div class="sleep-chk">
                                     <?php 
                                         if($row['sleep'] == 1)
                                         {
                                     ?>
-                                        <td><input type="checkbox" id="sleep" value="1" name="sleep" checked></td>
+                                        <td><input type="checkbox" id="sleep" value="<?php echo $row['id']; ?>" name="sleep[]" checked></td>
                                     <?php
                                         } else {
                                     ?>
-                                        <td><input type="checkbox" id="sleep" value="1" name="sleep"></td>
+                                        <td><input type="checkbox" id="sleep" value="<?php echo $row['id']; ?>" name="sleep[]"></td>
                                     <?php
                                         }
                                     ?>
@@ -116,17 +130,17 @@
                                         if($row['feed'] == 1)
                                         {
                                     ?>
-                                        <td><input type="checkbox" id="feed" value="1" name="feed" checked></td>
+                                        <td><input type="checkbox" id="feed" value="<?php echo $row['id']; ?>" name="feed[]" checked></td>
                                     <?php
                                         } else {
                                     ?>
-                                        <td><input type="checkbox" id="feed" value="1" name="feed"></td>
+                                        <td><input type="checkbox" id="feed" value="<?php echo $row['id']; ?>" name="feed[]"></td>
                                     <?php
                                         }
                                     ?>
                                 </div>
                                 <div class="note-in">
-                                    <td><input type="text" id="note" name="note" value="<?php echo $row['notes']; ?>"></td>
+                                    <td><input type="text" id="notes" name="notes[]" value="<?php echo $row['notes']; ?>"></td>
                                 </div>
                             </div>
                         </tr>

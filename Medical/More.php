@@ -14,6 +14,17 @@
     $id_medical = $_GET['id'];
     $contor = $_GET['contor'];
 
+
+    if (isset($_GET['idm'])) {
+        $idm = $_GET['idm'];
+        $idc = $_GET['idc'];
+        $delete = mysqli_query($mysql, "DELETE FROM medical_report WHERE id=$idm");
+        if($delete){
+            header("Location: Medical-child.php?id=$idc");
+            exit();
+        }
+    }
+
     $sql= mysqli_query($mysql, "SELECT * FROM medical_report where id='$id_medical'");
 ?>
 
@@ -50,6 +61,12 @@
                             Edit 
                         </button>
                     </a>
+                    <a href="More.php?idm=<?php echo $id_medical;?>&contor=<?php echo $contor;?>&idc=<?php echo $row['id_child']; ?>">
+                        <button>
+                            <img src="../Photos/bin.png" alt="edit">
+                            Delete
+                        </button>
+                    </a>
                 </a>
                 <div class="table">
                     <div class="row">
@@ -75,10 +92,6 @@
                     <div class="row">
                         <a class="table-header"> Medication </a>
                         <a class="table-value"> <?php echo $row['medication'];?> </a>
-                    </div>
-                    <div class="row">
-                        <a class="table-header"> Document </a>
-                        <a class="table-value"> <?php echo $row['document'];?> </a>
                     </div>
                 </div>
                 <?php 

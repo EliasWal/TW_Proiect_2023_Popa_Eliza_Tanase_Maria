@@ -75,7 +75,7 @@ input[type="text"]{
     width: 500px;
 }
 
-.buttons button {
+.buttons button, input[type="submit"] {
     font-size: medium;
     font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
     background: white;
@@ -88,7 +88,6 @@ input[type="text"]{
 .buttons {
     display: flex;
     flex-direction: row;
-    margin-left: 1em;
 }
 
 .buttons button img, .delete-buttons img {
