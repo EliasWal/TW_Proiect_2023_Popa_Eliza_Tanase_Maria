@@ -67,17 +67,13 @@ body{
     align-items: center;
 }
 
-.f3 audio{
-    max-height: 100%;
-    max-width: 100%;
-    margin: auto;
-    object-fit: contain;
+.f1 img { 
+    max-width: 20em;
+    height: 20em;
+    border-radius: 1.5em;
+    box-shadow:4px 4px 6px rgb(40, 3, 61, .75);
 }
 
-.f4 video{
-    width: 100%;
-  height: auto;
-}
 
 .files input[type="submit"] {
     font-size: large;
@@ -100,10 +96,6 @@ a {
     margin-bottom: 1em;
 }
 
-.f1 img, .f2 img {
-    max-height: 100%;
-    max-width: 100%;
-}
 @media(max-width: 1400px){
     .container .info{
         font-size: 2vw;
@@ -114,10 +106,20 @@ a {
     .container .info{
         font-size: 2.5vw;
     }
+    .f1 img{
+        width: 12em;
+    }
 }
 
 @media(max-width: 900px){
     .container .info{
         font-size: 3vw;
     }
+    .files {
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+    }
+    
 }

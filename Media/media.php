@@ -59,7 +59,7 @@ $user_id = $_SESSION["id"];
                             $src = 'data:image;base64,' . $imageData;
                             ?>
                             <p><?php echo $row['title']; ?></p>
-                            <img src="<?php echo $src; ?>">
+                            <img id="photo" src="<?php echo $src; ?>">
                             <div id="edit">
                                 <a href="edit-media.php">
                                     <input type="submit" value="Edit">

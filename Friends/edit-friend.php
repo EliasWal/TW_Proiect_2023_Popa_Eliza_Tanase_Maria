@@ -34,6 +34,20 @@ if(isset($_POST['submit'])){
     } 
 }
 
+if(isset($_POST['delete'])){
+    $child_id = $_POST['id'];
+    $sql = "DELETE FROM friend WHERE id='$friend_id'";
+    $res = mysqli_query($mysql, $sql);
+    if($res){
+        $_SESSION["message"] = "Entry deleted successfully";
+        header("Location: friends.php");
+        exit();
+    }
+    else{
+        echo "<script>alert('Error. Entry could not be deleted!');</script>";
+    }
+}
+
 ?>
 <!DOCTYPE html>
 <html lang="en-US">
@@ -101,10 +115,10 @@ if(isset($_POST['submit'])){
                         <input type="file" value="" id="photo" name="photo" accept="image/*" onchange="previewPhoto(event)">
                     </li>
                     <div class="buttons">
-                        <input type="submit" name="submit" value="Save">
+                        <input type="submit" name="submit" value="Save">                    
                         <form method="post">
-                            <input type="hidden" name="id" value="<?php echo $friend_id; ?>">
-                            <button type="submit" name="delete">Delete</button>
+                            <input type="hidden" name="id" value="<?php echo $child_id; ?>">
+                            <input type="submit" name="delete" value="Delete">
                         </form>
                     </div>
                     

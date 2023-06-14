@@ -58,6 +58,10 @@ if(isset($_POST['submit'])){
                         <a href="kids-settings.php">Manage your kids</a></li>
                     <li id="ch-pass">
                         <a href="ch-pass.php">Change password</a></li>
+                    <li id="export">
+                        <a href="export.php">Export data</a></li> 
+                    <li id="import">
+                        <a href="import.php">Import data</a></li>     
                 </ul>
             </div>
             <div class="kids-container">

@@ -28,8 +28,14 @@ body {
 
 }
 
+
+
 .set-menu li {
     margin-bottom: 2em;
+    text-decoration: none;
+}
+
+.set-menu li a {
     text-decoration: none;
 }
 

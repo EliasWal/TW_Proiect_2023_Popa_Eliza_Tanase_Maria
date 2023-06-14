@@ -1,0 +1,155 @@
+body {
+    background-image: url("../photos/settings-back.png");
+        background-repeat: no-repeat;
+        background-attachment: fixed;
+        background-size: cover;
+}
+
+
+.leftbar{
+    font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
+    background-color: lavender;
+    display: flex;
+    flex-direction: column;
+    width: 8em;
+    height: 100vh;
+    padding: 1em;
+    margin-top: .5em;  
+    font-size: larger;
+    border-radius: 1em;
+    margin-left: 10px;
+}
+.set-menu{
+    text-decoration: none;
+    list-style-type: none;
+    display: flex;
+    flex-direction: column;
+    position: relative;
+    margin-top: 40px;
+}
+
+.set-menu li {
+    margin-bottom: 2em;
+    text-decoration: none;
+}
+
+.set-menu li:hover {
+    color: blueviolet;
+    background-color: aliceblue;
+    border-radius: .7em;
+    font-weight: 900;
+    padding-left: .6em;
+
+}
+
+.container{
+    display: flex;
+    flex-direction: row;
+}
+
+.kids-container {
+    margin-left: 20px;
+    margin-right: 20px;
+    display: flex;
+    flex-direction: column;
+    margin-top: .5em;
+    background-color: lavender;
+    border-radius: 2em;
+    padding: 2em;
+    width: 100%;
+}
+#export-form
+{
+    display: flex;
+    flex-direction: row;
+    margin-left: 1em;
+}
+.kids-container h2{
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    color:mediumpurple;
+    font-size: 2em;   
+    margin-bottom: 2em;
+    margin-left: 1em;
+}
+
+input[type="submit"] {
+    font-size: 1.2em;
+    background-color: mediumpurple;
+    width:7em;
+    height:3em;
+    line-height: 1.5em;
+    border-radius: 0.5em;
+    border: none;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin-top: 1.5em;
+    color:antiquewhite;
+    margin-right: 2em;
+}
+input[type="submit"]:hover{
+    background-color: plum;
+}
+
+
+@media (min-width:1500px){
+    #kids-form  {
+        display: flex;
+        flex-direction: row;
+    }
+
+}
+
+
+@media(max-width: 550px){
+    .container {
+        display: flex;
+        flex-direction: column;
+    }
+    .kids-container .buttons-kid1{
+        display: flex;
+        flex-direction: row;
+        justify-content: center;
+        align-items: center;
+        margin-left: -45%;
+    }
+    .leftbar h2{
+        font-size: large;
+    }
+    .leftbar {
+        margin-left: 0;
+        margin-top: 0;
+        border-radius: 0 ;
+        background-color: lavender;
+        width: 100%;
+        height: 5em;
+        text-align: center;
+    }
+
+    .set-menu {
+        display: flex;
+        flex-direction: row;
+        justify-content: space-between;
+        align-items: center;
+        font-size: small;
+        margin-top: 1em;
+    }
+    .kids-container{
+        margin-left: 0;
+    }
+    #kids-form{
+        display: flex;
+        flex-direction: column;
+    }
+    .kids-container input[type="submit"]{
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        margin-left: 30%;
+    }
+    input[type="submit"]{
+        width:7em;
+    height:2.2em;
+    }
+    
+}
