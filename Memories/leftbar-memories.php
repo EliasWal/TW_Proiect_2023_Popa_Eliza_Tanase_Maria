@@ -7,6 +7,9 @@
 
 <div class="leftbar">
     <h2>Children</h2>
+    <a href="index.php">
+        <img src="../Photos/RSS.png" alt="rss">
+    </a>
     <ul class="choose-child">
         <?php
             while ($row = mysqli_fetch_assoc($sql2)) {

@@ -23,9 +23,13 @@ body {
     border-radius: 1em;
 }
 
+.leftbar img {
+    width: 1.2em;
+    margin-bottom: 2em;
+}
+
 .leftbar h2 {
     border-radius: .2em;
-    margin-bottom: 2em;
 }
 
 .choose-child {
