@@ -122,7 +122,8 @@ $sql_name = mysqli_query($mysql, "SELECT * FROM child where id='$id_child'");
                                 Delete 
                             </button>
                         </a>
-                        <a href="Memories-child.php?id=<?php echo $id_child; ?>">
+                        <?php include "share-on-facebook.php"; ?>
+                        <a href="<?php echo $facebook_url; ?>">
                             <button>
                                 <img src="../Photos/Share.png" alt="share">
                                 Share
