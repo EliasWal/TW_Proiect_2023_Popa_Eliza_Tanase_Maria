@@ -56,7 +56,7 @@ $user_id = $_SESSION["id"];
         </div>
         <div class="friend-container">
             <h2>Add friend</h2>
-            <form id="friend-form" method="post" enctype="multipart/form-data">
+            <form id="friend-form" method="post" action="add-controller.php" enctype="multipart/form-data">
                 <li id="Name">
                     <label>Name</label>
                     <input type="text" value="" id="name" name="name" placeholder="Full name" required>

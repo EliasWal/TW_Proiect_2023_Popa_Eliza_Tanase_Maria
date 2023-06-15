@@ -34,19 +34,19 @@ if(isset($_POST['submit'])){
     } 
 }
 
-if(isset($_POST['delete'])){
-    $child_id = $_POST['id'];
-    $sql = "DELETE FROM friend WHERE id='$friend_id'";
-    $res = mysqli_query($mysql, $sql);
-    if($res){
-        $_SESSION["message"] = "Entry deleted successfully";
-        header("Location: friends.php");
-        exit();
-    }
-    else{
-        echo "<script>alert('Error. Entry could not be deleted!');</script>";
-    }
-}
+// if(isset($_POST['delete'])){
+//     $child_id = $_POST['id'];
+//     $sql = "DELETE FROM friend WHERE id='$friend_id'";
+//     $res = mysqli_query($mysql, $sql);
+//     if($res){
+//         $_SESSION["message"] = "Entry deleted successfully";
+//         header("Location: friends.php");
+//         exit();
+//     }
+//     else{
+//         echo "<script>alert('Error. Entry could not be deleted!');</script>";
+//     }
+// }
 
 ?>
 <!DOCTYPE html>
@@ -96,7 +96,7 @@ if(isset($_POST['delete'])){
                     unset($_SESSION["message"]);
                 }
                 ?>
-                <form id="friend-form" method="post" action="">
+                <form id="friend-form" method="post" action="edit-controller.php">
                     <li id="Name">
                         <label >Name</label>
                         <input type="text" value="<?php echo $row["name"] ?>" id="name" name="name" placeholder="Full name">
@@ -116,13 +116,13 @@ if(isset($_POST['delete'])){
                     </li>
                     <div class="buttons">
                         <input type="submit" name="submit" value="Save">                    
-                        <form method="post">
-                            <input type="hidden" name="id" value="<?php echo $child_id; ?>">
-                            <input type="submit" name="delete" value="Delete">
-                        </form>
                     </div>
                     
                 </form>
+                <form method="post" action="delete-controller.php">
+                <input type="hidden" name="id" value="<?php echo $friend_id ?>">
+                <button type="submit" name="delete">Delete</button>
+            </form>
                 
             </div>
         </div>

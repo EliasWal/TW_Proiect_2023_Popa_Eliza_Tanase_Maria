@@ -31,101 +31,29 @@ function getFriends($user_id){
     return $friends;
 }
 
-function deleteFriend($user_id, $friend_id){
+function updateFriend($friend_id, $name, $relationship, $fileData) {
     global $mysql;
-    $stmt= $mysql->prepare("DELETE FROM friend WHERE id=? AND id_user=?");
-    $stmt->bind_param("ii", $friend_id, $user_id);
-    $stmt->execute();
-    if($stmt->execute()){
+
+    $stmt = $mysql->prepare("UPDATE friend SET name=?, relationship=?, photo=? WHERE id=?");
+    $stmt->bind_param("sssi", $name, $relationship, $fileData, $friend_id);
+
+    if ($stmt->execute()) {
+        return true;
+    } else {
+        return false;
+    }
+}
+
+function deleteFriend($friend_id){
+    global $mysql;
+    $sql = "DELETE FROM friend WHERE id='$friend_id'";
+    $res = mysqli_query($mysql, $sql);
+    if($res){
         return true;
     }
     else {
         return false;
     }
 }
-
-
-if ($_SERVER['REQUEST_METHOD'] === 'POST') {
-    $name = $_POST['name'];
-    $relationship = $_POST['relation'];
-
-    if (isset($_FILES['photo'])) {
-        $file = $_FILES['photo'];
-
-        $fileName = $file['name'];
-        $fileTmpName = $file['tmp_name'];
-        $fileSize = $file['size'];
-        $fileError = $file['error'];
-
-        $fileData = file_get_contents($fileTmpName);
-
-        if (addFriend($_SESSION["id"], $name, $relationship, $fileData)) {
-            http_response_code(201); 
-            echo json_encode(array('message' => 'Friend added successfully.'));
-        } else {
-            http_response_code(500); 
-            echo json_encode(array('message' => 'Failed to add friend.'));
-        }
-    }
-}
-elseif ($_SERVER['REQUEST_METHOD'] === 'GET'){
-    if(isset($_SESSION["id"])){
-        $user_id = $_SESSION["id"];
-        $friends = getFriends($user_id);
-
-        if(empty($friends)){
-            http_response_code(404);
-            echo json_encode(array('message' => 'Add some friends from the leftbar'));
-        }
-        else {
-            http_response_code(200);
-            echo json_encode($friends);
-        }
-    } else{
-        http_response_code(401);
-        header("Location: ../login.php");
-        exit();
-    }
-}
-elseif($_SERVER['REQUEST_METHOD'] === 'PUT'){
-
-
-}
-elseif ($_SERVER['REQUEST_METHOD'] === 'DELETE') {
-    if (isset($_SESSION["id"])) {
-        $user_id = $_SESSION["id"];
-        $friend_id = $_POST['id'];
-
-        $url = 'http://example.com/friends/' . $friend_id;  // Replace with your actual API endpoint
-
-        $ch = curl_init($url);
-        curl_setopt($ch, CURLOPT_CUSTOMREQUEST, 'DELETE');
-        curl_setopt($ch, CURLOPT_RETURNTRANSFER, true);
-
-        // Set any additional headers if required
-        // curl_setopt($ch, CURLOPT_HTTPHEADER, array('HeaderName: HeaderValue'));
-
-        $response = curl_exec($ch);
-        $httpCode = curl_getinfo($ch, CURLINFO_HTTP_CODE);
-
-        curl_close($ch);
-
-        if ($httpCode === 200) {
-            echo "Friend deleted successfully.";
-        } elseif ($httpCode === 404) {
-            echo "Friend could not be deleted. Please try again later.";
-        } else {
-            echo "An error occurred while deleting the friend.";
-        }
-    } else {
-        http_response_code(401);
-        header("Location: ../login.php");
-        exit();
-    }
-} else {
-    http_response_code(405);
-    echo json_encode(array('message' => 'Method not allowed.'));
-}
-
 
 ?>
