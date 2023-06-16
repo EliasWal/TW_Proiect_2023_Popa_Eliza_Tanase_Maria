@@ -19,14 +19,38 @@ function addMemory($user_id, $id_child, $date, $title, $description, $fileData) 
 
 function getMemories($user_id, $id_child) {
     global $mysql;
-    $sql= "SELECT * FROM memory where id_user=? and id_child=?";
+    $sql= "SELECT * FROM memory where id_user=? and id_child=? order by date desc";
     $stmt = $mysql->prepare($sql);
     $stmt->bind_param('ii', $user_id, $id_child);
+    $stmt->execute();
+    $result = $stmt->get_result();
     $memories = array();
-    while($row = mysqli_fetch_assoc($sql)) {
+    while($row = $result->fetch_assoc()) {
         $memories[] = $row;
     }
     return $memories;
+}
+
+function getNameChild($id_child) {
+    global $mysql;
+    $sql = "SELECT firstname FROM child where id=?";
+    $stmt = $mysql->prepare($sql);
+    $stmt->bind_param('i', $id_child);
+    $stmt->execute();
+    $stmt->bind_result($name);
+    $stmt->fetch();
+    return $name;
+}
+
+function getMemory($id_memory) {
+    global $mysql;
+    $sql= "SELECT * FROM memory where id=?";
+    $stmt = $mysql->prepare($sql);
+    $stmt->bind_param('i', $id_memory);
+    $stmt->execute();
+    $result = $stmt->get_result();
+    $row = $result->fetch_assoc();
+    return $row;
 }
 
 function updateMemory($id_memory, $date, $title, $description, $fileData) {

@@ -12,8 +12,6 @@ if(!isset($_SESSION["login"]) || $_SESSION['login']===false){
 
 $user_id = $_SESSION["id"];
 $id_child = $_GET['id'];
-
-$sql_name = mysqli_query($mysql, "SELECT * FROM child where id='$id_child'");
 ?>
 <!DOCTYPE html>
 <html lang="en-US">
@@ -38,11 +36,7 @@ $sql_name = mysqli_query($mysql, "SELECT * FROM child where id='$id_child'");
                         Back 
                     </button>
                 </a>
-                <?php
-                    $row = mysqli_fetch_assoc($sql_name);
-                    $name = $row['firstname'];
-                ?>
-                <h1> Add a new memory for <?php echo $name; ?> </h1>
+                <h1> Add a new memory for <?php echo getNameChild($id_child); ?> </h1>
                 <?php if(isset($_SESSION["message"])){
                         echo "<h1 style='text-decoration:none;'>" . $_SESSION["message"] . "</h1>";
                     }

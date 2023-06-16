@@ -13,9 +13,7 @@
     $user_id = $_SESSION["id"];
     $id_child = $_GET['id'];
     
-    $sql= mysqli_query($mysql, "SELECT * FROM memory where id_user='$user_id' and id_child='$id_child' order by date desc");
-
-    $sql_name = mysqli_query($mysql, "SELECT * FROM child where id='$id_child'");
+    $memories = getMemories($user_id, $id_child);
 ?>
 <!DOCTYPE html>
 <html lang="en-US">
@@ -34,11 +32,7 @@
         <div class="page">
             <?php require "leftbar-memories.php"; ?> 
             <div class="right">
-                <?php
-                    $row = mysqli_fetch_assoc($sql_name);
-                    $name = $row['firstname'];
-                ?>
-                <h5> <?php echo $name; ?>'s memories </h5>
+                <h5> <?php echo getNameChild($id_child); ?>'s memories </h5>
                 <div class="add-buttons">
                     <a href="Add-memories.php?id=<?php echo $id_child; ?>">
                         <button>
@@ -48,7 +42,7 @@
                     </a>
                 </div>
                 <?php
-                    while ($row = mysqli_fetch_assoc($sql)) {
+                    foreach ($memories as $row) {
                 ?>
                 <h4> <?php echo $row['date']; ?> </h4>
                 <div class="postline">

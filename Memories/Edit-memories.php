@@ -13,8 +13,13 @@
     $user_id = $_SESSION["id"];
     $id_memory = $_GET['id'];
 
-    $sql= mysqli_query($mysql, "SELECT * FROM memory where id='$id_memory'");
+    $row = getMemory($id_memory);
+    $id_child = $row['id_child'];
 
+    $date = $row['date'];
+    $title = $row['title'];
+    $description = $row['description'];
+    $picture = $row['picture'];
 ?>
 
 <!DOCTYPE html>
@@ -46,16 +51,13 @@
         <div class="page">
             <?php require "leftbar-memories.php"; ?> 
             <div class="right">
-                <?php
-                    while ($row = mysqli_fetch_assoc($sql)) {
-                ?>
                 <a href="Memories-child.php?id=<?php echo $row['id_child']; ?>">
                     <button>
                         <img src="../Photos/Back.png" alt="back">
                         Back 
                     </button>
                 </a>
-                <h1> Edit the memory </h1>
+                <h1> Edit <?php echo getNameChild($id_child); ?>'s memory</h1>
                 <h1>
                 <?php if(isset($_SESSION["message"])){
                         echo "<h2 style=''>" . $_SESSION["message"] . "</h2>";
@@ -66,33 +68,30 @@
                 <form id="add-form" method="post" action="Edit-memories-controller.php" enctype="multipart/form-data">
                     <li id="date">
                         <label >Date</label>
-                        <input type="date"  value="<?php echo $row['date']; ?>" id="memorydate" name="date">
+                        <input type="date"  value="<?php echo $date; ?>" id="memorydate" name="date">
                     </li>
                     <li id="title">
                         <label>Title</label>
-                        <input type="text" value="<?php echo $row['title']; ?>" id="title" name="title" placeholder="Add a title">
+                        <input type="text" value="<?php echo $title; ?>" id="title" name="title" placeholder="Add a title">
                     </li>
                     <li id="description">
                         <label >Description</label>
-                        <textarea name="description" rows="10" cols="100" placeholder="Describe the memory"><?php echo $row['description']; ?></textarea>
+                        <textarea name="description" rows="10" cols="100" placeholder="Describe the memory"><?php echo $description; ?></textarea>
                     </li>
                     <li id="picture">
                         <label >Picture</label>
                         <?php
-                            $imageData = base64_encode($row['picture']);
+                            $imageData = base64_encode($picture);
                             $src = 'data:image;base64,' . $imageData;
                         ?>
                         <img src="<?php echo $src;?>" id="previewImage">
                         <input type="file" accept="image/*" value="" id="picture" name="picture" placeholder="Add picture" onchange="previewPhoto(event)">
-                        <input type="hidden" name="id_memory" value="<?php echo $row['id']; ?>">
+                        <input type="hidden" name="id_memory" value="<?php echo $id_memory; ?>">
                     </li>
                 <div class="buttons-kid1">
                     <input type="submit" name="submit" value="Save">
                 </div>
                 </form>
-                <?php 
-                    }
-                ?>
             </div>
         </div>
 </body>
