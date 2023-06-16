@@ -1,6 +1,6 @@
 <?php
     require "../config.php";
-    session_start();
+    require "medical-service.php";
     
     if(!isset($_COOKIE["login"]))
         header("location: ../login.php");
@@ -14,18 +14,14 @@
     $id_medical = $_GET['id'];
     $contor = $_GET['contor'];
 
+    $row = getMedicalReport($id_medical);
+    $id_child = $row['id_child'];
 
-    if (isset($_GET['idm'])) {
-        $idm = $_GET['idm'];
-        $idc = $_GET['idc'];
-        $delete = mysqli_query($mysql, "DELETE FROM medical_report WHERE id=$idm");
-        if($delete){
-            header("Location: Medical-child.php?id=$idc");
-            exit();
-        }
-    }
-
-    $sql= mysqli_query($mysql, "SELECT * FROM medical_report where id='$id_medical'");
+    $date = $row['date'];
+    $doctor = $row['doctor'];
+    $symptoms = $row['symptoms'];
+    $diagnosis = $row['diagnosis'];
+    $medication = $row['medication'];
 ?>
 
 <!DOCTYPE html>
@@ -45,28 +41,29 @@
         <div class="page">
             <?php require "leftbar-medical.php"; ?>
             <div class="right">
-                <?php
-                    while ($row = mysqli_fetch_assoc($sql)) {
-                ?>
                 <a class="buttons">
-                    <a href="Medical-child.php?id=<?php echo $row['id_child']; ?>">
+                    <a href="Medical-child.php?id=<?php echo $id_child; ?>">
                         <button>
                             <img src="../Photos/Back2.png" alt="back">
                             Back 
                         </button>
                     </a>
-                    <a href="EditMedicalphp?id=<?php echo $id_medical; ?>">
+                    <a href="EditMedical.php?id=<?php echo $id_medical; ?>">
                         <button>
                             <img src="../Photos/Edit.png" alt="edit">
                             Edit 
                         </button>
                     </a>
-                    <a href="More.php?idm=<?php echo $id_medical;?>&contor=<?php echo $contor;?>&idc=<?php echo $row['id_child']; ?>">
-                        <button>
-                            <img src="../Photos/bin.png" alt="edit">
-                            Delete
-                        </button>
-                    </a>
+                    <form method="post" action="Delete-medical-controller.php">
+                        <input type="hidden" name="id_medical" value="<?php echo $id_medical; ?>">
+                        <input type="hidden" name="id_child" value="<?php echo $id_child; ?>">
+                        <a href="More.php?idm=<?php echo $id_medical;?>&contor=<?php echo $contor;?>&idc=<?php echo $id_child; ?>">
+                            <button>
+                                <img src="../Photos/bin.png" alt="edit">
+                                Delete
+                            </button>
+                        </a>
+                    </form>
                 </a>
                 <div class="table">
                     <div class="row">
@@ -75,28 +72,25 @@
                     </div>
                     <div class="row">
                         <a class="table-header"> Date </a>
-                        <a class="table-value"> <?php echo $row['date'];?> </a>
+                        <a class="table-value"> <?php echo $date;?> </a>
                     </div>
                     <div class="row">
                         <a class="table-header"> Doctor </a>
-                        <a class="table-value"> <?php echo $row['doctor'];?> </a>
+                        <a class="table-value"> <?php echo $doctor;?> </a>
                     </div>
                     <div class="row">
                         <a class="table-header"> Symptoms </a>
-                        <a class="table-value"> <?php echo $row['symptoms'];?> </a>
+                        <a class="table-value"> <?php echo $symptoms;?> </a>
                     </div>
                     <div class="row">
                         <a class="table-header"> Diagnosis </a>
-                        <a class="table-value"> <?php echo $row['diagnosis'];?> </a>
+                        <a class="table-value"> <?php echo $diagnosis;?> </a>
                     </div>
                     <div class="row">
                         <a class="table-header"> Medication </a>
-                        <a class="table-value"> <?php echo $row['medication'];?> </a>
+                        <a class="table-value"> <?php echo $medication;?> </a>
                     </div>
                 </div>
-                <?php 
-                    }
-                ?>
             </div>
         </div>
 </body>

@@ -1,7 +1,6 @@
 <?php 
     require '../config.php';
-
-    session_start();
+    require 'medical-service.php';
 
     if(!isset($_COOKIE["login"]))
         header("location: ../login.php");
@@ -13,27 +12,6 @@
 
     $user_id = $_SESSION["id"];
     $id_child = $_GET['id'];
-
-    if(isset($_POST['submit'])){
-        $date = $_POST['date'];
-        $doctor = $_POST['doctor'];
-        $symptoms = $_POST['symptoms'];
-        $diagnosis = $_POST['diagnosis'];
-        $medication = $_POST['medication'];
-
-        $sql = "INSERT INTO medical_report(id_user, id_child, date, doctor, symptoms, diagnosis, medication) VALUES(?,?,?,?,?,?,?)";
-        $stmtinsert = $mysql->prepare($sql);
-        $stmtinsert->bind_param("iisssss", $user_id, $id_child, $date, $doctor, $symptoms, $diagnosis, $medication);
-        $rez= $stmtinsert->execute();
-        if($rez){
-                $_SESSION["message"] = "Entry added succesfully to the medical report!";
-                }    
-        else {
-                echo"<script>alert('Error. Entry could not be added!');</script>";
-            }
-    }
-
-    $sql_name = mysqli_query($mysql, "SELECT * FROM child where id='$id_child'");
 ?>
 
 <!DOCTYPE html>
@@ -59,17 +37,13 @@
                         Back 
                     </button>
                 </a>
-                <?php
-                    $row = mysqli_fetch_assoc($sql_name);
-                    $name = $row['firstname'];
-                ?>
-                <h1> Add a new medical report for <?php echo $name; ?> </h1>
+                <h1> Add a new medical report for <?php echo getNameChild($id_child); ?> </h1>
                 <?php if(isset($_SESSION["message"])){
                         echo "<h1 style='text-decoration:none;'>" . $_SESSION["message"] . "</h1>";
                     }
                     unset($_SESSION["message"]);
                 ?>
-                <form id="add-form" method="post">
+                <form id="add-form" method="post" action="Add-medical-controller.php">
                     <li id="date">
                         <label >Date</label>
                         <input type="date"  value="" id="date" name="date">
@@ -90,7 +64,8 @@
                         <label >Medication</label>
                         <input type="text" value="" id="medication" name="medication" placeholder="Needed medication">
                     </li>
-                <div href="Medical-child.php"class="buttons-kid1">
+                    <input type="hidden" name="id_child" value="<?php echo $id_child; ?>">
+                <div class="buttons-kid1">
                     <input type="submit" name="submit" value="Save">
                 </div>
             </form>

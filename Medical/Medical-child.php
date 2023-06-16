@@ -1,7 +1,6 @@
 <?php
     require "../config.php";
-
-    session_start();
+    require "medical-service.php";
     
     if(!isset($_COOKIE["login"]))
         header("location: ../login.php");
@@ -15,18 +14,7 @@
     $id_child = $_GET['id'];
     $contor = 0;
 
-    if (isset($_GET['idm'])) {
-        $idm = $_GET['idm'];
-        $delete = mysqli_query($mysql, "DELETE FROM medical_report WHERE id=$idm");
-        if($delete){
-            header("Location: Medical-child.php?id=$id_child");
-            exit();
-        }
-    }
-
-    $sql= mysqli_query($mysql, "SELECT * FROM medical_report where id_user='$user_id' and id_child='$id_child'");
-
-    $sql_name = mysqli_query($mysql, "SELECT * FROM child where id='$id_child'");
+    $medicalReports = getMedicalReports($user_id, $id_child);
 ?>
 
 <!DOCTYPE html>
@@ -46,13 +34,9 @@
         <div class="page">
             <?php require "leftbar-medical.php"; ?> 
             <div class="right">
-                <?php
-                    $row = mysqli_fetch_assoc($sql_name);
-                    $name = $row['firstname'];
-                ?>
-                <h1> <?php echo $name; ?>'s memories </h1>
+                <h1> <?php echo getNameChild($id_child); ?>'s medical report </h1>
                 <div class="medical-buttons">
-                    <a href="Add-Medical.php?id=<?php echo $id_child; ?>">
+                    <a href="Add-medical.php?id=<?php echo $id_child; ?>">
                         <button>
                             <img src="../Photos/Add.png" alt="add">
                             Add 
@@ -72,7 +56,7 @@
                         <th class="column-optional"> <a class="delete"> D </a> </th>
                     </tr>
                 <?php
-                    while ($row = mysqli_fetch_assoc($sql)) {
+                    foreach($medicalReports as $row) {
                         $contor = $contor + 1;
                 ?>
                 <tr class="valori">
@@ -94,13 +78,17 @@
                         </div>
                     </div> <td>
                     <td> <div class="column-optional">
-                        <div class="delete-buttons">
-                            <a class="table-value" href="Medical-child.php?id=<?php echo $id_child; ?>&idm=<?php echo $row['id']; ?>">
-                                <button>
-                                    <img src="../Photos/bin.png" alt="edit">
-                                </button>
-                            </a>
-                        </div>
+                        <form method="post" action="Delete-medical-controller.php">
+                            <input type="hidden" name="id_medical" value="<?php echo $row['id']; ?>">
+                            <input type="hidden" name="id_child" value="<?php echo $id_child; ?>">
+                            <div class="delete-buttons">
+                                <a class="table-value" href="Medical-child.php?id=<?php echo $id_child; ?>&idm=<?php echo $row['id']; ?>">
+                                    <button>
+                                        <img src="../Photos/bin.png" alt="delete">
+                                    </button>
+                                </a>
+                            </div>
+                        </form>
                     </div> <td>
                 </tr>
                 <?php

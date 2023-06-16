@@ -1,6 +1,6 @@
 <?php
     require "../config.php";
-    session_start();
+    require "medical-service.php";
     
     if(!isset($_COOKIE["login"]))
         header("location: ../login.php");
@@ -13,24 +13,14 @@
     $user_id = $_SESSION["id"];
     $id_medical = $_GET['id'];
 
-    $sql= mysqli_query($mysql, "SELECT * FROM medical_report where id='$id_medical'");
+    $row = getMedicalReport($id_medical);
+    $id_child = $row['id_child'];
 
-    if(isset($_POST['submit'])){
-        $date = $_POST['date'];
-        $doctor = $_POST['doctor'];
-        $symptoms = $_POST['symptoms'];
-        $diagnosis = $_POST['diagnosis'];
-        $medication = $_POST['medication'];
-
-        $sql_m = "UPDATE medical_report SET date='$date', doctor='$doctor', symptoms='$symptoms', diagnosis='$diagnosis', medication='$medication' WHERE id=$id_medical";
-        $rez = mysqli_query($mysql, $sql_m);
-        if($rez){
-            $_SESSION["message"] = "Medical report updated succesfully to the acount!";
-        }    
-        else {
-            echo"<script>alert('Error. Medical report could not be updated!');</script>";
-        }
-    }
+    $date = $row['date'];
+    $doctor = $row['doctor'];
+    $symptoms = $row['symptoms'];
+    $diagnosis = $row['diagnosis'];
+    $medication = $row['medication'];
 ?>
 
 <!DOCTYPE html>
@@ -50,49 +40,44 @@
         <div class="page">
             <?php require "leftbar-medical.php"; ?>
             <div class="right">
-                <?php
-                    while ($row = mysqli_fetch_assoc($sql)) {
-                ?>
-                <a href="Medical-child.php?id=<?php echo $row['id_child']; ?>">
+                <a href="Medical-child.php?id=<?php echo $id_child; ?>">
                     <button>
                         <img src="../Photos/Back.png" alt="back">
                         Back 
                     </button>
                 </a>
-                <h1> Edit medical report </h1>
+                <h1> Edit <?php echo getNameChild($id_child); ?>'s medical report </h1>
                     <?php if(isset($_SESSION["message"])){
                             echo "<h2 style=''>" . $_SESSION["message"] . "</h2>";
                         }
                         unset($_SESSION["message"]);
                     ?>
-                <form id="add-form" method="post">
+                <form id="add-form" method="post" action="Edit-medical-controller.php">
                     <li id="date">
                         <label >Date</label>
-                        <input type="date"  value="<?php echo $row['date']; ?>" id="examinationdate" name="date">
+                        <input type="date"  value="<?php echo $date; ?>" id="examinationdate" name="date">
                     </li>
                     <li id="doctor">
                         <label>Doctor</label>
-                        <input type="text" value="<?php echo $row['doctor']; ?>" id="doctor" name="doctor" placeholder="Doctor's name">
+                        <input type="text" value="<?php echo $doctor; ?>" id="doctor" name="doctor" placeholder="Doctor's name">
                     </li>
                     <li id="symptoms">
                         <label >Symptoms</label>
-                        <input type="text" value="<?php echo $row['symptoms']; ?>" id="symptoms" name="symptoms" placeholder="Describe symptoms">
+                        <input type="text" value="<?php echo $symptoms; ?>" id="symptoms" name="symptoms" placeholder="Describe symptoms">
                     </li>
                     <li id="diagnosis">
                         <label >Diagnosis</label>
-                        <input type="text" value="<?php echo $row['diagnosis']; ?>" id="diagnosis" name="diagnosis" placeholder="Doctor's diagnosis">
+                        <input type="text" value="<?php echo $diagnosis; ?>" id="diagnosis" name="diagnosis" placeholder="Doctor's diagnosis">
                     </li>
                     <li id="medication">
                         <label >Medication</label>
-                        <input type="text" value="<?php echo $row['medication']; ?>" id="medication" name="medication" placeholder="Needed medication">
+                        <input type="text" value="<?php echo $medication; ?>" id="medication" name="medication" placeholder="Needed medication">
                     </li>
+                    <input type="hidden" name="id_medical" value="<?php echo $id_medical; ?>">
                 <div class="buttons-kid1">
                     <input type="submit" name="submit" value="Save">
                 </div>
             </form>
-            <?php 
-                    }
-            ?>
             </div>
         </div>
 </body>
