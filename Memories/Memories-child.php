@@ -1,7 +1,6 @@
 <?php 
     require "../config.php";
-
-    session_start();
+    require "memories-service.php";
 
     if(!isset($_COOKIE["login"]))
         header("location: ../login.php");
@@ -13,24 +12,10 @@
 
     $user_id = $_SESSION["id"];
     $id_child = $_GET['id'];
-
-    if (isset($_GET['idm'])) {
-        $idm = $_GET['idm'];
-        $delete = mysqli_query($mysql, "DELETE FROM memory WHERE id=$idm");
-        if($delete){
-            $_SESSION["message"] = "Memory deleted successfully";
-            header("Location: Memories-child.php?id=$id_child");
-            exit();
-        }
-        else{
-            echo "<script>alert('Error. Memory could not be deleted!');</script>";
-        }
-    }
     
+    $sql= mysqli_query($mysql, "SELECT * FROM memory where id_user='$user_id' and id_child='$id_child' order by date desc");
 
-$sql= mysqli_query($mysql, "SELECT * FROM memory where id_user='$user_id' and id_child='$id_child'");
-
-$sql_name = mysqli_query($mysql, "SELECT * FROM child where id='$id_child'");
+    $sql_name = mysqli_query($mysql, "SELECT * FROM child where id='$id_child'");
 ?>
 <!DOCTYPE html>
 <html lang="en-US">
@@ -116,12 +101,16 @@ $sql_name = mysqli_query($mysql, "SELECT * FROM child where id='$id_child'");
                                 Edit 
                             </button>
                         </a>
-                        <a href="Memories-child.php?id=<?php echo $id_child; ?>&idm=<?php echo $row['id']; ?>">
-                            <button>
-                                <img src="../Photos/Delete.png" alt="delete">
-                                Delete 
-                            </button>
-                        </a>
+                        <form method="post" action="Delete-memories-controller.php">
+                            <input type="hidden" name="id_memory" value="<?php echo $row['id']; ?>">
+                            <input type="hidden" name="id_child" value="<?php echo $id_child; ?>">
+                            <a href="Memories-child.php?id=<?php echo $id_child; ?>&idm=<?php echo $row['id']; ?>">
+                                <button>
+                                    <img src="../Photos/Delete.png" alt="delete">
+                                    Delete 
+                                </button>
+                            </a>
+                        </form>
                         <?php include "share-on-facebook.php"; ?>
                         <a href="<?php echo $facebook_url; ?>">
                             <button>
@@ -129,6 +118,7 @@ $sql_name = mysqli_query($mysql, "SELECT * FROM child where id='$id_child'");
                                 Share
                             </button>
                         </a>
+                        <?php unlink($filepath); ?>
                     </div>
                 </div>
                 <?php

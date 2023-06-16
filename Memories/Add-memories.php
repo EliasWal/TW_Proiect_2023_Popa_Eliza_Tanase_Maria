@@ -1,7 +1,6 @@
 <?php 
 require '../config.php';
-
-session_start();
+require 'memories-service.php';
 
 if(!isset($_COOKIE["login"]))
     header("location: ../login.php");
@@ -13,36 +12,6 @@ if(!isset($_SESSION["login"]) || $_SESSION['login']===false){
 
 $user_id = $_SESSION["id"];
 $id_child = $_GET['id'];
-
-if(isset($_POST['submit'])){
-    $date = $_POST['date'];
-    $title = $_POST['title'];
-    $description = $_POST['description'];
-
-    if (isset($_FILES['picture'])) {
-        $file = $_FILES['picture'];
-
-        $fileName = $file['name'];
-        $fileTmpName = $file['tmp_name'];
-        $fileSize = $file['size'];
-        $fileError = $file['error'];
-
-        $fileData = file_get_contents($fileTmpName);
-
-        $sql = "INSERT INTO memory(id_user, id_child, date, title, description, picture) VALUES(?,?,?,?,?,?)";
-        $stmtinsert = $mysql->prepare($sql);
-        $stmtinsert->bind_param('iissss', $user_id, $id_child, $date, $title, $description, $fileData);
-        $rez= $stmtinsert->execute();
-        
-        if($rez){
-                $_SESSION["message"] = "Memory added succesfully to the acount!";
-                }    
-        else {
-                echo"<script>alert('Error. Memory could not be added!');</script>";
-            }
-    }
-    else echo "Nope!";
-}
 
 $sql_name = mysqli_query($mysql, "SELECT * FROM child where id='$id_child'");
 ?>
@@ -79,7 +48,7 @@ $sql_name = mysqli_query($mysql, "SELECT * FROM child where id='$id_child'");
                     }
                     unset($_SESSION["message"]);
                 ?>
-                <form id="add-form" method="post" enctype="multipart/form-data">
+                <form id="add-form" method="post" action="Add-memories-controller.php" enctype="multipart/form-data">
                     <li id="date">
                         <label >Date</label>
                         <input type="date"  value="" id="memorydate" name="date">
@@ -96,6 +65,7 @@ $sql_name = mysqli_query($mysql, "SELECT * FROM child where id='$id_child'");
                         <label >Picture</label>
                         <input type="file" accept="image/*" value="" id="picture" name="picture" placeholder="Add picture">
                     </li>
+                    <input type="hidden" name="id_child" value="<?php echo $id_child; ?>">
                 <div class="buttons-kid1">
                     <input type="submit" name="submit" value="Save">
                 </div>

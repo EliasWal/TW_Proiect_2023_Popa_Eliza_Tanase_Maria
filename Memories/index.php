@@ -23,6 +23,8 @@
         $date = date("d.m.y", strtotime($row['date']));
 
         $base64image = base64_encode($row['picture']);
+        $photo_url = 'data:image/jpeg;base64,' . $base64image;
+        $encoded_photo = urlencode($photo_url);
 
         echo "<item xmlns:dc='ns:1'>" . PHP_EOL;
         echo "<title>".$row['title']."</title>" . PHP_EOL;
@@ -30,7 +32,7 @@
         echo "<guid>".md5($row['id'])."</guid>" . PHP_EOL;
         echo "<pubDate>".$date."</pubDate>" . PHP_EOL;
         echo "<description>".$row['description']."</description>" . PHP_EOL;
-        echo "<enclosure url='date:image/jpeg;base64,".$base64image."'>" . PHP_EOL;
+        echo "<enclosure url='".$encoded_photo."'>" . PHP_EOL;
         echo "<length>".strlen($base64image)."</length>" . PHP_EOL;
         echo "<type>image/jpeg</type>" . PHP_EOL;
         echo "</enclosure>" . PHP_EOL;
