@@ -21,7 +21,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
         if(addMemory($_SESSION["id"], $id_child, $date, $title, $description, $fileData)) {
             //header("Location: Add-memories.php?id=$id_child");
             http_response_code(201); 
-            header('HTTP/1.1 201 Friend updated succesfully!');
+            header('HTTP/1.1 201 Memory added succesfully!');
             echo json_encode(array('message' => 'Memory added successfully.'));
         } else {
             http_response_code(500); 

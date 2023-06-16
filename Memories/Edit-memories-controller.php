@@ -22,7 +22,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
             if(updateMemory($id_memory, $date, $title, $description, $fileData)) {
                 //header("Location: Edit-memories.php?id=$id_memory");
                 http_response_code(201); 
-                header('HTTP/1.1 201 Friend updated succesfully!');
+                header('HTTP/1.1 201 Memory updated succesfully!');
                 echo json_encode(array('message' => 'Memory updated successfully.'));
             } else {
                 http_response_code(500); 
@@ -33,7 +33,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
             if(updateMemoryWithoutPhoto($id_memory, $date, $title, $description)) {
                 //header("Location: Edit-memories.php?id=$id_memory");
                 http_response_code(201); 
-                header('HTTP/1.1 201 Friend updated succesfully!');
+                header('HTTP/1.1 201 Memory updated succesfully!');
                 echo json_encode(array('message' => 'Memory updated successfully.'));
             } else {
                 http_response_code(500); 

@@ -51,7 +51,7 @@
         <div class="page">
             <?php require "leftbar-memories.php"; ?> 
             <div class="right">
-                <a href="Memories-child.php?id=<?php echo $row['id_child']; ?>">
+                <a href="Memories-child.php?id=<?php echo $id_child; ?>">
                     <button>
                         <img src="../Photos/Back.png" alt="back">
                         Back 
