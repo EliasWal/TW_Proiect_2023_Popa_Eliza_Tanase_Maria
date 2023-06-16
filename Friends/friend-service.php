@@ -20,7 +20,7 @@ function addFriend($user_id, $name, $relationship, $fileData){
 
 function getFriends($user_id){
     global $mysql;
-    $stmt = $mysql->prepare("SELECT * FROM friend where id_user=?");
+    $stmt = $mysql->prepare("SELECT * FROM friend WHERE id_user = ?");
     $stmt->bind_param("i", $user_id);
     $stmt->execute();
     $result = $stmt->get_result();
@@ -29,6 +29,16 @@ function getFriends($user_id){
         $friends[] = $row;
     }
     return $friends;
+}
+
+function getOneFriend($friend_id){
+    global $mysql;
+    $stmt = $mysql->prepare("SELECT * FROM friend where id=?");
+    $stmt->bind_param("i", $friend_id);
+    $stmt->execute();
+    $result = $stmt->get_result();
+    $friend = $result->fetch_assoc();
+    return $friend;
 }
 
 function updateFriend($friend_id, $name, $relationship, $fileData) {

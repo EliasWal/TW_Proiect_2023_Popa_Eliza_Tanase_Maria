@@ -33,6 +33,8 @@ if(isset($_POST['submit'])){
         }
     } 
 }
+$plm = getFriends($user_id);
+echo $plm[0]['name'];
 
 // if(isset($_POST['delete'])){
 //     $child_id = $_POST['id'];
