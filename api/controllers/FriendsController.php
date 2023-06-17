@@ -10,31 +10,32 @@ class FriendsController
         if ($id) {
             $friend = getOneFriend($id);
             if ($friend) {
-                echo json_encode($friend);
+                header('Content-Type: application/json');
+                http_response_code(200);
+                echo json_encode([$friend['name'], $friend['relationship']]);
             } else {
                 http_response_code(404); 
                 echo json_encode(['message' => 'Friend not found']);
             }
-        } else{
-
-           echo json_encode([
-            ['id' => 1, 'name' => 'Example 1'],
-            ['id' => 2, 'name' => 'Example 2']
-        ]);
-        }
+        } 
     }
 
     public function getAll()
-{
-    
-    $friends = getFriends(6);
-    if ($friends) {
-        echo json_encode($friends);
-    } else {
-        http_response_code(404); 
-        echo json_encode(['message' => 'No friends found']);
+    {   $friends = getFriends(6);
+        if ($friends) {
+            header('Content-Type: application/json');  
+            http_response_code(200);
+            foreach ($friends as $friend) {    
+                //$imageData = base64_encode($friends['photo']);
+                //$src = 'data:image;base64,' . $imageData;
+                header('Content-Type: application/json');
+                echo "name: " . $friend['name'] . ", relationship: " . $friend['relationship'] . "<br>"; //. "<img src='$src'>" . "<br>";
+            }
+        } else {
+            http_response_code(404); 
+            echo json_encode(['message' => 'No friends found']);
+        }
     }
-}
 
     public function post()
     {
@@ -66,27 +67,23 @@ class FriendsController
     }
     }
     public function put($id)
-    {
-        parse_str(file_get_contents('php://input'), $_PUT);
-    
-        $name = $_PUT['name'];
-        $relationship = $_PUT['relation'];
-        
-        if (isset($_FILES['photo'])) {
-            $file = $_FILES['photo'];
+    {   $putData = file_get_contents('php://input');
+        parse_str($putData, $requestData);
 
-            $fileName = $file['name'];
-            $fileTmpName = $file['tmp_name'];
-            $fileSize = $file['size'];
-            $fileError = $file['error'];
-
-            $fileData = file_get_contents($fileTmpName);
-        }
+        $friend_id = $id;
+        $name = $requestData['name'];
+        $relationship = $requestData['relationship'];
         
-        if (updateFriend(6, $name, $relationship, $fileData)) {
+        $friend = getOneFriend($id);
+        
+        if(!$friend){
+            http_response_code(404); 
+            echo json_encode(['message' => 'Friend not found']);
+            return;
+        }elseif(updateFriend($friend_id, $name, $relationship)){
             http_response_code(200); 
             echo json_encode(['message' => 'Friend updated successfully']);
-        } else {
+        }else{
             http_response_code(500); 
             echo json_encode(['message' => 'Failed to update friend']);
         }

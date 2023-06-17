@@ -5,7 +5,36 @@ require '../media/media-service.php';
 class MediaController{
     public function get($id)
     {
+        if($id){
+            $media = getOneMedia($id);
+            if($media){
+                header('Content-Type: application/json');
+                http_response_code(200);
+                echo json_encode([$media['title']]);
+            }
+            else{
+                http_response_code(404);
+                echo json_encode(array('message' => 'Media not found'));
+            }
+        }
         
+    }
+
+    public function getAll()
+    {
+        $media = getMedia(6);
+        if($media){
+            header('Content-Type: application/json');  
+            http_response_code(200);
+            foreach($media as $media){
+                echo "id: " . $media['id'] . " title: " . $media['title'] . "<br>";
+            }
+        } else {
+            http_response_code(404); 
+            echo json_encode(['message' => 'No friends found']);
+        }       
+        
+
     }
 
     public function post(){
@@ -42,6 +71,26 @@ class MediaController{
         }
     }
 
+    public function put($id){
+        $media = getOneMedia($id);
+        if(!$media){
+            http_response_code(404);
+            echo json_encode(array('message' => 'Media not found.'));
+            return;
+        }
+
+       // $data = json_decode(file_get_contents("php://input"));
+
+        if(updateMedia($media)){
+            http_response_code(200);
+            echo json_encode(array('message' => 'Media updated successfully.'));
+        }
+        else{
+            http_response_code(500);
+            echo json_encode(array('message' => 'Failed to update media.'));
+        }
+    } // end of put(
+    
 
     public function delete($id)
     {

@@ -33,19 +33,21 @@ function getFriends($user_id){
 
 function getOneFriend($friend_id){
     global $mysql;
-    $stmt = $mysql->prepare("SELECT * FROM friend where id=?");
-    $stmt->bind_param("i", $friend_id);
-    $stmt->execute();
-    $result = $stmt->get_result();
-    $friend = $result->fetch_assoc();
-    return $friend;
+    $sql = "SELECT * FROM friend where id=$friend_id";
+    $result = mysqli_query($mysql, $sql);
+    if($result){
+        $friend = mysqli_fetch_assoc($result);
+        return $friend;
+    }
+    else {
+        return null;
+    }
 }
 
-function updateFriend($friend_id, $name, $relationship, $fileData) {
+function updateFriend($friend_id, $name, $relationship) {
     global $mysql;
 
-    $stmt = $mysql->prepare("UPDATE friend SET name=?, relationship=?, photo=? WHERE id=?");
-    $stmt->bind_param("sssi", $name, $relationship, $fileData, $friend_id);
+    $stmt = $mysql->prepare("UPDATE friend SET name='$name', relationship='$relationship' WHERE id='$friend_id'");
 
     if ($stmt->execute()) {
         return true;
