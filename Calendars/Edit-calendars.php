@@ -1,7 +1,6 @@
 <?php
     require "../config.php";
-
-    session_start();
+    require "calendars-service.php";
     
     if(!isset($_COOKIE["login"]))
         header("location: ../login.php");
@@ -14,46 +13,9 @@
     $user_id = $_SESSION["id"];
     $id_child = $_GET['id'];
     
-    $sql= mysqli_query($mysql, "SELECT * FROM calendar where id_user='$user_id' and id_child='$id_child' ORDER BY time");
-
-    $sql_name = mysqli_query($mysql, "SELECT * FROM child where id='$id_child'");
-
-    $array = array();
     $contor = -1;
 
-    
-    if(isset($_POST['submit'])){
-        $time_ = $_POST['time'];
-        $sleep_ = $_POST['sleep'];
-        $feed_ = $_POST['feed'];
-        $notes_ = $_POST['notes'];
-        $i = -1;
-
-        while ($row = mysqli_fetch_assoc($sql)) {
-            $i = $i + 1;
-            $id = $row['id'];
-            
-            $time = $time_[$i];
-            if(in_array($id, $sleep_))
-                $sleep = 1;
-            else
-                $sleep = 0;
-            if(in_array($id, $feed_))
-                $feed = 1;
-            else
-                $feed = 0;
-            $notes = $notes_[$i];
-
-            $sql_c = "UPDATE calendar SET time='$time', sleep='$sleep', feed='$feed', notes='$notes' WHERE id=$id";
-            $rez = mysqli_query($mysql, $sql_c);
-            if($rez){
-                $_SESSION["message"] = "Calendars updated succesfully to the account!";
-            }    
-            else {
-                echo"<script>alert('Error. Calendars could not be updated!');</script>";
-            }
-        }
-    }
+    $calendar = getCalendar($user_id, $id_child);
 ?>
 
 <!DOCTYPE html>
@@ -73,11 +35,7 @@
         <div class="page">
             <?php require "leftbar-calendars.php"; ?> 
             <div class="container">
-                <?php
-                    $row = mysqli_fetch_assoc($sql_name);
-                    $name = $row['firstname'];
-                ?>
-                <h1> Edit <?php echo $name; ?>'s timetable</h1>
+                <h1> Edit <?php echo getNameChild($id_child); ?>'s timetable</h1>
                 <?php if(isset($_SESSION["message"])){
                         echo "<h2 style=''>" . $_SESSION["message"] . "</h2>";
                     }
@@ -90,7 +48,7 @@
                             Back 
                         </button>
                     </a>
-                <form method="post"  action="">
+                <form method="post"  action="Edit-calendars-controller.php">
                     <input type="submit" name="submit" value="Save">
                 </div>
                     <div id="table-calender" >
@@ -104,7 +62,7 @@
                             </tr>
                         </div>
                         <?php
-                            while ($row = mysqli_fetch_assoc($sql)) {
+                            foreach($calendar as $row) {
                         ?>
                         <tr>
                             <div class="valori">
@@ -142,6 +100,7 @@
                                 <div class="note-in">
                                     <td><input type="text" id="notes" name="notes[]" value="<?php echo $row['notes']; ?>"></td>
                                 </div>
+                                <input type="hidden" name="id_child" value="<?php echo $id_child; ?>">
                             </div>
                         </tr>
                         <?php

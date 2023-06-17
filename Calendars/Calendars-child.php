@@ -1,7 +1,6 @@
 <?php
     require "../config.php";
-
-    session_start();
+    require "calendars-service.php";
     
     if(!isset($_COOKIE["login"]))
         header("location: ../login.php");
@@ -13,19 +12,8 @@
 
     $user_id = $_SESSION["id"];
     $id_child = $_GET['id'];
-
-    if (isset($_GET['idc'])) {
-        $idc = $_GET['idc'];
-        $delete = mysqli_query($mysql, "DELETE FROM calendar WHERE id=$idc");
-        if($delete){
-            header("Location: Calendars-child.php?id=$id_child");
-            exit();
-        }
-    }
     
-    $sql= mysqli_query($mysql, "SELECT * FROM calendar where id_user='$user_id' and id_child='$id_child' ORDER BY time");
-
-    $sql_name = mysqli_query($mysql, "SELECT * FROM child where id='$id_child'");
+    $calendar = getCalendar($user_id, $id_child);
 ?>
 <!DOCTYPE html>
 <html lang="en-US">
@@ -44,11 +32,7 @@
         <div class="page">
             <?php require "leftbar-calendars.php"; ?> 
             <div class="container">
-                <?php
-                    $row = mysqli_fetch_assoc($sql_name);
-                    $name = $row['firstname'];
-                ?>
-                <h1> <?php echo $name; ?>'s timetable</h1>
+                <h1> <?php echo getNameChild($id_child); ?>'s timetable</h1>
                 <div class="buttons">
                         <a href="Add-calendars.php?id=<?php echo $id_child; ?>">
                             <button>
@@ -74,7 +58,7 @@
                             </tr>
                         </div>
                         <?php
-                            while ($row = mysqli_fetch_assoc($sql)) {
+                           foreach($calendar as $row) {
                         ?>
                         <tr>
                             <div class="valori">
@@ -113,12 +97,16 @@
                                     <td><input type="text" id="note" name="note" value="<?php echo $row['notes']; ?>" readonly></td>
                                 </div>
                                 <td> 
-                                    <div class="delete-buttons">
-                                        <a class="table-value" href="Calendars-child.php?id=<?php echo $id_child; ?>&idc=<?php echo $row['id']; ?>">
-                                            <img src="../Photos/bin.png" alt="bin">
-                                        </a>
-                                    </div>
-                                <td>
+                                    <form method="post" action="Delete-calendars-controller.php">
+                                        <input type="hidden" name="id_calendar" value="<?php echo $row['id']; ?>">
+                                        <input type="hidden" name="id_child" value="<?php echo $id_child; ?>">
+                                        <div class="delete-buttons">
+                                            <a class="table-value" href="Calendars-child.php?id=<?php echo $id_child; ?>&idc=<?php echo $row['id']; ?>">
+                                                <img src="../Photos/bin.png" alt="bin">
+                                            </a>
+                                        </div>
+                                    </form>
+                                </td>
                             </div>
                         </tr>
                         <?php

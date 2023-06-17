@@ -1,7 +1,6 @@
 <?php
     require "../config.php";
-
-    session_start();
+    require "calendars-service.php";
     
     if(!isset($_COOKIE["login"]))
         header("location: ../login.php");
@@ -13,24 +12,6 @@
 
     $user_id = $_SESSION["id"];
     $id_child = $_GET['id'];
-
-    if(isset($_POST['submit'])){
-        $time = $_POST['time'];
-        $notes = $_POST['notes'];
-    
-        $sql = "INSERT INTO calendar(id_user, id_child, time, notes) VALUES(?,?,?,?)";
-        $stmtinsert = $mysql->prepare($sql);
-        $stmtinsert->bind_param("iids", $user_id, $id_child, $time, $notes);
-        $rez= $stmtinsert->execute();
-        if($rez){
-                 $_SESSION["message"] = "Entry added succesfully to the calendar!";
-                }    
-        else {
-                echo"<script>alert('Error. Entry could not be added!');</script>";
-             }
-    }
-    
-    $sql_name = mysqli_query($mysql, "SELECT * FROM child where id='$id_child'");
 ?>
 <!DOCTYPE html>
 <html lang="en-US">
@@ -55,17 +36,13 @@
                         Back 
                     </button>
                 </a>
-                <?php
-                    $row = mysqli_fetch_assoc($sql_name);
-                    $name = $row['firstname'];
-                ?>
-                <h1> Add a new calendar time for <?php echo $name; ?></h1>
+                <h1> Add a new calendar time for <?php echo getNameChild($id_child); ?></h1>
                 <?php if(isset($_SESSION["message"])){
                         echo "<h1 style='text-decoration:none;'>" . $_SESSION["message"] . "</h1>";
                     }
                     unset($_SESSION["message"]);
                 ?>
-                <form id="add-form" method="post">
+                <form id="add-form" method="post" action="Add-calendars-controller.php">
                     <li id="time">
                         <label >Time</label>
                         <input name="time" type="time"  value="" id="timecalendar">
@@ -74,6 +51,7 @@
                         <label>Notes</label>
                         <input name="notes" type="text" value="" id="notes" name="notes" placeholder="Add extra notes">
                     </li>
+                    <input type="hidden" name="id_child" value="<?php echo $id_child; ?>">
                 <div href="Calendars-child.php" class="buttons-kid1">
                     <input type="submit" name="submit" value="Save">
                 </div>
