@@ -31,6 +31,18 @@ function getCalendar($user_id, $id_child) {
     return $calendar;
 }
 
+function getCalendarEntry($id_calendar) {
+    global $mysql;
+    $sql= "SELECT * FROM calendar where id=?";
+    $stmt = $mysql->prepare($sql);
+    $stmt->bind_param('i', $id_calendar);
+    $stmt->execute();
+    $result = $stmt->get_result();
+    $row = $result->fetch_assoc();
+    return $row;
+}
+
+
 function getNameChild($id_child) {
     global $mysql;
     $sql = "SELECT firstname FROM child where id=?";
