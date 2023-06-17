@@ -38,6 +38,7 @@ class MediaController{
     }
 
     public function post(){
+        $user_id = $_POST['user_id'];
         $name = $_POST['title'];
         
         if(isset($_FILES['picture'])){
@@ -50,12 +51,12 @@ class MediaController{
     
             $fileData = file_get_contents($fileTmpName);
     
-            $allowedExtensions = array('jpg', 'jpeg', 'png', 'gif', 'pdf', 'doc', 'docx', 'mp4', 'avi', 'mov', 'mpeg'); // Add any other allowed extensions here
+            $allowedExtensions = array('jpg', 'jpeg', 'png', 'gif', 'pdf', 'doc', 'docx', 'mp4', 'avi', 'mov', 'mpeg');
     
             $fileExtension = strtolower(pathinfo($fileName, PATHINFO_EXTENSION));
     
             if(in_array($fileExtension, $allowedExtensions)){
-                if(addMedia(6, $name, $fileData)){
+                if(addMedia($user_id, $name, $fileData)){
                     http_response_code(201);
                     echo json_encode(array('message' => 'Media added successfully.'));
                 }
