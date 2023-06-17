@@ -15,7 +15,7 @@
                     <li><a href="../Memories/Memories.php">Memories</a></li>
                     <li><a href="../Calendars/Calendars.php">Calendars</a></li>
                     <li><a href="../Friends/friends.php">Friends</a></li>
-                    <li><a href="../Medical.html">Medical</a></li>
+                    <li><a href="../Medical/Medical.php">Medical</a></li>
                     <li><a href="../Welcome-logged-in.php">Home</a></li>
                     <li><a href="../Media/media.php">Media</a></li>
                     <li class='settings'>

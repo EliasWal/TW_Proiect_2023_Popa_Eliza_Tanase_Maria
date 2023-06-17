@@ -39,7 +39,7 @@ class MediaController{
 
     public function post(){
         $name = $_POST['title'];
-
+        
         if(isset($_FILES['picture'])){
             $file = $_FILES['picture'];
     

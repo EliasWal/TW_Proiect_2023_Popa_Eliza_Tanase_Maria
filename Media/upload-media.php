@@ -22,6 +22,45 @@ $user_id = $_SESSION["id"];
     <link href="upload-media.css" rel="stylesheet" />
     <link rel="icon" type="image/png" href="https://cdn-icons-png.flaticon.com/512/2102/2102805.png"/>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta2/css/all.min.css" integrity="sha512-YWzhKL2whUzgiheMoBFwW8CKV4qpHQAEuvilg9FAn5VJUDwKZZxkJNuGM4XkWuk94WCrrwslk8yWNGmY1EduTA==" crossorigin="anonymous" referrerpolicy="no-referrer" /></head>
+    <script>
+      
+      document.addEventListener('DOMContentLoaded', function() {
+      var form = document.getElementById('upload-form');
+      var button = document.getElementById('myButton');
+      var messageContainer = document.getElementById('message-container');
+
+      button.addEventListener('click', function(event) {
+        event.preventDefault(); // Prevent the default form submission
+
+        // Create a new FormData object
+        var formData = new FormData(form);
+
+        // Perform the AJAX request
+        var xhr = new XMLHttpRequest();
+        xhr.open('POST', 'http://localhost/TW_Proiect_2023_Popa_Eliza_Tanase_Maria-main/api/media/');
+        xhr.onload = function() {
+          if (xhr.status === 201) {
+            console.log('File uploaded successfully');
+            var successMessage = 'Media created successfully';
+            showMessage(successMessage);
+          } else {
+            var errorMessage = 'Error uploading file';
+            showMessage(errorMessage);
+          }
+        };
+        xhr.onerror = function() {
+          console.log('Request error');
+          // Handle the request error
+        };
+        xhr.send(formData);
+      });
+      function showMessage(message) {
+        messageContainer.textContent = message;
+        // You can also style the message container or perform other actions here
+      }
+    });
+
+    </script>
 </head>
 <body>
     <?php require "../login-topbar.php"; ?>
@@ -30,8 +69,11 @@ $user_id = $_SESSION["id"];
                 <p>Here you can upload any type of file, in order to keep them organized and to have them in a single place. </p>
                 <p>Feel free to upload any kind of content!</p>
             </div>
+
             <div class="upload-container">
                 <h2>Upload</h2>
+                <h2 id="message-container"></h2>
+
                 <form id="upload-form" method="post" enctype="multipart/form-data">
                             <li id="name">
                                 <label >Title</label>
@@ -41,7 +83,7 @@ $user_id = $_SESSION["id"];
                                 <label> Photo</label>
                                 <input type="file" id="photo" name="picture" required>
                             </li>
-                            <input type="submit" name="submit" value="Save">
+                            <input type="submit" id="myButton" name="submit" value="Save">
                         </div>
                     </form>
                 </div>
