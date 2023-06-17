@@ -102,7 +102,7 @@
                                         <input type="hidden" name="id_child" value="<?php echo $id_child; ?>">
                                         <div class="delete-buttons">
                                             <a class="table-value" href="Calendars-child.php?id=<?php echo $id_child; ?>&idc=<?php echo $row['id']; ?>">
-                                                <img src="../Photos/bin.png" alt="bin">
+                                                <button> <img src="../Photos/bin.png" alt="bin"> </button>
                                             </a>
                                         </div>
                                     </form>
