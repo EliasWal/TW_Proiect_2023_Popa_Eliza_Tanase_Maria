@@ -20,12 +20,15 @@ function addMedia($user_id, $name, $fileData){
 
 function getOneMedia($media_id){
     global $mysql;
-    $stmt = $mysql->prepare("SELECT * FROM media where id=?");
-    $stmt->bind_param("i", $media_id);
-    $stmt->execute();
-    $result = $stmt->get_result();
-    $media = $result->fetch_assoc();
-    return $media;
+    $sql = "SELECT * FROM media where id=$media_id";
+    $result = mysqli_query($mysql, $sql);
+    if($result){
+        $media = mysqli_fetch_assoc($result);
+        return $media;
+    }
+    else {
+        return null;
+    }
 }
 
 function getMedia($user_id){
@@ -39,6 +42,19 @@ function getMedia($user_id){
         $media[] = $row;
     }
     return $media;
+}
+
+
+function updateMedia($media_id, $name) {
+    global $mysql;
+
+    $stmt = $mysql->prepare("UPDATE media SET title='$name' WHERE id='$media_id'");
+
+    if ($stmt->execute()) {
+        return true;
+    } else {
+        return false;
+    }
 }
 
 function deleteMedia($media_id){

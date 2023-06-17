@@ -72,24 +72,26 @@ class MediaController{
     }
 
     public function put($id){
-        $media = getOneMedia($id);
+        $putData = file_get_contents('php://input');
+        parse_str($putData, $requestData);
+
+        $media_id = $id;
+        $name = $requestData['title'];
+
+        $media = getOneMedia($media_id);
         if(!$media){
             http_response_code(404);
             echo json_encode(array('message' => 'Media not found.'));
             return;
-        }
-
-       // $data = json_decode(file_get_contents("php://input"));
-
-        if(updateMedia($media)){
+        }elseif(updateMedia($media_id, $name)){
             http_response_code(200);
             echo json_encode(array('message' => 'Media updated successfully.'));
-        }
-        else{
+        }else {
             http_response_code(500);
             echo json_encode(array('message' => 'Failed to update media.'));
         }
-    } // end of put(
+
+    } 
     
 
     public function delete($id)
