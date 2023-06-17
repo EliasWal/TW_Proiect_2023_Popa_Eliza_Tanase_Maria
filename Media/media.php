@@ -2,6 +2,7 @@
 require '../config.php';
 require 'media-service.php';
 
+session_start();
 
 if(!isset($_COOKIE["login"]))
     header("location: ../login.php");
@@ -26,6 +27,44 @@ $user_id = $_SESSION["id"];
     <link href="media.css" rel="stylesheet" />
     <link rel="icon" type="image/png" href="https://cdn-icons-png.flaticon.com/512/2102/2102805.png"/>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta2/css/all.min.css" integrity="sha512-YWzhKL2whUzgiheMoBFwW8CKV4qpHQAEuvilg9FAn5VJUDwKZZxkJNuGM4XkWuk94WCrrwslk8yWNGmY1EduTA==" crossorigin="anonymous" referrerpolicy="no-referrer" /></head>
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+        var deleteButtons = document.querySelectorAll('input[name="delete"]');
+        var messageContainer = document.getElementById('message-container');
+
+        deleteButtons.forEach(function(button) {
+        button.addEventListener('click', function(event) {
+            event.preventDefault(); // Prevent the default form submission
+
+        var mediaId = button.previousElementSibling.value;
+
+        // Perform the AJAX request for DELETE
+        var xhr = new XMLHttpRequest();
+        xhr.open('DELETE', 'http://localhost/TW_Proiect_2023_Popa_Eliza_Tanase_Maria-main/api/media/' + mediaId);
+        xhr.onload = function() {
+          if (xhr.status === 200) {
+            console.log('Media deleted successfully');
+            var successMessage = 'Media deleted successfully';
+            showMessage(successMessage);
+          } else {
+            var errorMessage = 'Error deleting media';
+            showMessage(errorMessage);
+          }
+        };
+        xhr.onerror = function() {
+          console.log('Request error');
+          // Handle the request error
+        };
+        xhr.send();
+      });
+    });
+
+    function showMessage(message) {
+        messageContainer.textContent = message;
+    }
+    });
+    </script>
+    
 </head>
 <body>
     <?php require "../login-topbar.php"; ?> 
@@ -37,6 +76,7 @@ $user_id = $_SESSION["id"];
             <div class="content">
                 <div class="upload">
                     <h2> Upload file</h2>
+                    <h2 id="message-container"></h2>
                     <a href="upload-media.php">
                         <input type="submit" value="Upload">
                     </a>
@@ -62,11 +102,11 @@ $user_id = $_SESSION["id"];
                             <p><?php echo $row['title']; ?></p>
                             <img id="photo" src="<?php echo $src; ?>">
                             <div id="edit">
-                                <a href="edit-media.php">
+                                <a href="edit-media.php?id=<?php echo $row['id'] ?>">
                                     <input type="submit" value="Edit">
                                 </a>
-                                <a href="media-controller.php">
-                                    <input type="hidden" name="id" value="<?php echo $media_id; ?>">
+                                <a href="">
+                                    <input type="hidden" name="id" value="<?php echo $row['id']; ?>">
                                     <input type="submit" value="Delete" name='delete'>
                                 </a>
                             </div>

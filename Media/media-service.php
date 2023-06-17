@@ -2,7 +2,6 @@
 
 require '../config.php';
 
-session_start();
 
 function addMedia($user_id, $name, $fileData){
     global $mysql;
@@ -30,6 +29,7 @@ function getOneMedia($media_id){
         return null;
     }
 }
+
 
 function getMedia($user_id){
     global $mysql;
