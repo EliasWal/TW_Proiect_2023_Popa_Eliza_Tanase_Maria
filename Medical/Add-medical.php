@@ -40,7 +40,7 @@
           
           formData.append('id_child', childId);
           var xhr = new XMLHttpRequest();
-          xhr.open('POST', 'http://localhost/TW_Proiect_2023_Popa_Eliza_Tanase_Maria-main/api/medical/');
+          xhr.open('POST', 'http://localhost/TW_Proiect_2023_Popa_Eliza_Tanase_Maria/api/medical/');
           xhr.onload = function() {
             if (xhr.status === 201) {
               console.log('Medical report added successfully');

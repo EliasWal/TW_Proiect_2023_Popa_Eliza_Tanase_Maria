@@ -1,0 +1,156 @@
+body {
+    background-color: #B28FF7;
+}
+
+.page {
+    display: flex;
+    flex-direction: row;
+    justify-content: baseline;
+    margin-top: .5em;
+}
+
+.leftbar{
+    font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
+    background-color:lavender;
+    display: flex;
+    flex-direction: column;
+    width: 8em;
+    /*position: fixed;*/
+    padding: 1em;
+    margin-top: .5em;  
+    margin-left: .5em;
+    font-size: larger;
+    border-radius: 1em;
+}
+
+.leftbar h2 {
+    border-radius: .2em;
+    margin-bottom: 2em;
+}
+
+.choose-child {
+    list-style-type: none;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    position: relative;
+    margin-top: 40px;
+}
+
+.choose-child li:hover {
+    color: blueviolet;
+    background-color: rgba(240,248,255, .5);
+    border-radius: .7em;
+    font-weight: 900;
+    padding-left: .6em;
+
+}
+
+.child {
+    text-decoration: none;   
+    color: mediumpurple;
+}
+
+.right {
+    font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
+    padding: 3em;
+    align-items: center;
+    background: lavender; /* lavender */
+    margin-top: .5em;
+    margin-left: .5em; 
+    margin-right: 0;
+    width:100vw;
+    height: 100vh;
+    border-radius: 3em;
+}
+
+.table {
+    font-size: x-large;
+    display: flex;
+    flex-direction: column;
+}
+
+.row {
+    display: flex;
+    flex-direction: row;
+}
+
+.table-value {
+    margin-bottom: .5em;
+    margin-left: 2em;
+}
+
+.table-header {
+    margin-bottom: .5em;
+    color: rgb(86, 63, 108);
+    font-weight: bold;
+}
+
+.right button, input#delete {
+    font-size: medium;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    background:white;
+    border-radius: 1em;
+    height: 2.5em;
+    width: 6em;
+    align-items: center;
+    margin-bottom: 1em;
+}
+
+.buttons button {
+    display: flex;
+    flex-direction: row;
+    text-decoration: none;
+}
+
+.right button img {
+    width: 1.2em;
+}
+
+@media(max-width:860px) {
+
+    .page {
+        flex-direction: column;
+    }
+
+    .leftbar {
+        width: 100vw;
+        height: 5em;
+        text-align: center;
+        justify-content: center;
+        margin-top: 0;
+        margin-left: 0;
+        border-radius: 0;
+        padding: 0;
+    }
+
+    .leftbar h2 {
+        margin-bottom: 0;
+        background: none;
+    }
+
+    .choose-child {
+        flex-direction: row;
+        justify-content: space-evenly;
+        align-items: center;
+        font-size: small;
+        background: none;
+    }
+
+    .right {
+        margin-top: .2em;
+        margin-left: .2em; 
+    }
+}
+
+@media(max-width:550px) {
+    .row {
+        font-size: large;
+    }
+}
+
+@media(max-width:410px) {
+    .row {
+        font-size: medium;
+    }
+}
