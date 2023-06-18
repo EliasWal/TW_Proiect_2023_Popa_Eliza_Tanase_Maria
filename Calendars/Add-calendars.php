@@ -28,7 +28,7 @@
         document.addEventListener('DOMContentLoaded', function() {
             var form = document.getElementById('add-form');
             var button = document.getElementById('saveButton');
-            var message = document.getElementById('message');
+            var messageContainer = document.getElementById('message');
             var user_id = "<?php echo $user_id; ?>";
 
             button.addEventListener('click', function(event) {
@@ -54,7 +54,7 @@
             });
 
             function showMessage(message) {
-                message.textContent = message;
+                messageContainer.textContent = message;
             }
         });
     </script>
