@@ -40,7 +40,7 @@
         var medicalId = button.previousElementSibling.value;
 
         var xhr = new XMLHttpRequest();
-        xhr.open('DELETE', 'http://localhost/TW_Proiect_2023_Popa_Eliza_Tanase_Maria-main/api/medical/' + medicalId);
+        xhr.open('DELETE', 'http://localhost/TW_Proiect_2023_Popa_Eliza_Tanase_Maria/api/medical/' + medicalId);
         xhr.onload = function() {
           if (xhr.status === 200) {
             console.log('Report deleted successfully');
