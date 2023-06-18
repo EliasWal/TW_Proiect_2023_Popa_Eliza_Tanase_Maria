@@ -29,18 +29,14 @@ $user_id = $_SESSION["id"];
         var form = document.getElementById('upload-form');
         var button = document.getElementById('myButton');
         var messageContainer = document.getElementById('message-container');
-        var userId = "<?php echo $user_id; ?>"; // Retrieve the user ID from PHP and assign it to a JavaScript variable
+        var userId = "<?php echo $user_id; ?>"; 
 
         button.addEventListener('click', function(event) {
-          event.preventDefault(); // Prevent the default form submission
+          event.preventDefault(); 
 
-          // Create a new FormData object
           var formData = new FormData(form);
           
-        
-
-          // Perform the AJAX request
-          var xhr = new XMLHttpRequest();
+            var xhr = new XMLHttpRequest();
           xhr.open('POST', 'http://localhost/TW_Proiect_2023_Popa_Eliza_Tanase_Maria-main/api/media/');
           xhr.onload = function() {
             if (xhr.status === 201) {
@@ -54,14 +50,12 @@ $user_id = $_SESSION["id"];
           };
           xhr.onerror = function() {
             console.log('Request error');
-            // Handle the request error
           };
           xhr.send(formData);
         });
 
         function showMessage(message) {
           messageContainer.textContent = message;
-          // You can also style the message container or perform other actions here
         }
       });
     </script>

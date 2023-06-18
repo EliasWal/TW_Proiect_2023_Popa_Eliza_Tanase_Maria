@@ -1,7 +1,7 @@
 <?php 
 require '../config.php';
 require 'media-service.php';
-
+session_start();
 
 if(!isset($_COOKIE["login"]))
     header("location: ../login.php");
@@ -26,7 +26,7 @@ $res = getOneMedia($media_id);
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title> Baby manager </title>
-    <link href="admin-topbar.css" rel="stylesheet" />
+    <link href="../admin-topbar.css" rel="stylesheet" />
     <link href="edit-media.css" rel="stylesheet" />
     <link rel="icon" type="image/png" href="https://cdn-icons-png.flaticon.com/512/2102/2102805.png"/>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta2/css/all.min.css" integrity="sha512-YWzhKL2whUzgiheMoBFwW8CKV4qpHQAEuvilg9FAn5VJUDwKZZxkJNuGM4XkWuk94WCrrwslk8yWNGmY1EduTA==" crossorigin="anonymous" referrerpolicy="no-referrer" /></head>
@@ -37,16 +37,14 @@ $res = getOneMedia($media_id);
         var messageContainer = document.getElementById('message-container');
 
         button.addEventListener('click', function(event) {
-            event.preventDefault(); // Prevent the default form submission
+            event.preventDefault(); 
 
-            // Create a new FormData object
             var formData = new FormData(form);
             
-            // Perform the AJAX request
             var xhr = new XMLHttpRequest();
             xhr.open('PUT', 'http://localhost/TW_Proiect_2023_Popa_Eliza_Tanase_Maria-main/api/media/' + <?php echo $media_id ?>);
             xhr.onload = function() {
-            if (xhr.status === 200) {
+            if (xhr.status === 204) {
                 console.log('File updated successfully');
                 var successMessage = 'Media updated successfully';
                 showMessage(successMessage);
@@ -57,15 +55,25 @@ $res = getOneMedia($media_id);
             };
             xhr.onerror = function() {
             console.log('Request error');
-            // Handle the request error
             };
+            console.log('Form data:', convertFormDataToObject(formData));
+            console.log('Sending PUT request...');
+
             xhr.send(formData);
         });
         function showMessage(message) {
             messageContainer.textContent = message;
-            // You can also style the message container or perform other actions here
+        }
+
+        function convertFormDataToObject(formData) {
+            const object = {};
+            for (const [key, value] of formData.entries()) {
+                object[key] = value;
+            }
+            return object;
         }
         });
+        
 
     </script>
 </head>
@@ -83,7 +91,7 @@ $res = getOneMedia($media_id);
                 <form id="upload-form" method="post" action="media.php">
                             <li id="name">
                                 <label >Title</label>
-                                <input type="text" value="<?php echo $res['title']?>" id="name" name="name" placeholder="Title of file">
+                                <input type="text" value="" id="title" name="name" placeholder="Title of file">
                             </li>
                             <li id="Photo">
                                 <label> Photo</label>

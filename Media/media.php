@@ -34,11 +34,10 @@ $user_id = $_SESSION["id"];
 
         deleteButtons.forEach(function(button) {
         button.addEventListener('click', function(event) {
-            event.preventDefault(); // Prevent the default form submission
+            event.preventDefault();
 
         var mediaId = button.previousElementSibling.value;
 
-        // Perform the AJAX request for DELETE
         var xhr = new XMLHttpRequest();
         xhr.open('DELETE', 'http://localhost/TW_Proiect_2023_Popa_Eliza_Tanase_Maria-main/api/media/' + mediaId);
         xhr.onload = function() {
@@ -53,7 +52,6 @@ $user_id = $_SESSION["id"];
         };
         xhr.onerror = function() {
           console.log('Request error');
-          // Handle the request error
         };
         xhr.send();
       });

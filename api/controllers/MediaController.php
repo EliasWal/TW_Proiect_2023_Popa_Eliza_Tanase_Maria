@@ -38,7 +38,6 @@ class MediaController{
     }
 
     public function post(){
-       // $user_id = $_POST['user_id'];
         $name = $_POST['title'];
         $user_id = $_POST['user_id'];
 
@@ -78,19 +77,21 @@ class MediaController{
     }
 
     public function put($id){
-        $putData = file_get_contents('php://input');
-        parse_str($putData, $requestData);
+       // $putData = file_get_contents('php://input');
+       // parse_str($putData, $requestData);
 
         $media_id = $id;
-        $name = $requestData['title'];
+        $name = $_POST['title'];
+        $photo= $_FILES['picture'];
 
         $media = getOneMedia($media_id);
+
         if(!$media){
             http_response_code(404);
             echo json_encode(array('message' => 'Media not found.'));
             return;
         }elseif(updateMedia($media_id, $name)){
-            http_response_code(200);
+            http_response_code(204);
             echo json_encode(array('message' => 'Media updated successfully.'));
         }else {
             http_response_code(500);

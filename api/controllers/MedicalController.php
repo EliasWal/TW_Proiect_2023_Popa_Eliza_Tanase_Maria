@@ -40,7 +40,11 @@ class MedicalController
         $symptoms = $_POST['symptoms'];
         $diagnosis = $_POST['diagnosis'];
         $medication = $_POST['medication'];
-        $medical = addMedicalReport(6, $id_child, $date, $doctor, $symptoms, $diagnosis, $medication);
+        $user_id = $_POST['user_id'];
+
+        
+
+        $medical = addMedicalReport($user_id, $id_child, $date, $doctor, $symptoms, $diagnosis, $medication);
         if($medical){
             http_response_code(201);
             echo json_encode([
@@ -63,7 +67,7 @@ class MedicalController
         if(!$medical){
             http_response_code(404);
             echo json_encode(['message' => 'Medical report not found']);
-        }
+        }else
 
         if(deleteMedicalReport($id)){
             http_response_code(200);

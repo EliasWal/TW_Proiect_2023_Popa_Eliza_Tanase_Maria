@@ -31,15 +31,28 @@ function getMedicalReports($user_id, $id_child) {
     return $medical_reports;
 }
 
+function getOneMedical($id_medical) {
+    global $mysql;
+    $sql = "SELECT * FROM medical_report where id='$id_medical";
+    $result = mysqli_query($mysql, $sql);
+    if($result){
+        $medical = mysqli_fetch_assoc($result);
+        return $medical;
+    }
+    else {
+        return null;
+    }
+}
+
 function getNameChild($id_child) {
     global $mysql;
     $sql = "SELECT firstname FROM child where id=?";
     $stmt = $mysql->prepare($sql);
     $stmt->bind_param('i', $id_child);
     $stmt->execute();
-    $stmt->bind_result($name);
-    $stmt->fetch();
-    return $name;
+    $name= $stmt->get_result();
+    $res=$name->fetch_assoc();
+    return $res['firstname'];
 }
 
 function getMedicalReport($id_medical) {
