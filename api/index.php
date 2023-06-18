@@ -6,7 +6,7 @@ if (($pos = strpos($requestUri, '?')) !== false) {
     $requestUri = substr($requestUri, 0, $pos);
 }
 
-$basePath = '/TW_Proiect_2023_Popa_Eliza_Tanase_Maria-main/api/';
+$basePath = '/TW_Proiect_2023_Popa_Eliza_Tanase_Maria/api/';
 $requestUri = str_replace($basePath, '', $requestUri);
 
 $requestParts = explode('/', trim($requestUri, '/'));
