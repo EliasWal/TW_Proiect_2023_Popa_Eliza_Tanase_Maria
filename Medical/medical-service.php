@@ -33,7 +33,7 @@ function getMedicalReports($user_id, $id_child) {
 
 function getOneMedical($id_medical) {
     global $mysql;
-    $sql = "SELECT * FROM medical_report where id='$id_medical";
+    $sql = "SELECT * FROM medical_report where id='$id_medical'";
     $result = mysqli_query($mysql, $sql);
     if($result){
         $medical = mysqli_fetch_assoc($result);

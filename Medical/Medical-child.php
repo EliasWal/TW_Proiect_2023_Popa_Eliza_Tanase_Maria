@@ -25,20 +25,20 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title> Baby manager </title>
     <link href="../admin-topbar.css" rel="stylesheet" />
-    <link href="Style-medical-child3.css" rel="stylesheet" />
+    <link href="Style-medical-child1.css" rel="stylesheet" />
     <link rel="icon" type="image/png" href="https://cdn-icons-png.flaticon.com/512/2102/2102805.png"/>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta2/css/all.min.css" integrity="sha512-YWzhKL2whUzgiheMoBFwW8CKV4qpHQAEuvilg9FAn5VJUDwKZZxkJNuGM4XkWuk94WCrrwslk8yWNGmY1EduTA==" crossorigin="anonymous" referrerpolicy="no-referrer" /></head>
     <script>
         document.addEventListener('DOMContentLoaded', function() {
-        var deleteButtons = document.querySelectorAll('.delete-button');
+        var deleteButtons = document.querySelectorAll('input[name="delete"]');
         var messageContainer = document.getElementById('message-container');
 
         deleteButtons.forEach(function(button) {
         button.addEventListener('click', function(event) {
             event.preventDefault();
 
-        var medicalId = document.getElementById("id-medical").value;
-        console.log(medicalId);
+        var medicalId = button.previousElementSibling.value;
+
         var xhr = new XMLHttpRequest();
         xhr.open('DELETE', 'http://localhost/TW_Proiect_2023_Popa_Eliza_Tanase_Maria-main/api/medical/' + medicalId);
         xhr.onload = function() {
@@ -46,7 +46,6 @@
             console.log('Report deleted successfully');
             var successMessage = 'Report deleted successfully';
             showMessage(successMessage);
-            //button.closest('tr').remove();
           } else {
             var errorMessage = 'Error deleting report';
             showMessage(errorMessage);
@@ -54,17 +53,12 @@
         };
         xhr.onerror = function() {
           console.log('Request error');
-        };        
+        };       
+        console.log(medicalId); 
         xhr.send();
       });
     });
-    function convertFormDataToObject(formData) {
-            const object = {};
-            for (const [key, value] of formData.entries()) {
-                object[key] = value;
-            }
-            return object;
-        }
+
     function showMessage(message) {
         messageContainer.textContent = message;
     }
@@ -120,14 +114,15 @@
                             </a>
                         </div>
                     </div> <td>
-                    <td> <div class="column-optional">
+                    <td> <div class="column-optional"> 
                             <form method="post" action="">
                              
                             <div class="delete-buttons">
                                 <a class="table-value" >
                                     <button name="delete">
-                                        <input type="hidden" name="id-medical" value="<?php echo $row['id']; ?>">
-                                        <img src="../Photos/bin.png" name='delete' alt="delete">
+                                        <input type="hidden" name="id_medical" value="<?php echo $row['id']; ?>">
+                                        <input type="submit" name='delete' value="Delete" id="delete">
+                                        <!-- <img src="../Photos/bin.png" name='delete' alt="delete" > -->
                                     </button>
                                 </a>
                             </div>
