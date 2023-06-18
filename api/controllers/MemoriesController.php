@@ -37,6 +37,7 @@ class MemoriesController {
         $title = $_POST['title'];
         $description = $_POST['description'];
         $id_child = $_POST['id_child'];
+        $user_id = $_POST['user_id'];
 
         if (isset($_FILES['picture'])) {
             $file = $_FILES['picture'];
@@ -48,22 +49,13 @@ class MemoriesController {
     
             $fileData = file_get_contents($fileTmpName);
 
-            $allowedExtensions = array('jpg', 'jpeg', 'png');
-            $fileExtension = strtolower(pathinfo($fileName, PATHINFO_EXTENSION));
-
-            if(in_array($fileExtension, $allowedExtensions)){
-                if(addMemory(6, 1, $date, $title, $description, $fileData)){
-                    http_response_code(201);
-                    echo json_encode(array('message' => 'Memory added successfully.'));
-                }
-                else{
-                    http_response_code(500);
-                    echo json_encode(array('message' => 'Failed to add memory.'));
-                }
+            if(addMemory($user_id, $id_child, $date, $title, $description, $fileData)){
+                http_response_code(201);
+                echo json_encode(array('message' => 'Memory added successfully.'));
             }
             else{
-                http_response_code(400);
-                echo json_encode(array('message' => 'Invalid file type.'));
+                http_response_code(500);
+                echo json_encode(array('message' => 'Failed to add memory.'));
             }
         }
     }

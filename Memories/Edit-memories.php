@@ -87,6 +87,7 @@
                         <img src="<?php echo $src;?>" id="previewImage">
                         <input type="file" accept="image/*" value="" id="picture" name="picture" placeholder="Add picture" onchange="previewPhoto(event)">
                         <input type="hidden" name="id_memory" value="<?php echo $id_memory; ?>">
+                        <input type="hidden" name="id_child" value="<?php echo $id_child; ?>">
                     </li>
                 <div class="buttons-kid1">
                     <input type="submit" name="submit" value="Save">

@@ -153,6 +153,16 @@ input[type="submit"]:hover{
     width: 1.2em;
 }
 
+#picture img {
+    display: block;
+    width: 200px;
+    height: 200px;
+    border-radius: 50%;
+    object-fit: cover;
+    border: 1px solid #ccc;
+    margin-bottom: 10px;
+  }
+
 
 
 @media(max-width:720px) {

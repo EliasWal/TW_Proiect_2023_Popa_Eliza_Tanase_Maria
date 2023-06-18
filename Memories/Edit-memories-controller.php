@@ -7,7 +7,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     $title = $_POST['title'];
     $description = $_POST['description'];
     $id_memory = $_POST['id_memory'];
-
+    $id_child = $_POST['id_child'];
     if (isset($_FILES['picture'])) {
         $file = $_FILES['picture'];
 
@@ -20,10 +20,10 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
             $fileData = file_get_contents($fileTmpName);
 
             if(updateMemory($id_memory, $date, $title, $description, $fileData)) {
-                //header("Location: Edit-memories.php?id=$id_memory");
-                http_response_code(201); 
-                header('HTTP/1.1 201 Memory updated succesfully!');
-                echo json_encode(array('message' => 'Memory updated successfully.'));
+                header("Location: Edit-memories.php?id=$id_memory");
+               // http_response_code(201); 
+                //header('HTTP/1.1 201 Memory updated succesfully!');
+               //echo json_encode(array('message' => 'Memory updated successfully.'));
             } else {
                 http_response_code(500); 
                 echo json_encode(array('message' => 'Failed to update memory.'));
@@ -31,10 +31,10 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
         }
         else {
             if(updateMemoryWithoutPhoto($id_memory, $date, $title, $description)) {
-                //header("Location: Edit-memories.php?id=$id_memory");
-                http_response_code(201); 
-                header('HTTP/1.1 201 Memory updated succesfully!');
-                echo json_encode(array('message' => 'Memory updated successfully.'));
+                header("Location: Memories-child.php?id=$id_child");
+                //http_response_code(201); 
+                //header('HTTP/1.1 201 Memory updated succesfully!');
+                //echo json_encode(array('message' => 'Memory updated successfully.'));
             } else {
                 http_response_code(500); 
                 echo json_encode(array('message' => 'Failed to update memory.'));
