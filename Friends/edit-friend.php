@@ -34,20 +34,6 @@ if(isset($_POST['submit'])){
     } 
 }
 
-// if(isset($_POST['delete'])){
-//     $child_id = $_POST['id'];
-//     $sql = "DELETE FROM friend WHERE id='$friend_id'";
-//     $res = mysqli_query($mysql, $sql);
-//     if($res){
-//         $_SESSION["message"] = "Entry deleted successfully";
-//         header("Location: friends.php");
-//         exit();
-//     }
-//     else{
-//         echo "<script>alert('Error. Entry could not be deleted!');</script>";
-//     }
-// }
-
 ?>
 <!DOCTYPE html>
 <html lang="en-US">
@@ -159,7 +145,6 @@ if(isset($_POST['submit'])){
                     
                 </form>
                 <form method="post" action="delete-controller.php">
-            //<button type="submit" name="delete">Delete</button>
             </form>
                 
             </div>
