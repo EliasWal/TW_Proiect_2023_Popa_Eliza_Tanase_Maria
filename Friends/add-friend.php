@@ -39,6 +39,42 @@ $user_id = $_SESSION["id"];
             }
         }
     </script>
+
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+        var form = document.getElementById('friend-form');
+        var button = document.getElementById('myButton');
+        var messageContainer = document.getElementById('message-container');
+
+        button.addEventListener('click', function(event) {
+          event.preventDefault(); 
+
+          var formData = new FormData(form);
+
+          var xhr = new XMLHttpRequest();
+          xhr.open('POST', 'http://localhost/TW_Proiect_2023_Popa_Eliza_Tanase_Maria-main/api/friends/');
+          xhr.onload = function() {
+            if (xhr.status === 201) {
+              console.log('Friend added successfully');
+              var successMessage = 'Friend added successfully';
+              showMessage(successMessage);
+            } else {
+              var errorMessage = 'Error adding friend';
+              showMessage(errorMessage);
+            }
+          };
+          xhr.onerror = function() {
+            console.log('Request error');
+          };
+          xhr.send(formData);
+        });
+
+        function showMessage(message) {
+          messageContainer.textContent = message;
+        }
+      });
+
+    </script>
 </head>
 <body>
     <?php require "../login-topbar.php"; ?> 
@@ -56,9 +92,11 @@ $user_id = $_SESSION["id"];
         </div>
         <div class="friend-container">
             <h2>Add friend</h2>
-            <form id="friend-form" method="post" action="add-controller.php" enctype="multipart/form-data">
+            <h2 id="message-container"></h2>
+            <form id="friend-form" method="post" enctype="multipart/form-data">
                 <li id="Name">
                     <label>Name</label>
+                    <input type="hidden" name="user_id" value="<?php echo $user_id; ?>">
                     <input type="text" value="" id="name" name="name" placeholder="Full name" required>
                 </li>
                 <li id="Relation">
@@ -70,7 +108,7 @@ $user_id = $_SESSION["id"];
                     <img id="previewImage" src="" style="display: none;">
                     <input type="file" id="photo" name="photo" accept="image/*" onchange="previewPhoto(event)">
                 </li>
-                <input type="submit" name="submit" value="Save">
+                <input type="submit" id="myButton" name="submit" value="Save">
             </form>
         </div>
     </div>

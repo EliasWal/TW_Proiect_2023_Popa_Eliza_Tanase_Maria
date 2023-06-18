@@ -33,8 +33,6 @@ if(isset($_POST['submit'])){
         }
     } 
 }
-$plm = getFriends($user_id);
-echo $plm[0]['name'];
 
 // if(isset($_POST['delete'])){
 //     $child_id = $_POST['id'];
@@ -74,6 +72,42 @@ echo $plm[0]['name'];
             }
         }
     </script>
+
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            var deleteButtons = document.querySelectorAll('input[name="delete"]');
+            var messageContainer = document.getElementById('message-container');
+
+            deleteButtons.forEach(function(button) {
+            button.addEventListener('click', function(event) {
+                event.preventDefault(); 
+
+            var friendId = button.previousElementSibling.value;
+
+            var xhr = new XMLHttpRequest();
+            xhr.open('DELETE', 'http://localhost/TW_Proiect_2023_Popa_Eliza_Tanase_Maria-main/api/friends/' + friendId);
+            xhr.onload = function() {
+            if (xhr.status === 200) {
+                console.log('Friend deleted successfully');
+                var successMessage = 'Friend deleted successfully';
+                showMessage(successMessage);
+            } else {
+                var errorMessage = 'Error deleting friend';
+                showMessage(errorMessage);
+            }
+            };
+            xhr.onerror = function() {
+            console.log('Request error');
+            };
+            xhr.send();
+            });
+        });
+
+        function showMessage(message) {
+            messageContainer.textContent = message;
+        }
+    });
+    </script>
 </head>
 <body>
     <?php require "../login-topbar.php"; ?> 
@@ -91,6 +125,7 @@ echo $plm[0]['name'];
             </div>
             <div class="friend-container">
                 <h2>Edit info about friends</h2>
+                <h2 id="message-container"></h2>
                 <?php 
                 if (isset($_SESSION["message"])) {
                     echo "<h2 style=''>" . $_SESSION["message"] . "</h2>";
@@ -117,13 +152,14 @@ echo $plm[0]['name'];
                         <input type="file" value="" id="photo" name="photo" accept="image/*" onchange="previewPhoto(event)">
                     </li>
                     <div class="buttons">
-                        <input type="submit" name="submit" value="Save">                    
+                        <input type="submit" name="submit" value="Save"> 
+                        <input type="hidden" name="id" value="<?php echo $friend_id ?>">
+                        <input type="submit" name="delete" value="Delete">
                     </div>
                     
                 </form>
                 <form method="post" action="delete-controller.php">
-                <input type="hidden" name="id" value="<?php echo $friend_id ?>">
-                <button type="submit" name="delete">Delete</button>
+            //<button type="submit" name="delete">Delete</button>
             </form>
                 
             </div>
