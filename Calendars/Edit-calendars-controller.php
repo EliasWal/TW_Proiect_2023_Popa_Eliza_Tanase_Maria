@@ -37,10 +37,10 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
         $notes = $notes_[$i];
 
         if(updateCalendar($id, $time, $sleep, $feed, $notes)) {
-            //header("Location: Edit-calendars.php?id=$id");
-            http_response_code(201); 
-            header('HTTP/1.1 201 Calendar updated succesfully!');
-            echo json_encode(array('message' => 'Calendar updated successfully.'));
+            header("Location: Calendars-child.php?id=$id_child");
+            //http_response_code(201); 
+            //header('HTTP/1.1 201 Calendar updated succesfully!');
+            //echo json_encode(array('message' => 'Calendar updated successfully.'));
         } else {
             http_response_code(500); 
             echo json_encode(array('message' => 'Failed to update calendar.'));

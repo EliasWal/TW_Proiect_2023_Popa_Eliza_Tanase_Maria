@@ -74,6 +74,7 @@
                         <input type="text" value="<?php echo $medication; ?>" id="medication" name="medication" placeholder="Needed medication">
                     </li>
                     <input type="hidden" name="id_medical" value="<?php echo $id_medical; ?>">
+                    <input type="hidden" name="id_child" value="<?php echo $id_child; ?>">
                 <div class="buttons-kid1">
                     <input type="submit" name="submit" value="Save">
                 </div>

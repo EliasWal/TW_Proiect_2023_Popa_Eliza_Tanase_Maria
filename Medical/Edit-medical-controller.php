@@ -9,12 +9,10 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     $diagnosis = $_POST['diagnosis'];
     $medication = $_POST['medication'];
     $id_medical = $_POST['id_medical'];
+    $id_child = $_POST['id_child'];
 
     if(updateMedicalReport($id_medical, $date, $doctor, $symptoms, $diagnosis, $medication)) {
-        //header("Location: Edit-medical.php?id=$id_medical");
-        http_response_code(201); 
-        header('HTTP/1.1 201 Medical report updated succesfully!');
-        echo json_encode(array('message' => 'Medical report updated successfully.'));
+        header("Location: Medical-child.php?id=$id_child");
     } else {
         http_response_code(500); 
         echo json_encode(array('message' => 'Failed to update medical report.'));

@@ -50,9 +50,9 @@ function getNameChild($id_child) {
     $stmt = $mysql->prepare($sql);
     $stmt->bind_param('i', $id_child);
     $stmt->execute();
-    $name= $stmt->get_result();
-    $res=$name->fetch_assoc();
-    return $res['firstname'];
+    $stmt->bind_result($name);
+    $stmt->fetch();
+    return $name;
 }
 
 function getMedicalReport($id_medical) {
