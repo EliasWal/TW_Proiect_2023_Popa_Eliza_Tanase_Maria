@@ -22,10 +22,56 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title> Baby manager </title>
-    <link href="admin-topbar.css" rel="stylesheet" />
-    <link href="style-memories-child2.css" rel="stylesheet" />
+    <link href="../admin-topbar.css" rel="stylesheet" />
+    <link href="style-memories-child3.css" rel="stylesheet" />
     <link rel="icon" type="image/png" href="https://cdn-icons-png.flaticon.com/512/2102/2102805.png"/>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta2/css/all.min.css" integrity="sha512-YWzhKL2whUzgiheMoBFwW8CKV4qpHQAEuvilg9FAn5VJUDwKZZxkJNuGM4XkWuk94WCrrwslk8yWNGmY1EduTA==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            var deleteButtons = document.querySelectorAll('input[name="delete"]');
+            var messageContainer = document.getElementById('message');
+
+            deleteButtons.forEach(function(button) {
+            button.addEventListener('click', function(event) {
+                event.preventDefault(); 
+
+            var memoryId = button.previousElementSibling.value;
+
+            var request = new XMLHttpRequest();
+            request.open('DELETE', 'http://localhost/TW_Proiect_2023_Popa_Eliza_Tanase_Maria/api/memories/' + memoryId);
+            request.onload = function() {
+                if (request.status === 200) {
+                    console.log('Memory deleted successfully');
+                    var successMessage = 'Memory deleted successfully';
+                    showMessage(successMessage);
+                } else {
+                    var errorMessage = 'Error deleting memory';
+                    showMessage(errorMessage);
+                }
+            };
+            request.onerror = function() {
+                console.log('Request error');
+            };
+
+            console.log('Sending Delete request...');
+
+            request.send();
+            });
+        });
+
+        function showMessage(message) {
+            messageContainer.textContent = message;
+        }
+
+        function convertFormDataToObject(formData) {
+            const object = {};
+            for (const [key, value] of formData.entries()) {
+                object[key] = value;
+            }
+            return object;
+        }
+    });
+    </script>
 </head>
 <body>
     <?php require "../login-topbar.php"; ?> 
@@ -33,6 +79,7 @@
             <?php require "leftbar-memories.php"; ?> 
             <div class="right">
                 <h5> <?php echo getNameChild($id_child); ?>'s memories </h5>
+                <h2 id="message"></h2>
                 <div class="add-buttons">
                     <a href="Add-memories.php?id=<?php echo $id_child; ?>">
                         <button>
@@ -95,7 +142,7 @@
                                 Edit 
                             </button>
                         </a>
-                        <form method="post" action="Delete-memories-controller.php">
+                        <!--<form method="post" action="Delete-memories-controller.php">
                             <input type="hidden" name="id_memory" value="<?php echo $row['id']; ?>">
                             <input type="hidden" name="id_child" value="<?php echo $id_child; ?>">
                             <a href="Memories-child.php?id=<?php echo $id_child; ?>&idm=<?php echo $row['id']; ?>">
@@ -104,6 +151,10 @@
                                     Delete 
                                 </button>
                             </a>
+                        </form>-->
+                        <form method="post">
+                            <input type="hidden" name="id" value="<?php echo $row['id']; ?>">
+                            <input type="submit" name="delete" value="Delete" id="delete">
                         </form>
                         <?php include "share-on-facebook.php"; ?>
                         <a href="<?php echo $facebook_url; ?>">
