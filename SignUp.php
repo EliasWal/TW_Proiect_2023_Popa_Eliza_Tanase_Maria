@@ -1,5 +1,6 @@
 <?php
-require 'config.php';
+    require 'config.php';
+    require "signup-service.php";
 ?>
 <!DOCTYPE html>
 <html lang="en-US">
@@ -14,42 +15,6 @@ require 'config.php';
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta2/css/all.min.css" integrity="sha512-YWzhKL2whUzgiheMoBFwW8CKV4qpHQAEuvilg9FAn5VJUDwKZZxkJNuGM4XkWuk94WCrrwslk8yWNGmY1EduTA==" crossorigin="anonymous" referrerpolicy="no-referrer" /></head>
 </head>
 <body>
-<?php
-    if(isset($_POST['submit'])){
-        $firstname = $_POST['name1'];
-        $lastname = $_POST['name2'];
-        $email = $_POST['email'];
-        $username = $_POST['username'];
-        $password = $_POST['password'];
-        $repassword = $_POST['repeatpassword'];
-        $pronouns = $_POST['pronouns'];
-        $gender = $_POST['gender'];
-        
-        $sql_u = "SELECT * FROM user_registred where username='$username' or email = '$email'";
-        
-        if($rez_u=mysqli_query($mysql, $sql_u)){
-            if(mysqli_num_rows($rez_u)>0){
-                echo "<script>alert('Username or Email already taken!');</script>";
-            }
-            else
-            if($password !=  $repassword)
-            {
-                echo "<script>alert('Password does not match!');</script>";
-            }
-            else
-            {   $sql = "INSERT INTO user_registred(firstname, lastname, email, username, password, gender, pronouns) VALUES(?,?,?,?,?,?,?)";
-                $stmtinsert = $mysql->prepare($sql);
-                $rez= $stmtinsert->execute([$firstname,$lastname,$email,$username,$password,$gender,$pronouns]);
-                if($rez){
-                    echo "<script>alert('Account created!');</script>";
-                }    
-                else {
-                    echo"<script>alert('Error. account could not be created!');</script>";
-                }
-            }
-        }
-    }
-?>
     <header>
         <nav>
             <ul class='nav-bar'>
@@ -74,7 +39,7 @@ require 'config.php';
         </div> 
         <div class="signup-container">
             <h2>Create a new account</h2>
-            <form id="signup-form" method="post" action="Signup.php">
+            <form id="signup-form" method="post" action="Add-SignUp-controller.php">
                 
                 <div class="col1">
                     <li  id="name1">
