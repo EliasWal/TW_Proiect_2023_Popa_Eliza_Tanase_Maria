@@ -16,7 +16,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST')
         $fileData = file_get_contents($fileTmpName);
         var_dump($name, $relationship);
 
-        if (updateFriend($_SESSION["id"], $name, $relationship, $fileData)) {
+        if (updateFriend($_SESSION["id"], $name, $relationship)) {
            // header("Location: friends.php");
            http_response_code(201); 
            header('HTTP/1.1 201 Friend updated succesfully!');
