@@ -36,8 +36,9 @@ class CalendarsController {
         $time = $_POST['time'];
         $notes = $_POST['notes'];
         $id_child = $_POST['id_child'];
+        $user_id = $_POST['user_id']
 
-        if(addCalendarEntry(6, 1, $time, $notes)){
+        if(addCalendarEntry($user_id, $id_child, $time, $notes)){
             http_response_code(201);
             echo json_encode(array('message' => 'Calendar entry added successfully.'));
         }

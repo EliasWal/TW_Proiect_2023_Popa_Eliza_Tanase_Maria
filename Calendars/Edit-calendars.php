@@ -100,6 +100,7 @@
                                 <div class="note-in">
                                     <td><input type="text" id="notes" name="notes[]" value="<?php echo $row['notes']; ?>"></td>
                                 </div>
+                                <input type="hidden" name="user_id" value="<?php echo $user_id; ?>">
                                 <input type="hidden" name="id_child" value="<?php echo $id_child; ?>">
                             </div>
                         </tr>
