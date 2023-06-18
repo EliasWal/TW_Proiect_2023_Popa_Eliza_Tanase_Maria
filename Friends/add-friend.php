@@ -66,11 +66,22 @@ $user_id = $_SESSION["id"];
           xhr.onerror = function() {
             console.log('Request error');
           };
+          console.log(formData, convertFormDataToObject(formData));
+          console.log('Sending POST request...');
+
           xhr.send(formData);
         });
 
         function showMessage(message) {
           messageContainer.textContent = message;
+        }
+        
+        function convertFormDataToObject(formData) {
+            const object = {};
+            for (const [key, value] of formData.entries()) {
+                object[key] = value;
+            }
+            return object;
         }
       });
 

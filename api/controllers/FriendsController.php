@@ -40,7 +40,8 @@ class FriendsController
     public function post()
     {
         $name = $_POST['name'];
-        $relationship = $_POST['relationship'];
+        $relationship = $_POST['relation'];
+
         if (isset($_FILES['photo'])) {
             $file = $_FILES['photo'];
     
