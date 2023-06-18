@@ -1,0 +1,135 @@
+body {
+    background-image: url("../photos/background_login.jpeg");
+        background-repeat: no-repeat;
+        background-attachment: fixed;
+        background-size: cover;
+}
+
+.signup-container {
+    max-width: 800px;
+    margin:auto;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    margin-top: 1em;
+    padding-bottom: 30px;
+    background-color: lavender;
+    border-radius: 4em;
+    
+}
+
+.signup-container h2{
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    color:mediumpurple;
+    font-size: 2.3em; 
+    margin-top: .5em;
+    margin-bottom: 1em; 
+    background-color: #e1d6ff;
+    border-radius: 1em;
+    padding: 1em;
+}
+
+#signup-form {
+    display: flex;
+    flex-direction: row;
+    margin-left: 3.5em;
+}
+::placeholder {
+    font-size: 20px;
+
+}
+
+#signup-form label {
+    font-size: 1.5em;
+    line-height: 1.5em;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    color:blueviolet;
+}
+
+input[type="text"],
+input[type="password"],
+input[type="email"]{
+    font-size: 1.5em;
+    line-height: 1em;
+    padding: 1em;
+    margin-bottom: 1em;
+    border-radius: 0.5em;
+    border: 1px solid #ccc;
+    width: 80%;
+    max-width: 400px;
+}
+#signup-form li{
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+}
+
+.col1{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    margin-bottom: 90px;
+}
+.col1 #name1{
+    margin-bottom: 30px;
+}
+
+.col1 #name2{
+    margin-bottom:6px;
+}
+
+.col1 #email label{
+    margin-top: 10px;
+}
+
+#genderSelect {
+    font-size: 1.5em;
+    line-height: 1em;
+    padding: 1em;
+    margin-bottom: 1em;
+    border-radius: 0.5em;
+    border: 1px solid #ccc;
+    width: 80%;
+    max-width: 400px;
+}
+
+.col2 input[type="submit"] {
+    font-size: 1.2em;
+    background-color: mediumpurple;
+    width:170px;
+    height:60px;
+    margin-left: -35%;
+    margin-top:1em;
+    line-height: 2em;
+    border-radius: 0.5em;
+    border: none;
+    display: flex;
+    justify-content: center;
+    color:antiquewhite;
+}
+
+
+@media(max-width: 915px){
+    #signup-form {
+        display: flex;
+        flex-direction: column;
+    }
+    .col1 {
+        margin-bottom: 0;
+    }
+    .col1 #name1{margin-bottom: .7em;}
+    .col2 input[type="submit"]{
+        margin-left:15%;
+    }
+}
+
+@media(max-width: 650px){
+    .signup-container h2{
+        font-size: 2em; 
+        background-color: lavender; 
+        border-radius: 0; 
+        padding: 0;
+    }
+}

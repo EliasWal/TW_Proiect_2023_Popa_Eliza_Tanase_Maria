@@ -55,7 +55,7 @@
                 <span class="menu">
                     <li><a href="Welcome.html">Home</a></li>
                     <li><a href="AboutUs.html">About us</a></li>
-                    <a href="SignUp.php">
+                    <a href="SignUp/SignUp.php">
                     <button  class="sign"> Sign up </button></a>
                     <a href="Login.php">
                     <button class="login"> Log in </button></a>
