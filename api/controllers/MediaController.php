@@ -38,9 +38,14 @@ class MediaController{
     }
 
     public function post(){
-        $user_id = $_POST['user_id'];
+       // $user_id = $_POST['user_id'];
         $name = $_POST['title'];
-        
+        $user_id = $_POST['user_id'];
+
+        $putData = file_get_contents('php://input');
+        parse_str($putData, $requestData);
+
+
         if(isset($_FILES['picture'])){
             $file = $_FILES['picture'];
     
