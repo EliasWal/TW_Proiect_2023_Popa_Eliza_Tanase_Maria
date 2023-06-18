@@ -42,7 +42,7 @@ $res = getOneMedia($media_id);
             var formData = new FormData(form);
             
             var xhr = new XMLHttpRequest();
-            xhr.open('PUT', 'http://localhost/TW_Proiect_2023_Popa_Eliza_Tanase_Maria-main/api/media/' + <?php echo $media_id ?>);
+            xhr.open('PUT', 'http://localhost/TW_Proiect_2023_Popa_Eliza_Tanase_Maria/api/media/' + <?php echo $media_id ?>);
             xhr.onload = function() {
             if (xhr.status === 204) {
                 console.log('File updated successfully');

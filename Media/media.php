@@ -39,7 +39,7 @@ $user_id = $_SESSION["id"];
         var mediaId = button.previousElementSibling.value;
 
         var xhr = new XMLHttpRequest();
-        xhr.open('DELETE', 'http://localhost/TW_Proiect_2023_Popa_Eliza_Tanase_Maria-main/api/media/' + mediaId);
+        xhr.open('DELETE', 'http://localhost/TW_Proiect_2023_Popa_Eliza_Tanase_Maria/api/media/' + mediaId);
         xhr.onload = function() {
           if (xhr.status === 200) {
             console.log('Media deleted successfully');
