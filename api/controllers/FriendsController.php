@@ -9,10 +9,13 @@ class FriendsController
     {
         if ($id) {
             $friend = getOneFriend($id);
+            $imagePath = $friend['photo'];
+            $imageData = base64_encode(file_get_contents($imagePath));
+            $imageBase64 = 'data:image/jpeg;base64,' . $imageData;
             if ($friend) {
                 header('Content-Type: application/json');
                 http_response_code(200);
-                echo json_encode([$friend['name'], $friend['relationship']]);
+                echo json_encode([$friend['name'], $friend['relationship'],$imageBase64]);
             } else {
                 http_response_code(404); 
                 echo json_encode(['message' => 'Friend not found']);
@@ -21,21 +24,28 @@ class FriendsController
     }
 
     public function getAll()
-    {   $friends = getFriends(6);
-        if ($friends) {
-            header('Content-Type: application/json');  
-            http_response_code(200);
-            foreach ($friends as $friend) {    
-                //$imageData = base64_encode($friends['photo']);
-                //$src = 'data:image;base64,' . $imageData;
-                header('Content-Type: application/json');
-                echo "name: " . $friend['name'] . ", relationship: " . $friend['relationship'] . "<br>"; //. "<img src='$src'>" . "<br>";
-            }
-        } else {
-            http_response_code(404); 
-            echo json_encode(['message' => 'No friends found']);
+{
+    $friends = getFriends(6);
+    
+    if ($friends) {
+        $response = [];
+        
+        foreach ($friends as $friend) {
+            $response[] = [
+                'name' => $friend['name'],
+                'relationship' => $friend['relationship']
+            ];
         }
+        
+        http_response_code(200);
+        header('Content-Type: application/json');
+        echo json_encode($response);
+    } else {
+        http_response_code(404);
+        echo json_encode(['message' => 'No friends found']);
     }
+}
+
 
     public function post()
     {
@@ -68,12 +78,11 @@ class FriendsController
     }
     }
     public function put($id)
-    {   $putData = file_get_contents('php://input');
-        parse_str($putData, $requestData);
-
+    {   
+        
         $friend_id = $id;
-        $name = $requestData['name'];
-        $relationship = $requestData['relationship'];
+        $name = $_POST['name'];
+        $relationship = $_POST['relation'];
         
         $friend = getOneFriend($id);
         
@@ -82,7 +91,7 @@ class FriendsController
             echo json_encode(['message' => 'Friend not found']);
             return;
         }elseif(updateFriend($friend_id, $name, $relationship)){
-            http_response_code(200); 
+            http_response_code(201); 
             echo json_encode(['message' => 'Friend updated successfully']);
         }else{
             http_response_code(500); 
