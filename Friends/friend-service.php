@@ -47,7 +47,8 @@ function getOneFriend($friend_id){
 function updateFriend($friend_id, $name, $relationship) {
     global $mysql;
 
-    $stmt = $mysql->prepare("UPDATE friend SET name='$name', relationship='$relationship' WHERE id='$friend_id'");
+    $stmt = $mysql->prepare("UPDATE friend SET name = ?, relationship = ? WHERE id = ?");
+    $stmt->bind_param("ssi", $name, $relationship, $friend_id);
 
     if ($stmt->execute()) {
         return true;
@@ -55,7 +56,18 @@ function updateFriend($friend_id, $name, $relationship) {
         return false;
     }
 }
+function updateFriend1($friend_id, $name, $relationship, $fileData) {
+    global $mysql;
 
+    $stmt = $mysql->prepare("UPDATE friend SET name = ?, relationship = ? , photo = ? WHERE id = ?");
+    $stmt->bind_param("ssis", $name, $relationship,  $fileData, $friend_id);
+
+    if ($stmt->execute()) {
+        return true;
+    } else {
+        return false;
+    }
+}
 function deleteFriend($friend_id){
     global $mysql;
     $sql = "DELETE FROM friend WHERE id='$friend_id'";

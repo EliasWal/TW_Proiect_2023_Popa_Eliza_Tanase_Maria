@@ -29,6 +29,31 @@ $friends = getFriends($user_id);
     <link rel="icon" type="image/png" href="https://cdn-icons-png.flaticon.com/512/2102/2102805.png"/>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta2/css/all.min.css" integrity="sha512-YWzhKL2whUzgiheMoBFwW8CKV4qpHQAEuvilg9FAn5VJUDwKZZxkJNuGM4XkWuk94WCrrwslk8yWNGmY1EduTA==" crossorigin="anonymous" referrerpolicy="no-referrer" /></head>
 </head>
+
+<script>
+    var xhr = new XMLHttpRequest();
+xhr.open('GET', '', true);
+
+xhr.onload = function() {
+  if (xhr.status === 200) {
+    // Request was successful
+    var response = JSON.parse(xhr.responseText);
+    console.log(response);
+    // Do something with the response data
+  } else {
+    // Request failed
+    console.log('Error: ' + xhr.status);
+  }
+};
+
+xhr.onerror = function() {
+  // Request error
+  console.log('Request failed');
+};
+
+xhr.send();
+
+</script>
 <body>
         <?php require "../login-topbar.php"; ?> 
         <div class="container">

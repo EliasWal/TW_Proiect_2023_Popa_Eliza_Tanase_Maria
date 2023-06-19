@@ -17,23 +17,6 @@ $sql= mysqli_query($mysql, "SELECT * FROM friend where id='$friend_id' and id_us
 $row = mysqli_fetch_assoc($sql);
 
 
-if(isset($_POST['submit'])){
-    $name = $_POST['name'];
-    $relationship = $_POST['relation'];
-    
-    
-    $sql_u = "SELECT * FROM friend where id='$friend_id'";
-    if ($rez_u = mysqli_query($mysql, $sql_u)) {
-        $sql = "UPDATE friend SET name='$name', relationship='$relationship' WHERE id=$friend_id AND id_user=$user_id";
-        $rez = mysqli_query($mysql, $sql);
-        if ($rez) {
-            $_SESSION["message"] = "Friend updated successfully";
-        } else {
-            echo "<script>alert('Error. Friend could not be updated!');</script>";
-        }
-    } 
-}
-
 ?>
 <!DOCTYPE html>
 <html lang="en-US">
@@ -94,6 +77,55 @@ if(isset($_POST['submit'])){
         }
     });
     </script>
+
+    <!-- <script>
+        document.addEventListener('DOMContentLoaded', function() {
+        var form = document.getElementById('friend-form');
+        var button = document.getElementById('myButton');
+        var messageContainer = document.getElementById('message-container');
+
+        button.addEventListener('click', function(event) {
+          event.preventDefault(); 
+
+          var formData = new FormData(form); -->
+          <!-- var friendId = ""; -->
+
+          <!-- var xhr = new XMLHttpRequest();
+          xhr.open('PUT', 'http://localhost/TW_Proiect_2023_Popa_Eliza_Tanase_Maria/api/friends/' + friendId);
+          
+          xhr.onload = function() {
+            if (xhr.status === 201) {
+              console.log('Friend updated successfully');
+              var successMessage = 'Friend updated successfully';
+              showMessage(successMessage);
+            } else {
+              var errorMessage = 'Error updating friend';
+              showMessage(errorMessage);
+            }
+          };
+          xhr.onerror = function() {
+            console.log('Request error');
+          };
+          console.log(formData, convertFormDataToObject(formData));
+          console.log('Sending PUT request...');
+
+          xhr.send(formData);
+        });
+
+        function showMessage(message) {
+          messageContainer.textContent = message;
+        }
+        
+        function convertFormDataToObject(formData) {
+            const object = {};
+            for (const [key, value] of formData.entries()) {
+                object[key] = value;
+            }
+            return object;
+        }
+      });
+
+    </script> -->
 </head>
 <body>
     <?php require "../login-topbar.php"; ?> 
@@ -111,15 +143,10 @@ if(isset($_POST['submit'])){
             </div>
             <div class="friend-container">
                 <h2>Edit info about friends</h2>
+                
                 <h2 id="message-container"></h2>
-                <?php 
-                if (isset($_SESSION["message"])) {
-                    echo "<h2 style=''>" . $_SESSION["message"] . "</h2>";
-                    header("Location: friends.php");
-                    unset($_SESSION["message"]);
-                }
-                ?>
-                <form id="friend-form" method="post" action="edit-controller.php">
+                
+                <form id="friend-form" method="post" action="edit-controller.php" enctype="multipart/form-data">
                     <li id="Name">
                         <label >Name</label>
                         <input type="text" value="<?php echo $row["name"] ?>" id="name" name="name" placeholder="Full name">
@@ -138,14 +165,12 @@ if(isset($_POST['submit'])){
                         <input type="file" value="" id="photo" name="photo" accept="image/*" onchange="previewPhoto(event)">
                     </li>
                     <div class="buttons">
-                        <input type="submit" name="submit" value="Save"> 
+                        <input type="submit" name="submit" value="Save" id="myButton"> 
                         <input type="hidden" name="id" value="<?php echo $friend_id ?>">
                         <input type="submit" name="delete" value="Delete">
                     </div>
                     
                 </form>
-                <form method="post" action="delete-controller.php">
-            </form>
                 
             </div>
         </div>
