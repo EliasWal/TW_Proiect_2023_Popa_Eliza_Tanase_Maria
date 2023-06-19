@@ -13,67 +13,145 @@ if(!isset($_SESSION["login"]) || $_SESSION['login']===false){
 
 $user_id = $_SESSION["id"];
 
-if(isset($_POST["exportCSV"])) {
-    // $query = "
-    // SELECT *
-    // FROM calendar c
-    // JOIN child ch ON c.id_child = ch.id
-    // LEFT JOIN friend f ON c.id_user = f.id_user
-    // LEFT JOIN media m ON c.id_user = m.id_user
-    // LEFT JOIN medical_report mr ON c.id_user = mr.id_user AND c.id_child = mr.id_child
-    // LEFT JOIN memory mem ON c.id_user = mem.id_user AND c.id_child = mem.id_child
-    // WHERE c.id_user = '$user_id'
-    // ";
-    $query = "Select * from user_registred where id='$user_id'";
+if (isset($_POST["exportCSV"])) {
+    $tableColumnMapping = array(
+        "user_registred" => "id",
+        "child" => "id_parent",
+        "calendar" => "id_user",
+        "memory" => "id_user",
+        "medical_report" => "id_user",
+        "media" => "id_user",
+        "friend" => "id_user",
+    );
 
-    $result= mysqli_query($mysql, $query);
-    
-    if (!$result) {
-        die("Query failed: " . mysqli_error($mysql));
-    }
+    $allData = array();
 
-    $data = array();
+    foreach ($tableColumnMapping as $table => $userIdColumn) {
 
-    while ($row = mysqli_fetch_assoc($result)){
-        $data[] = $row;
-    }
-    
-    var_dump($data);
+        $queryColumns = "SHOW COLUMNS FROM $table";
+        $resultColumns = mysqli_query($mysql, $queryColumns);
 
-    $filename = 'export.csv';
-    header('Content-Type: text/csv');
-    header('Content-Disposition: attachment; filename="' . $filename . '"');
-    $fp = fopen('php://output', 'w');
-    foreach ($data as $row) {
-        fputcsv($fp, $row);
-    }
-    fclose($fp);   
-    exit(); 
-}
-
-if(isset($_POST['submit'])){
-    $firstname = $_POST['name1'];
-    $lastname = $_POST['name2'];
-    $email = $_POST['email'];
-    $username = $_POST['username'];
-    $phone = $_POST['phone'];
-    $address = $_POST['address'];
-    $pronouns = $_POST['pronouns'];
-    $gender = $_POST['gender'];
-    
-    $sql_u = "SELECT * FROM user_registred where id='$user_id'";
-    if ($rez_u = mysqli_query($mysql, $sql_u)) {
-        $sql = "UPDATE user_registred SET firstname='$firstname', lastname='$lastname', email='$email', username='$username', gender='$gender' , pronouns='$pronouns', phone='$phone', address='$address' WHERE id=$user_id";
-        $rez = mysqli_query($mysql, $sql);
-        if ($rez) {
-            $_SESSION["message"] = "Settings updated successfully";
-        } else {
-            echo "<script>alert('Error. settings could not be updated!');</script>";
+        if (!$resultColumns) {
+            die("Query failed: " . mysqli_error($mysql));
         }
+
+        $columns = array();
+        while ($columnRow = mysqli_fetch_assoc($resultColumns)) {
+            $columnName = $columnRow['Field'];
+            
+            if (stripos($columnName, 'photo') === false && stripos($columnName, 'picture') === false) {
+                $columns[] = $columnName;
+            }
+        }
+        $columnList = implode(", ", $columns);
+
+        $queryData = "SELECT $columnList  FROM $table WHERE $userIdColumn = '$user_id'";
+        $resultData = mysqli_query($mysql, $queryData);
+
+        if (!$resultData) {
+            die("Query failed: " . mysqli_error($mysql));
+        }
+
+        $tableData = array();
+        while ($rowData = mysqli_fetch_assoc($resultData)) {
+            $tableData[] = $rowData;
+        }
+
+        $allData[$table] = $tableData;
     }
-    
+
+$file = fopen('export.csv', 'w');
+
+foreach ($allData as $tableName => $tableData) {
+    fwrite($file, "Table: $tableName\n");
+
+    $columns = array_keys($tableData[0]);
+    fputcsv($file, $columns);
+
+    foreach ($tableData as $rowData) {
+        fputcsv($file, $rowData);
+    }
+
+    fwrite($file, "\n");
 }
-?>
+
+fclose($file);
+
+$filename = 'export.csv';
+
+header('Content-Description: File Transfer');
+header('Content-Type: text/csv');
+header('Content-Disposition: attachment; filename="' . $filename . '"');
+
+readfile($filename);
+
+exit();
+}
+
+
+
+
+if (isset($_POST["exportJSON"])) {
+    $tableColumnMapping = array(
+        "user_registred" => "id",
+        "child" => "id_parent",
+        "calendar" => "id_user",
+        "memory" => "id_user",
+        "medical_report" => "id_user",
+        "media" => "id_user",
+        "friend" => "id_user",
+    );
+
+    $allData = array();
+
+    foreach ($tableColumnMapping as $table => $userIdColumn) {
+
+        $queryColumns = "SHOW COLUMNS FROM $table";
+        $resultColumns = mysqli_query($mysql, $queryColumns);
+
+        if (!$resultColumns) {
+            die("Query failed: " . mysqli_error($mysql));
+        }
+
+        $columns = array();
+        while ($columnRow = mysqli_fetch_assoc($resultColumns)) {
+            $columnName = $columnRow['Field'];
+            
+            if (stripos($columnName, 'photo') === false && stripos($columnName, 'picture') === false) {
+                $columns[] = $columnName;
+            }
+        }
+        $columnList = implode(", ", $columns);
+
+        $queryData = "SELECT $columnList  FROM $table WHERE $userIdColumn = '$user_id'";
+        $resultData = mysqli_query($mysql, $queryData);
+
+        if (!$resultData) {
+            die("Query failed: " . mysqli_error($mysql));
+        }
+
+        $tableData = array();
+        while ($rowData = mysqli_fetch_assoc($resultData)) {
+            $tableData[] = $rowData;
+        }
+
+        $allData[$table] = $tableData;
+    }
+
+    $json_data = json_encode($allData, JSON_PRETTY_PRINT);
+
+    $filename = 'export.json';
+
+    header('Content-Description: File Transfer');
+    header('Content-Type: application/json');
+    header('Content-Disposition: attachment; filename="' . $filename . '"');
+
+    echo $json_data;
+
+    mysqli_close($mysql);
+
+    exit;
+}?>
 <!DOCTYPE html>
 <html lang="en-US">
 <head>
