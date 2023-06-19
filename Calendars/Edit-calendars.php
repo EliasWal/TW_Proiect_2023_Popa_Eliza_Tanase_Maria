@@ -25,22 +25,65 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title> Baby manager </title>
-    <link href="admin-topbar.css" rel="stylesheet" />
+    <link href="../admin-topbar.css" rel="stylesheet" />
     <link href="Style-calendars-child3.css" rel="stylesheet" />
     <link rel="icon" type="image/png" href="https://cdn-icons-png.flaticon.com/512/2102/2102805.png"/>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta2/css/all.min.css" integrity="sha512-YWzhKL2whUzgiheMoBFwW8CKV4qpHQAEuvilg9FAn5VJUDwKZZxkJNuGM4XkWuk94WCrrwslk8yWNGmY1EduTA==" crossorigin="anonymous" referrerpolicy="no-referrer" />
 </head>
+    <!-- <script>
+        document.addEventListener('DOMContentLoaded', function() {
+        var form = document.getElementById('calendar_edit');
+        var button = document.getElementById('myButton');
+        var messageContainer = document.getElementById('message-container');
+
+        button.addEventListener('click', function(event) {
+          event.preventDefault(); 
+
+          var formData = new FormData(form);
+          var childId = <?php echo $id_child; ?>;
+          var xhr = new XMLHttpRequest();
+          xhr.open('PUT', 'http://localhost/TW_Proiect_2023_Popa_Eliza_Tanase_Maria/api/calendars/' + childId);
+          xhr.onload = function() {
+            if (xhr.status === 204) {
+              console.log('Calendar updated successfully');
+              var successMessage = 'Calendar updated successfully';
+              showMessage(successMessage);
+            } else {
+              var errorMessage = 'Error updating the calendar';
+              showMessage(errorMessage);
+            }
+          };
+          xhr.onerror = function() {
+            console.log('Request error');
+          };
+          console.log(formData, convertFormDataToObject(formData));
+          console.log('Sending PUT request...');
+
+          xhr.send(formData);
+        });
+
+        function showMessage(message) {
+          messageContainer.textContent = message;
+        }
+        
+        function convertFormDataToObject(formData) {
+            const object = {};
+            for (const [key, value] of formData.entries()) {
+                object[key] = value;
+            }
+            return object;
+        }
+      });
+
+    </script> -->
+
 <body>
     <?php require "../login-topbar.php"; ?> 
         <div class="page">
             <?php require "leftbar-calendars.php"; ?> 
             <div class="container">
                 <h1> Edit <?php echo getNameChild($id_child); ?>'s timetable</h1>
-                <?php if(isset($_SESSION["message"])){
-                        echo "<h2 style=''>" . $_SESSION["message"] . "</h2>";
-                    }
-                    unset($_SESSION["message"]);
-                ?>
+
                 <div class="buttons">
                     <a href="Calendars-child.php?id=<?php echo $id_child; ?>">
                         <button>
@@ -48,11 +91,13 @@
                             Back 
                         </button>
                     </a>
-                <form method="post"  action="Edit-calendars-controller.php">
-                    <input type="submit" name="submit" value="Save">
+                <form method="post"  action="Edit-calendars-controller.php" id="calendar_edit">
+                    <input type="submit" name="submit" value="Save" id="myButton">
                 </div>
                     <div id="table-calender" >
                     <table id="table">
+                    <label id="message-container"></label>
+
                         <div class="labels">
                             <tr>
                                 <th><label for="time">Time</label></th>
