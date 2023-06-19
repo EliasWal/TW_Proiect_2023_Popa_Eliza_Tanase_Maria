@@ -50,12 +50,22 @@
                 request.onerror = function() {
                     console.log('Request error');
                 };
+                console.log(formData, convertFormDataToObject(formData));
+
                 request.send(formData);
             });
 
             function showMessage(message) {
                 messageContainer.textContent = message;
             }
+
+            function convertFormDataToObject(formData) {
+            const object = {};
+            for (const [key, value] of formData.entries()) {
+                object[key] = value;
+            }
+            return object;
+        }
         });
     </script>
 </head>

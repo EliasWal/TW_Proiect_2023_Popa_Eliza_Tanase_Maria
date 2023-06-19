@@ -52,7 +52,7 @@
             request.onerror = function() {
                 console.log('Request error');
             };
-
+            console.log(formData, convertFormDataToObject(formData));
             console.log('Sending Delete request...');
 
             request.send();
