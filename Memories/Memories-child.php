@@ -79,7 +79,6 @@
             <?php require "leftbar-memories.php"; ?> 
             <div class="right">
                 <h5> <?php echo getNameChild($id_child); ?>'s memories </h5>
-                <h2 id="message"></h2>
                 <div class="add-buttons">
                     <a href="Add-memories.php?id=<?php echo $id_child; ?>">
                         <button>
@@ -104,6 +103,8 @@
                         </div>
                         <div class="description">
                             <h3> <?php echo $row['title']; ?> </h3>
+                            <h3 id="message"></h3>
+
                             <div class="initial-description">
                                 <?php 
                                     $str = substr($row['description'], 0, 200);
