@@ -19,7 +19,10 @@ class CalendarsController {
     }
 
     public function getAll() {
-        $calendar = getCalendar(6, 1);
+        $user_id= $_POST['user_id'];
+        $id_child = $_POST['id_child'];
+
+        $calendar = getCalendar($user_id, $id_child);
         if($calendar){
             header('Content-Type: application/json');  
             http_response_code(200);
@@ -36,8 +39,9 @@ class CalendarsController {
         $time = $_POST['time'];
         $notes = $_POST['notes'];
         $id_child = $_POST['id_child'];
+        $user_id = $_POST['user_id'];
 
-        if(addCalendarEntry(6, 1, $time, $notes)){
+        if(addCalendarEntry($user_id, $id_child, $time, $notes)){
             http_response_code(201);
             echo json_encode(array('message' => 'Calendar entry added successfully.'));
         }
@@ -48,15 +52,16 @@ class CalendarsController {
     }
 
     public function put() {
-        $requestData = json_decode(file_get_contents('php://input'), true);
-
-        $calendar = getCalendar(6, 1);
+        
+        $id_child = $_POST['id_child'];
+        $user_id = $_POST['user_id'];
+        $calendar = getCalendar($user_id, $id_child);
         $length = count($calendar);
 
-        $time_ = $requestData['time'];
-        $sleep_ = $requestData['sleep'];
-        $feed_ = $requestData['feed'];
-        $notes_ = $requestData['notes'];
+        $time_ = $_POST['time'];
+        $sleep_ = $_POST['sleep'];
+        $feed_ = $_POST['feed'];
+        $notes_ = $_POST['notes'];
         
         $i = -1;
 
@@ -70,8 +75,8 @@ class CalendarsController {
             $feed = $feed_[$i];
             $notes = $notes_[$i];
 
-            if(updateCalendar($id, $time, $sleep, $feed, $notes)) {
-                http_response_code(201);
+            if(updateCalendar($id, $time_, $sleep_, $feed_, $notes_)) {
+                http_response_code(204);
                 echo json_encode(array('message' => 'Calendar updated successfully.'));
             }
             else{
