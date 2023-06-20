@@ -15,6 +15,8 @@ $user_id = $_SESSION["id"];
 $media_id = $_GET["id"];
 
 $res = getOneMedia($media_id);
+$title = $res["title"];
+$picture = $res["picture"];
 
 
 ?>
@@ -27,10 +29,10 @@ $res = getOneMedia($media_id);
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title> Baby manager </title>
     <link href="../admin-topbar.css" rel="stylesheet" />
-    <link href="edit-media.css" rel="stylesheet" />
+    <link href="edit-media1.css" rel="stylesheet" />
     <link rel="icon" type="image/png" href="https://cdn-icons-png.flaticon.com/512/2102/2102805.png"/>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta2/css/all.min.css" integrity="sha512-YWzhKL2whUzgiheMoBFwW8CKV4qpHQAEuvilg9FAn5VJUDwKZZxkJNuGM4XkWuk94WCrrwslk8yWNGmY1EduTA==" crossorigin="anonymous" referrerpolicy="no-referrer" /></head>
-    <script>
+    <!-- <script>
         document.addEventListener('DOMContentLoaded', function() {
         var form = document.getElementById('upload-form');
         var button = document.getElementById('myButton');
@@ -73,8 +75,20 @@ $res = getOneMedia($media_id);
             return object;
         }
         });
-        
+         -->
 
+    </script>
+    <script>
+        function previewPhoto(event) {
+            var input = event.target;
+            if (input.files && input.files[0]) {
+                var reader = new FileReader();
+                reader.onload = function (e) {
+                    document.getElementById('previewImage').src = e.target.result;
+                };
+                reader.readAsDataURL(input.files[0]);
+            }
+        }
     </script>
 </head>
 
@@ -88,14 +102,21 @@ $res = getOneMedia($media_id);
             <div class="upload-container">
                 <h2>Edit media</h2>
                 <h2 id="message-container"></h2>
-                <form id="upload-form" method="post" action="media.php">
+                <form id="upload-form" method="post" action="edit-media-controller.php" enctype="multipart/form-data" >
                             <li id="name">
                                 <label >Title</label>
-                                <input type="text" value="" id="title" name="name" placeholder="Title of file">
+                                <input type="hidden" name="id_media" value="<?php echo $media_id; ?>">
+                                <input type="text" id="title" value="<?php echo $title; ?>" name="name" placeholder="Title of file">
                             </li>
-                            <li id="Photo">
+                            <li id="picture">
                                 <label> Photo</label>
-                                <input type="file" id="photo" name="photo">
+                                <?php
+                                    $imageData = base64_encode($picture);
+                                    $src = 'data:image;base64,' . $imageData;
+                                ?>
+                                <img src="<?php echo $src;?>" id="previewImage">
+
+                                <input type="file" id="photo" name="photo" onchange="previewPhoto(event)">
                             </li>
                             <input type="submit" id="myButton" value="Save">
                         </div>

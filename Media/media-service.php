@@ -44,12 +44,11 @@ function getMedia($user_id){
     return $media;
 }
 
-
-function updateMedia($media_id, $name) {
+function updateMedia($media_id, $name, $fileData) {
     global $mysql;
 
-    $stmt = $mysql->prepare("UPDATE media SET title=? WHERE id=?");
-    $stmt->bind_param("si", $name, $media_id);
+    $stmt = $mysql->prepare("UPDATE media SET title=?, picture=? WHERE id=?");
+    $stmt->bind_param("ssi", $name, $fileData, $media_id);
 
     if ($stmt->execute()) {
         return true;
@@ -61,10 +60,8 @@ function updateMedia($media_id, $name) {
 function updateMediaWithoutPhoto($media_id, $name){
     global $mysql;
 
-    $sql = $mysql->prepare("SELECT picture FROM media WHERE id='$media_id'");
-    $res= mysqli_query($mysql, $sql);
-    $row = mysqli_fetch_assoc($res);
-    $stmt = $mysql->prepare("UPDATE media SET title='$name',  picture ='$row[picture]' WHERE id='$media_id'");
+    $stmt = $mysql->prepare("UPDATE media SET title=? WHERE id=?");
+    $stmt->bind_param("si", $name, $media_id);
 
     if ($stmt->execute()) {
         return true;
@@ -72,7 +69,6 @@ function updateMediaWithoutPhoto($media_id, $name){
         return false;
     }
 }
-
 function deleteMedia($media_id){
     global $mysql;
     $sql = "DELETE FROM media WHERE id='$media_id'";
